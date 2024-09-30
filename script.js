@@ -19,7 +19,7 @@ document.getElementById('lang-toggle').addEventListener('change', function() {
     if (isThai) {
       // Show Thai text with animation
       setTimeout(() => {
-        e.style.display = 'block';
+        e.style.display = 'flex';
         e.style.transform = 'translateY(20px)';
         e.style.opacity = 0;
         setTimeout(() => {
@@ -37,7 +37,7 @@ document.getElementById('lang-toggle').addEventListener('change', function() {
 
       englishTexts.forEach(en => {
         setTimeout(() => {
-          en.style.display = 'block';
+          en.style.display = 'flex';
           en.style.transform = 'translateY(20px)';
           en.style.opacity = 0;
           setTimeout(() => {
