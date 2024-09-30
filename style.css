@@ -208,7 +208,7 @@ body {
 
 .skyline-wrapper {
   z-index: -1;
-  height: 125px;
+  height: 100px;
   width: 100%;
   display: flex;
   justify-content: flex-end;
