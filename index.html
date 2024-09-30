@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangkok Rent A Car</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- NavBar -->
+  <div id="navbar"></div>
+  <script>
+    fetch('nav.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+
+
+  <!-- Hero Section -->
+  <div class="hero-section section">
+
+    <!-- Lang Switcher -->
+    <div class="switch-lang">
+      <input type="checkbox" id="lang-toggle">
+      <label for="lang-toggle" class="toggle-label"></label>
+      <span class="toggle-text toggle-text-left">English</span>
+      <span class="toggle-text toggle-text-right">ภาษาไทย</span>
+    </div>
+
+
+    <!-- Hero Text -->
+    <div class="hero-text">
+      <div class="spacer thai-txt"></div>
+      <h1 class="thai-support-h1 english-txt">เช่า</h1>
+      <h1 class="hero-h1 english-txt">RENTALS MADE EASY</h1>
+      <h1 class="hero-h1 thai-txt">เช่ารถง่ายนิดเดียว</h1>
+      <h1 class="thai-support-h1 english-txt">ง่าย</h1>
+    </div>
+
+    
+    <!-- Button + Pickup Text -->
+    <div class="btn-wrapper">
+      <!-- Book Button -->
+      <button class="main-cta btn-shine">
+        <h1 class="english-txt">Book Your Vehicle</h1>
+        <h1 class="thai-txt">จองรถของคุณ</h1>
+      </button>
+      <!-- Pickup Text -->
+      <div class="pi-do">
+        <h1 class="pi-do-txt english-txt">FREE VEHICLE PICK UP AND DROP OFFS</h1>
+        <h1 class="pi-do-txt thai-txt">รับส่งรถฟรี</h1>
+        <div class="separator-vert"></div>
+        <div class="bc-ma-txt">
+          <img src="images/location-pin.svg">
+          <h1 class="english-txt">BANGKOK CENTRAL & MAJOR AIRPORTS</h1>
+          <h1 class="thai-txt">ใจกลางกรุงเทพและสนามบินหลัก</h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- Background Image -->
+    <div class="cover-img-container">
+      <img class="cover-img" src="images/cover-bg.png">
+    </div>
+
+  </div>
+
+  <!-- Skyline Page Break -->
+  <div class="skyline-wrapper">
+    <img class="skyline" src="images/skyline.png">
+  </div>
+
+  <!-- Cars Section -->
+  <div class="cars-section section">
+    <h2 class="english-txt">SEE OUR RANGE</h2>
+    <h2 class="thai-txt">ดูรถยนต์ที่เรามีให้บริการ</h2>
+    <div class="separator-horiz"></div>
+    <div class="suv">
+      <img src="images/SUVs.png" alt="SUVs">
+    </div>
+    <div class="sedan">
+      <img src="images/Sedans.png" alt="Sedans">
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="english-txt">&copy; 2024 Bangkok Rent A Car. All rights reserved.</p>
+      <p class="thai-txt">&copy; 2024 Bangkok Rent A Car. สงวนลิขสิทธิ์</p>
+      <p class="english-txt">For queries, please contact Vinnie:</p>
+      <p class="thai-txt">หากมีคำถามใด ๆ กรุณาติดต่อวินนี่:</p>
+      <p>
+        <span class="english-txt">Phone: </span>
+        <span class="thai-txt">โทรศัพท์: </span>
+        <a href="tel:+66855081393">+668 55081393</a>, <a href="tel:+6623823402">+662 3823402</a>
+      </p>
+      <p>
+        <span class="english-txt">Line: @bangkokrentacar</span>
+        <span class="thai-txt">ไลน์: @bangkokrentacar</span>
+      </p>
+      <p>
+        <span class="english-txt">Email: </span>
+        <span class="thai-txt">อีเมล: </span>
+        <a href="mailto:info@bangkokrentacar.com">info@bangkokrentacar.com</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

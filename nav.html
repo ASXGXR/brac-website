@@ -1,0 +1,107 @@
+<nav>
+  <a href="index.html">
+    <img class="nav-logo" src="images/brac-logo.svg" alt="Bangkok Rent A Car Logo">
+  </a>  
+  <div class="nav-buttons">
+    <button class="nav-btn nav-special english-txt">CARS</button>
+    <button class="nav-btn nav-special thai-txt">รถยนต์</button>
+
+    <button class="nav-btn nav-special english-txt">VANS</button>
+    <button class="nav-btn nav-special thai-txt">รถตู้</button>
+
+    <button class="nav-btn english-txt">TERMS</button>
+    <button class="nav-btn thai-txt">ข้อกำหนด</button>
+
+    <button class="nav-btn english-txt">ABOUT</button>
+    <button class="nav-btn thai-txt">เกี่ยวกับเรา</button>
+  </div>
+  <!-- Hamburger icon -->
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
+<style>
+  nav {
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 64px;
+    display: flex;
+    width: 100%;
+    height: 123px;
+  }
+
+  .nav-logo {
+    width: 120px;
+    height: auto;
+    cursor: pointer;
+    object-fit: contain;
+  }
+
+  .nav-buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  .nav-btn {
+    padding: 16px 32px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .nav-special {
+    color: var(--primary-color);
+    padding: 20px 40px;
+  }
+
+  .nav-btn:hover {
+    color: var(--primary-color);
+    box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.06),
+    -4px -4px 8px white;
+    transform: translateY(-1px);
+  }
+
+  /* Special Buttons */
+  /* underline */
+  .nav-special::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--primary-color); /* Change this to your preferred underline color */
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s ease;
+  }
+  .nav-special:hover::after {
+  transform: scaleX(1);
+  }
+
+  /* Hamburger styles */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+  }
+
+  .hamburger span {
+    width: 30px;
+    height: 3px;
+    background-color: #000;
+    border-radius: 2px;
+  }
+
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    .nav-buttons {
+      display: none;
+    }
+    .hamburger {
+      display: flex;
+    }
+  }
+</style>
