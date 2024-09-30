@@ -19,6 +19,13 @@
       .then(response => response.text())
       .then(data => {
         document.getElementById('navbar').innerHTML = data;
+
+        // Hamburger code
+        const hamburger = document.querySelector('.hamburger');
+        const navButtons = document.querySelector('.nav-buttons');
+        hamburger.addEventListener('click', () => {
+          navButtons.classList.toggle('nav-buttons--open');
+        });
       });
   </script>
 

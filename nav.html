@@ -26,13 +26,17 @@
 
 <style>
 
+  :root {
+    --nav-height: 123px;
+  }
+
   nav {
     justify-content: space-between;
     align-items: center;
     padding: 32px 64px;
     display: flex;
     width: 100%;
-    height: 123px;
+    height: var(--nav-height);
   }
 
   .nav-logo {
@@ -109,30 +113,26 @@
       display: none;
       flex-direction: column;
       position: absolute;
-      top: 100%;
+      top: var(--nav-height);
       right: 0;
       background-color: white;
       width: 100%;
       padding: 0;
       margin: 0;
       z-index: 1;
+      gap: 0px;
     }
-
-    .nav-buttons.nav-buttons--open {
-      display: flex;
-    }
-
     .hamburger {
       display: flex;
     }
-
+    .nav-buttons.nav-buttons--open {
+      display: flex;
+    }
     .nav-btn {
-      width: 100%;
-      text-align: center;
-      padding: 16px 0;
+      padding: 32px;
+      font-size: 18px;
       border-bottom: 1px solid #ccc;
     }
-
     .nav-btn:last-child {
       border-bottom: none;
     }
