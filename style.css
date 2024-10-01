@@ -450,7 +450,8 @@ body {
     font-size: 18px;
   }
   .cover-img {
-    margin-left: -30vw;
+    margin-left: -40vw;
+    margin-bottom: 20vh;
   }
 }
 
