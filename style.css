@@ -40,8 +40,9 @@ body, h1, h2, h3, h4, h5, h6, p {
   --shine-speed: 1s;
 }
 body {
-  background-color: var(--white);
   font-family: var(--primary-font);
+  background-color: var(--white);
+  overflow-x: hidden;
 }
 .section {
   display: flex;
