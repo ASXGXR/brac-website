@@ -25,7 +25,7 @@ document.getElementById('lang-toggle').addEventListener('change', function() {
         setTimeout(() => {
           e.style.transform = 'translateY(0)';
           e.style.opacity = 1;
-        }, 50);
+        }, 55);
       }, changeLangSpeed);
     } else {
       // Hide Thai text and show English text
@@ -43,7 +43,7 @@ document.getElementById('lang-toggle').addEventListener('change', function() {
           setTimeout(() => {
             en.style.transform = 'translateY(0)';
             en.style.opacity = 1;
-          }, 50);
+          }, 55);
         }, changeLangSpeed);
       });
     }
