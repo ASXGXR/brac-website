@@ -128,7 +128,7 @@ body {
   color: var(--white);
   transition: all 0.3s ease-in-out;
   box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
-  transition: transform 0.07s ease-in-out;
+  transition: transform 0.2s ease-in-out;
 }
 .cta-btn:hover {
   transform: translateY(5px) !important;
@@ -455,4 +455,5 @@ body {
 
 .thai-txt {
   display: none;
+  line-height: 1;
 }
