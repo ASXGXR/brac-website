@@ -451,7 +451,8 @@ body {
     font-size: 18px;
   }
   .cover-img {
-    margin-left: -32vw;
+    margin-left: -36vw;
+    margin-bottom: 15vh;
   }
   .hero-section {
     height: 100vh;
