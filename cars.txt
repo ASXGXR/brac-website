@@ -1,14 +1,14 @@
-make: toyota
-model: cross
+make: honda
+model: CRV
 price-per-week: ฿14,000 | £319
-img-name: toyota-cross.png
+img-name: honda-crv.png
 seats: 7
 engine: 1.5 L
 gears: automatic
 type: suv
 
-make: honda
-model: crv
+make: toyota
+model: cross
 price-per-week: ฿14,000 | £319
 img-name: toyota-cross.png
 seats: 7

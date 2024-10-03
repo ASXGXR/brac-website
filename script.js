@@ -54,6 +54,10 @@ document.getElementById('lang-toggle').addEventListener('change', function() {
 
 // Loading Vehicles
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 fetch('cars.txt')
 .then(response => response.text())
 .then(data => {
@@ -77,8 +81,8 @@ fetch('cars.txt')
     // Create the inner HTML with car data
     carContainer.innerHTML = `
       <h3 class="car-name">
-        <span class="car-make">${car.make}</span>&nbsp;
-        <span class="car-model">${car.model}</span>
+        <span class="car-make">${capitalizeFirstLetter(car.make)}</span>
+        <span class="car-model">${capitalizeFirstLetter(car.model)}</span>
       </h3>
       <p class="car-price">${car['price-per-week']}<br>per week</p>
       <img class="car-img" src="images/cars/${car['img-name']}" alt="${car.make} ${car.model}">
