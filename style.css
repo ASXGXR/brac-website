@@ -26,7 +26,6 @@ body, h1, h2, h3, h4, h5, h6, p {
 }
 
 
-
 /* MAIN CSS */
 
 
@@ -271,6 +270,7 @@ body {
   );
   gap: 64px;
 }
+/* section title */
 .cars-section h2 {
   color: var(--white);
   font-size: 8vmin;
@@ -282,13 +282,74 @@ body {
   height: 2px;
   background-color: var(--white);
 }
-.suv img {
+.cars-grid {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.car-details {
+  gap: 12px 32px;
+  width: 100%;
+  display: grid;
+  max-width: 35vw;
+  color: var(--white);
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: 1fr 2fr;
+}
+/* car title */
+.car-name {
+  font-size: 36px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.car-make {
+  text-transform: capitalize;
+  color: var(--primary-color);
+}
+.car-price {
+  font-weight: 500;
+  font-size: 24px;
+  text-align: right;
+}
+.car-img {
+  cursor: pointer;
   width: 100%;
 }
-.sedan img {
+.specs {
   width: 100%;
+  gap: 16px;
+  display: flex;
+  font-weight: 700;
+  flex-direction: column;
+  font-size: clamp(16px,3vmin,17px);
+  align-self: end;
+  justify-self: end;
 }
-
+.spec-item {
+  min-width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.spec-value {
+  text-transform: uppercase;
+  display: flex;
+  color: black;
+  min-width: 64px;
+  padding: 8px 12px;
+  background: #D9D9D9;
+  align-items: center;
+  justify-content: center;
+}
+.car-book-btn {
+  font-weight: 600;
+  margin-top: -12px;
+  justify-self: end;
+  font-size: 22px;
+  width: fit-content;
+  padding: 12px 32px;
+  border: 2px solid var(--white);
+}
 
 
 
@@ -425,6 +486,14 @@ body {
 
 
 
+.horiz-txt {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+
+
 /* Mobile Devices */
 @media (max-width: 950px) {
   .pi-do {
@@ -456,6 +525,13 @@ body {
   }
   .hero-section {
     height: 100vh;
+  }
+  .cars-grid {
+    flex-direction: column;
+    gap: 64px;
+  }
+  .car-details {
+    max-width: none;
   }
 }
 
