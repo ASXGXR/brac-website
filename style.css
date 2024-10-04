@@ -286,7 +286,7 @@ body {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  row-gap: 64px;
+  row-gap: 118px;
 }
 .cars-grid .car-details:nth-child(2n) {
   margin-left: auto; /* Push second column items to the far right */
@@ -533,6 +533,7 @@ body {
     height: 100vh;
   }
   .cars-grid {
+    display: flex;
     flex-direction: column;
     gap: 64px;
   }
