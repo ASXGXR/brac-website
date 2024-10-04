@@ -84,7 +84,7 @@ fetch('cars.txt')
         <span class="car-make">${capitalizeFirstLetter(car.make)}</span>
         <span class="car-model">${capitalizeFirstLetter(car.model)}</span>
       </h3>
-      <p class="car-price">${car['price-per-week']}<br>per week</p>
+      <p class="car-price">${car['price-per-day']}<br>per day</p>
       <img class="car-img" src="images/cars/${car['img-name']}" alt="${car.make} ${car.model}">
       <!-- Specs -->
       <div class="specs">

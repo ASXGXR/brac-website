@@ -295,7 +295,8 @@ body {
   gap: 0px 32px;
   width: 100%;
   display: grid;
-  max-width: 38vw;
+  max-width: 42vw;
+  padding: 24px 36px;
   color: var(--white);
   grid-template-columns: 1.4fr 1fr;
   grid-template-rows: 1fr 2fr;
