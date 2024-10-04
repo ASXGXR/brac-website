@@ -69,7 +69,12 @@ fetch('cars.txt')
     lines.forEach(line => {
       const [key, value] = line.split(': ');
       car[key.trim()] = value.trim();
-    });
+    
+      // Check if the car is popular
+      if (key.trim().toLowerCase() === 'popular') {
+        car.isPopular = true;
+      }
+    });    
     return car;
   });
 
@@ -84,13 +89,19 @@ fetch('cars.txt')
         <span class="car-make">${capitalizeFirstLetter(car.make)}</span>
         <span class="car-model">${capitalizeFirstLetter(car.model)}</span>
       </h3>
-      <p class="car-price">${car['price-per-day']}<br>per day</p>
-      <img class="car-img" src="images/cars/${car['img-name']}" alt="${car.make} ${car.model}">
+      <p class="car-price english-txt">${car['price-per-day']}<br>per day</p>
+      <p class="car-price thai-txt">${car['price-per-day']}<br>ต่อวัน</p>
+      <div class="car-img-container ${car.isPopular ? 'popular' : ''}">
+        <img class="car-img" src="images/cars/${car['img-name']}" alt="${car.make} ${car.model}">
+      </div>      
       <!-- Specs -->
       <div class="specs">
-        <div class="spec-item">NO. SEATS<div class="spec-value">${car.seats}</div></div>          
-        <div class="spec-item">ENGINE<div class="spec-value">${car.engine}</div></div>
-        <div class="spec-item">GEARS<div class="spec-value">${car.gears}</div></div>
+        <div class="spec-item english-txt">NO. SEATS<div class="spec-value">${car.seats}</div></div>
+        <div class="spec-item thai-txt">จำนวนที่นั่ง<div class="spec-value">${car.seats}</div></div> 
+        <div class="spec-item english-txt">ENGINE<div class="spec-value">${car.engine}</div></div>
+        <div class="spec-item thai-txt">เครื่องยนต์<div class="spec-value">${car.engine}</div></div>
+        <div class="spec-item english-txt">GEARS<div class="spec-value">${car.gears}</div></div>
+        <div class="spec-item thai-txt">เกียร์<div class="spec-value">${car.gears}</div></div>
       </div>
       <button class="car-book-btn btn-shine" style="--shine-speed: 0.9s;">&gt; BOOK</button>
     `;

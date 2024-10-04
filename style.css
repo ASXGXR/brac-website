@@ -126,7 +126,6 @@ body {
   border: 1px solid;
   padding: var(--button-padding);
   color: var(--white);
-  transition: all 0.3s ease-in-out;
   box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
   transition: transform 0.3s ease-in-out;
 }
@@ -258,17 +257,35 @@ body {
 
 .cars-section {
   padding: calc(var(--side-padding) / 1.5) var(--side-padding);
-  background-color: black;
-  background: linear-gradient(
-    to top,
-    #000000 4%,
-    #891E1E 10%,
-    #000000 17%,
-    #000000 42%,
-    #891E1E 48%,
-    #000000 55%
-  );
+  position: relative;
   gap: 64px;
+}
+:root {
+  --gradient-red: hsl(0, 64%, 18%);
+}
+.gradient-line-title,
+.gradient-line-cars {
+  width: 100vw;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+}
+.gradient-line-title {
+  background: linear-gradient(
+    to bottom,
+    #000000 30px,
+    var(--gradient-red) 90px,
+    #000000 150px
+  );
+}
+.gradient-line-cars {
+  background: linear-gradient(
+    to bottom,
+    #000000 380px,
+    hsl(0, 64%, 16%) 440px,
+    #000000 500px
+  );
 }
 /* section title */
 .cars-section h2 {
@@ -278,28 +295,36 @@ body {
   position: relative;
 }
 .separator-horiz {
+  z-index: 1;
   width: 100%;
   height: 2px;
   background-color: var(--white);
 }
 .cars-grid {
+  position: relative;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   row-gap: 118px;
 }
-.cars-grid .car-details:nth-child(2n) {
-  margin-left: auto; /* Push second column items to the far right */
-}
 .car-details {
+  cursor: pointer;
   gap: 0px 32px;
   width: 100%;
   display: grid;
-  max-width: 42vw;
-  padding: 24px 36px;
+  max-width: 40vw;
   color: var(--white);
   grid-template-columns: 1.4fr 1fr;
   grid-template-rows: 1fr 2fr;
+}
+/* Plays Animation on Hover of Parent */
+.car-details:hover .btn-shine::after {
+  left: 120%;
+  transition: all var(--shine-speed) cubic-bezier(0.19, 1, 0.22, 1);
+}
+.cars-grid .car-details:nth-child(2n) {
+  margin-left: auto; /* Push second column items to the far right */
+  padding-right: 0px;
 }
 /* car title */
 .car-name {
@@ -317,12 +342,11 @@ body {
   text-align: right;
 }
 .car-img {
-  aspect-ratio: 16 / 10; /* Set the aspect ratio you want, e.g., 16:9 */
+  aspect-ratio: 17 / 10;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
 .specs {
   width: 100%;
   gap: 16px;
@@ -352,10 +376,18 @@ body {
 .car-book-btn {
   font-weight: 600;
   justify-self: end;
-  font-size: 22px;
+  font-size: 20px;
   width: fit-content;
   padding: 12px 32px;
   border: 2px solid var(--white);
+}
+.view-all-cars {
+  color: var(--white);
+  margin: 0px auto;
+  font-size: 20px;
+  padding: 20px 32px;
+  border: 2px solid white;
+  margin-bottom: 64px;
 }
 
 
@@ -540,8 +572,35 @@ body {
   }
   .car-details {
     max-width: none;
+    gap: 24px;
+    grid-template-columns: 2fr 1fr;
+  }
+  .spec-item {
+    display: block;
+    min-width: unset;
   }
 }
+
+
+.popular {
+  border: 2px solid var(--white);
+  position: relative;
+}
+.popular::after {
+  content: "TOP RATED";
+  position: absolute;
+  top: -8px;
+  left: -16px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: bold;
+  padding: 8px 12px;
+  rotate: -10deg;
+  border: 2px solid var(--white);
+  box-shadow: #000000 2px 2px 4px;
+}
+
 
 
 

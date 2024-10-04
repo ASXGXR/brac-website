@@ -9,54 +9,29 @@ type: suv
 
 make: honda
 model: CRV
-price-per-day: £46.29 | ฿2,000
+price-per-day: £45.99 | ฿2,000
 img-name: honda-crv.png
 seats: 7
 engine: 1.5 L
 gears: automatic
 type: suv
+popular: y
 
 make: toyota
-model: yaris cross
-price-per-day: £29.99 | ฿1,290
-img-name: toyota-yaris-cross.png
+model: ativ
+price-per-day: £31.00 | ฿1,286
+img-name: toyota-ativ.png
 seats: 5
-engine: 1.5 L Hybrid
+engine: 1.2 L
 gears: automatic
-type: suv
-
-make: toyota
-model: veloz
-price-per-day: £29.99 | ฿1,290
-img-name: toyota-veloz.png
-seats: 7
-engine: 1.5 L
-gears: automatic
-type: suv
-
-make: toyota
-model: sienta
-price-per-day: £29.99 | ฿1,290
-img-name: toyota-sienta.png
-seats: 7
-engine: 1.5 L Hybrid
-gears: automatic
-type: suv
+type: sedan
+popular: y
 
 make: honda
-model: BRV
-price-per-day: £29.99 | ฿1,290
-img-name: honda-brv.png
-seats: 7
+model: city-hatchback
+price-per-day: £33.33 | ฿1,400
+img-name: honda-city-hatchback.png
+seats: 5
 engine: 1.5 L
 gears: automatic
-type: suv
-
-make: toyota
-model: fortuner
-price-per-day: £39.43 | ฿1,715
-img-name: toyota-fortuner.png
-seats: 7
-engine: 2.8 L
-gears: automatic
-type: suv
+type: sedan
