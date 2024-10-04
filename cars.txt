@@ -1,6 +1,6 @@
 make: honda
 model: CRV
-price-per-week: ฿14,000 | £319
+price-per-week: ฿14,000 | £324
 img-name: honda-crv.png
 seats: 7
 engine: 1.5 L
@@ -9,9 +9,54 @@ type: suv
 
 make: toyota
 model: cross
-price-per-week: ฿14,000 | £319
+price-per-week: ฿10,000 | £229
 img-name: toyota-cross.png
+seats: 5
+engine: 1.8 L
+gears: automatic
+type: suv
+
+make: toyota
+model: yaris cross
+price-per-week: ฿9,000 | £207
+img-name: toyota-yaris-cross.png
+seats: 5
+engine: 1.5 L Hybrid
+gears: automatic
+type: suv
+
+make: toyota
+model: veloz
+price-per-week: ฿9,000 | £207
+img-name: toyota-veloz.png
 seats: 7
 engine: 1.5 L
+gears: automatic
+type: mpv
+
+make: toyota
+model: sienta
+price-per-week: ฿9,000 | £207
+img-name: toyota-sienta.png
+seats: 7
+engine: 1.5 L Hybrid
+gears: automatic
+type: mpv
+
+make: honda
+model: BRV
+price-per-week: ฿9,000 | £207
+img-name: honda-brv.png
+seats: 7
+engine: 1.5 L
+gears: automatic
+type: suv
+
+make: toyota
+model: fortuner
+price-per-week: ฿12,000 | £276
+img-name: toyota-fortuner.png
+seats: 7
+engine: 2.8 L
 gears: automatic
 type: suv
