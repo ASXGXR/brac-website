@@ -25,7 +25,6 @@ seats: 5
 engine: 1.2 L
 gears: automatic
 type: sedan
-popular: y
 
 make: honda
 model: city-hatchback

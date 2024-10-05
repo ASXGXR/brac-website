@@ -1,63 +1,15 @@
-// Changing Language
 
-const changeLangSpeed = 400;
-document.getElementById('lang-toggle').addEventListener('change', function() {
-  const isThai = this.checked;
-
-  document.querySelectorAll('.thai-txt').forEach(e => {
-    const englishTexts = document.querySelectorAll('.english-txt');
-
-    // Hide English text with animation
-    englishTexts.forEach(en => {
-      en.style.transform = 'translateY(-20px)';
-      en.style.opacity = 0;
-      setTimeout(() => {
-        en.style.display = 'none';
-      }, changeLangSpeed);
-    });
-
-    if (isThai) {
-      // Show Thai text with animation
-      setTimeout(() => {
-        e.style.display = 'block';
-        e.style.transform = 'translateY(20px)';
-        e.style.opacity = 0;
-        setTimeout(() => {
-          e.style.transform = 'translateY(0)';
-          e.style.opacity = 1;
-        }, 55);
-      }, changeLangSpeed);
-    } else {
-      // Hide Thai text and show English text
-      e.style.transform = 'translateY(-20px)';
-      e.style.opacity = 0;
-      setTimeout(() => {
-        e.style.display = 'none';
-      }, changeLangSpeed);
-
-      englishTexts.forEach(en => {
-        setTimeout(() => {
-          en.style.display = 'block';
-          en.style.transform = 'translateY(20px)';
-          en.style.opacity = 0;
-          setTimeout(() => {
-            en.style.transform = 'translateY(0)';
-            en.style.opacity = 1;
-          }, 55);
-        }, changeLangSpeed);
-      });
-    }
-  });
-});
-
+// Dark Mode
+const dark_mode = "y";
+if (dark_mode) {
+  document.body.classList.toggle('dark-mode');
+};
 
 
 // Loading Vehicles
-
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
 fetch('cars.txt')
 .then(response => response.text())
 .then(data => {
@@ -127,4 +79,63 @@ fetch('cars.txt')
 })
 .catch(error => {
   console.error('Error fetching cars.txt:', error);
+});
+
+
+// DOM FULLY LOADED
+document.addEventListener("DOMContentLoaded", function() {
+  // Changing Language
+  const changeLangSpeed = 400;
+  const langToggle = document.getElementById('lang-toggle');
+  const thaiTexts = document.querySelectorAll('.thai-txt');
+  const englishTexts = document.querySelectorAll('.english-txt');
+
+  langToggle.addEventListener('change', function() {
+    const isThai = this.checked;
+
+    // Hide English text with animation
+    englishTexts.forEach(en => {
+      en.style.transform = 'translateY(-20px)'; // Only apply the necessary transform
+      en.style.opacity = 0;
+      setTimeout(() => {
+        en.style.display = 'none';
+      }, changeLangSpeed);
+    });
+
+    if (isThai) {
+      // Show Thai text with animation
+      thaiTexts.forEach(thai => {
+        setTimeout(() => {
+          thai.style.display = 'block';
+          thai.style.transform = 'translateY(20px)'; // Apply animation transform directly
+          thai.style.opacity = 0;
+          setTimeout(() => {
+            thai.style.transform = ''; // Allow the element to return to its natural state without forcing translateY(0)
+            thai.style.opacity = 1;
+          }, 55);
+        }, changeLangSpeed);
+      });
+    } else {
+      // Hide Thai text and show English text
+      thaiTexts.forEach(thai => {
+        thai.style.transform = 'translateY(-20px)'; // Apply the necessary animation
+        thai.style.opacity = 0;
+        setTimeout(() => {
+          thai.style.display = 'none';
+        }, changeLangSpeed);
+      });
+
+      englishTexts.forEach(en => {
+        setTimeout(() => {
+          en.style.display = 'block';
+          en.style.transform = 'translateY(20px)'; // Apply the necessary animation
+          en.style.opacity = 0;
+          setTimeout(() => {
+            en.style.transform = ''; // Let it go back to its natural state
+            en.style.opacity = 1;
+          }, 55);
+        }, changeLangSpeed);
+      });
+    }
+  });
 });
