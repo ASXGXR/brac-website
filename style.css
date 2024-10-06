@@ -45,7 +45,7 @@ body, h1, h2, h3, h4, h5, h6, p, ul {
 .dark-mode {
   --white: #1e2024;
   --black: #f9f9f9;
-  --primary-color: #e36f41;
+  --primary-color: #c83e1b;
   /* --primary-color: #d05343; */
   --gradient-red: var(--primary-color);
   --shadow-color-rgb: 10,10,10;
@@ -731,7 +731,7 @@ h3 {
 /* Mobile Devices */
 @media (max-width: 950px) {
   .pi-do {
-    bottom: calc(var(--side-padding) * -2.5);
+    bottom: calc(var(--side-padding) * -3.5);
     padding: var(--button-padding);
     width: 100%;
   }
