@@ -1,5 +1,5 @@
 <nav>
-  <a href="/" class="nav-logo">
+  <a href="/" class="nav-logo nav-btn">
     <img src="images/logo.svg" alt="Bangkok Rent A Car Logo">
     <p class="logo-text">bangkokrentacar.com</p>
   </a>
@@ -15,6 +15,11 @@
 
     <button class="nav-btn english-txt">ABOUT</button>
     <button class="nav-btn thai-txt">เกี่ยวกับเรา</button>
+
+    <a class="nav-btn" href="https://line.me/R/ti/p/@bangkokrentacar" target="_blank">
+      <img class="line-logo-nav english-txt" src="images/line-logo.svg">
+      <img class="line-logo-nav thai-txt" src="images/line-logo.svg">
+    </a>
   </div>
 
   <!-- Hamburger icon -->
@@ -33,12 +38,22 @@
 
   nav {
     justify-content: space-between;
+    height: var(--nav-height);
     align-items: center;
     padding: 32px 64px;
     display: flex;
     width: 100%;
-    height: var(--nav-height);
-    box-shadow: rgba(0, 0, 0, 0.827) 4px 4px 10px;
+
+    /* Sticky */
+    /* top: 0;
+    height: 100px;
+    z-index: 10;
+    position: fixed;
+    background: linear-gradient(to bottom, var(--white) 40%, transparent); */
+  }
+  
+  .line-logo-nav {
+    height: 32px;
   }
 
   .nav-logo {
@@ -68,6 +83,7 @@
   }
 
   .nav-btn {
+    position: relative;
     padding: 16px 32px;
     transition: all 0.3s ease-in-out;
   }
@@ -85,7 +101,7 @@
   }
 
   .nav-btn:active {
-    box-shadow: none;
+    box-shadow: none !important;
     transform: none;
     transition: all 0.123s ease-in-out;
   }
@@ -125,7 +141,7 @@
 
   .dark-mode {
     .nav-btn:hover {
-      box-shadow: 6px 6px 8px rgb(23, 23, 23), /* Bottom Right Shadow */
+      box-shadow: 6px 6px 8px rgb(12, 12, 12), /* Bottom Right Shadow */
       -4px -4px 8px rgb(40, 40, 40); /* Top Left Highlight */
     }
   }

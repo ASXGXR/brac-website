@@ -32,6 +32,7 @@ fetch('cars.txt')
 
   // Process each car and generate HTML
   cars.forEach(car => {
+    console.log(car);
     const carContainer = document.createElement('div');
     carContainer.classList.add('car-details');
     
@@ -45,7 +46,7 @@ fetch('cars.txt')
       <p class="car-price thai-txt">${car['price-per-day']}<br>ต่อวัน</p>
       <div class="car-img-container ${car.isPopular ? 'popular' : ''}">
         <img class="car-img" src="images/cars/${car['img-name']}" alt="${car.make} ${car.model}">
-      </div>      
+      </div>
       <!-- Specs -->
       <div class="specs">
         <div class="spec-item english-txt">NO. SEATS<div class="spec-value">${car.seats}</div></div>
@@ -55,26 +56,31 @@ fetch('cars.txt')
         <div class="spec-item english-txt">GEARS<div class="spec-value">${car.gears}</div></div>
         <div class="spec-item thai-txt">เกียร์<div class="spec-value">${car.gears}</div></div>
       </div>
-      <button class="car-book-btn btn-shine" style="--shine-speed: 0.9s;">&gt; BOOK</button>
+      <button class="car-book-btn btn-shine english-txt" style="--shine-speed: 0.9s;">&gt; BOOK</button>
+      <button class="car-book-btn btn-shine thai-txt" style="--shine-speed: 0.9s;">&gt; จอง</button>
     `;
     
     // Determine the section based on car type
-    let sectionId;
-    if (car.type.toLowerCase() === 'suv') {
-      sectionId = 'suvs';
-    } else if (car.type.toLowerCase() === 'sedan') {
-      sectionId = 'sedans';
-    } else {
-      // If type is not recognized, skip this car or assign a default section
-      return;
-    }
-    
+    let sectionId = car.type.toLowerCase() + 's';
     const section = document.getElementById(sectionId);
+
     if (section) {
-      section.appendChild(carContainer);
+      // Get the button by constructing its ID
+      const buttonId = car.type.toLowerCase() + '-view-all';
+      const button = document.getElementById(buttonId);
+
+      if (button && section.contains(button)) {
+        // Insert carContainer before the button
+        section.insertBefore(carContainer, button);
+      } else {
+        // If the button is not found or not a child, append carContainer to the section
+        section.appendChild(carContainer);
+      }
     } else {
       console.error(`Section with id ${sectionId} not found`);
     }
+
+
   });
 })
 .catch(error => {
@@ -84,14 +90,17 @@ fetch('cars.txt')
 
 // DOM FULLY LOADED
 document.addEventListener("DOMContentLoaded", function() {
-  // Changing Language
+
+  // CHANGING LANGUAGE
   const changeLangSpeed = 400;
   const langToggle = document.getElementById('lang-toggle');
-  const thaiTexts = document.querySelectorAll('.thai-txt');
-  const englishTexts = document.querySelectorAll('.english-txt');
 
   langToggle.addEventListener('change', function() {
     const isThai = this.checked;
+
+    // Re-select elements dynamically in case new elements have been added
+    const thaiTexts = document.querySelectorAll('.thai-txt');
+    const englishTexts = document.querySelectorAll('.english-txt');
 
     // Hide English text with animation
     englishTexts.forEach(en => {
