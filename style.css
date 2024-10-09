@@ -42,6 +42,7 @@ body, h1, h2, h3, h4, h5, h6, p, ul {
   --gradient-red: hsl(0, 64%, 18%);
   /* --gradient-black: hsl(225, 12%, 7%); */
   --gradient-black: var(--black);
+  --all-cars-padding: 24px 48px;
 }
 .dark-mode {
   --white: #1e2024;
@@ -142,7 +143,7 @@ body {
 
 .hero-section {
   /* Sticky Nav */
-  /* margin-top: var(--nav-height); */
+  margin-top: var(--nav-height);
   display: flex;
   position: relative;
   flex-direction: column;
@@ -854,7 +855,7 @@ h1.thai-txt {
 .all-cars {
   margin-top: 16px;
   border: none;
-  padding: 20px 48px !important;
+  padding: var(--all-cars-padding) !important;
   border-bottom: 2px var(--primary-color) solid;
 }
 .all-cars:hover {

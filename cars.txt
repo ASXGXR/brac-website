@@ -9,15 +9,6 @@ type: suv
 popular: y
 
 make: toyota
-model: fortuner
-price-per-day: £39.43 | ฿1,715
-img-name: toyota-fortuner.png
-seats: 7
-engine: 2.8 L
-gears: automatic
-type: suv
-
-make: toyota
 model: cross
 price-per-day: £32.99 | ฿1,429
 img-name: toyota-cross.png
@@ -36,15 +27,6 @@ gears: automatic
 type: sedan
 
 make: toyota
-model: ativ
-price-per-day: £31.00 | ฿1,286
-img-name: toyota-ativ.png
-seats: 5
-engine: 1.2 L
-gears: automatic
-type: sedan
-
-make: toyota
 model: yaris
 price-per-day: £28.57 | ฿1,143
 img-name: toyota-yaris.png
@@ -54,18 +36,18 @@ gears: automatic
 type: sedan
 
 make: toyota
-model: revo smart cab
-price-per-day: £24.29 | ฿1,000
-img-name: toyota-revo-smart-cab.png
+model: revo double cab
+price-per-day: £31.21 | ฿1,286
+img-name: toyota-revo-double-cab.png
 seats: 5
 engine: 2.4 L
 gears: automatic
 type: pickup
 
 make: toyota
-model: revo double cab
-price-per-day: £31.21 | ฿1,286
-img-name: toyota-revo-double-cab.png
+model: revo smart cab
+price-per-day: £24.29 | ฿1,000
+img-name: toyota-revo-smart-cab.png
 seats: 5
 engine: 2.4 L
 gears: automatic
