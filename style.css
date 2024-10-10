@@ -575,9 +575,9 @@ h2:hover {
   transition: transform 0.4s ease-in-out;
   color: #2C3E50;
   line-height: 1.5;
-  font-size: 19px;
+  font-size: 21px;
   color: #cfd4d9;
-  gap: 12px;
+  gap: 16px;
 
   padding: 14px 0px; /* Around List Items*/
 }
