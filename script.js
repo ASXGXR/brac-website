@@ -32,7 +32,6 @@ fetch('cars.txt')
 
   // Process each car and generate HTML
   cars.forEach(car => {
-    console.log(car);
     const carContainer = document.createElement('div');
     carContainer.classList.add('car-details');
     
@@ -94,7 +93,6 @@ document.addEventListener("DOMContentLoaded", function() {
   // CHANGING LANGUAGE
   const changeLangSpeed = 400;
   const langToggle = document.getElementById('lang-toggle');
-
   langToggle.addEventListener('change', function() {
     const isThai = this.checked;
 

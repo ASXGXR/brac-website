@@ -1,19 +1,19 @@
-make: honda
-model: CRV
-price-per-day: £45.99 | ฿2,000
-img-name: honda-crv.png
-seats: 7
-engine: 1.5 L
-gears: automatic
-type: suv
-popular: y
-
 make: toyota
 model: cross
 price-per-day: £32.99 | ฿1,429
 img-name: toyota-cross.png
 seats: 5
 engine: 1.8 L
+gears: automatic
+type: suv
+popular: y
+
+make: honda
+model: CRV
+price-per-day: £46.29 | ฿2,000
+img-name: honda-crv.png
+seats: 7
+engine: 1.5 L
 gears: automatic
 type: suv
 

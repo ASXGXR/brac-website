@@ -1,4 +1,4 @@
-<nav>
+<nav id="nav">
   <a href="/" class="nav-logo nav-btn">
     <img src="images/logo.svg" alt="Bangkok Rent A Car Logo">
     <p class="logo-text">bangkokrentacar.com</p>
@@ -13,7 +13,7 @@
     <button class="nav-btn english-txt">TERMS</button>
     <button class="nav-btn thai-txt">ข้อกำหนด</button>
 
-    <button class="nav-btn english-txt">ABOUT</button>
+    <button class="nav-btn english-txt">WHY US?</button>
     <button class="nav-btn thai-txt">เกี่ยวกับเรา</button>
 
     <a class="nav-btn" href="https://line.me/R/ti/p/@bangkokrentacar" target="_blank">
@@ -48,8 +48,10 @@
     top: 0;
     z-index: 10;
     position: fixed;
-    --nav-height: 100px;
-    background: linear-gradient(to bottom, var(--white) 35%, transparent);
+    --nav-height: 123px;
+    transition: top 0.4s;
+    /* background: linear-gradient(to bottom, var(--white) 35%, transparent); */
+    background: linear-gradient(to bottom, var(--white) 75%, transparent);
   }
   
   .line-logo-nav {
