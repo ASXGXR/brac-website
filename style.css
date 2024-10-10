@@ -24,6 +24,15 @@ body, h1, h2, h3, h4, h5, h6, p, ul {
   line-height: inherit;
   color: inherit;
 }
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none;
+  user-select: none !important;
+}
 
 
 /* MAIN CSS */
@@ -229,10 +238,10 @@ body {
 .cta-btn:hover {
   color: var(--primary-color);
   background-color: var(--black);
-  transform: translateY(5px) !important;
+  transform: translateX(5px) !important;
 }
 .cta-btn:active {
-  transform: translateY(5px);
+  transform: translateX(5px);
 }
 .main-cta {
   background-color: var(--primary-color);
