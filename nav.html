@@ -1,24 +1,25 @@
+<!-- nav.html -->
 <nav id="nav">
   <a href="/" class="nav-logo nav-btn">
-    <img src="images/logo.svg" alt="Bangkok Rent A Car Logo">
+    <img src="/images/logo.svg" alt="Bangkok Rent A Car Logo">
     <p class="logo-text">bangkokrentacar.com</p>
   </a>
   <div class="nav-buttons">
-    <button class="nav-btn english-txt">CARS</button>
-    <button class="nav-btn thai-txt">รถยนต์</button>
+    <button class="nav-btn english-txt" data-page="/pages/cars.html">CARS</button>
+    <button class="nav-btn thai-txt" data-page="/pages/cars.html">รถยนต์</button>
 
-    <button class="nav-btn english-txt">VANS</button>
-    <button class="nav-btn thai-txt">รถตู้</button>
+    <button class="nav-btn english-txt" data-page="/pages/vans.html">VANS</button>
+    <button class="nav-btn thai-txt" data-page="/pages/vans.html">รถตู้</button>
 
-    <button class="nav-btn english-txt">TERMS</button>
-    <button class="nav-btn thai-txt">ข้อกำหนด</button>
+    <a href="/pages/terms.html" class="nav-btn english-txt">TERMS</a>
+    <a href="/pages/terms.html" class="nav-btn thai-txt">ข้อกำหนด</a>
 
-    <button class="nav-btn english-txt">ABOUT</button>
-    <button class="nav-btn thai-txt">เกี่ยวกับเรา</button>
+    <button class="nav-btn english-txt" data-page="/pages/about.html">ABOUT</button>
+    <button class="nav-btn thai-txt" data-page="/pages/about.html">เกี่ยวกับเรา</button>
 
     <a class="nav-btn" href="https://line.me/R/ti/p/@bangkokrentacar" target="_blank">
-      <img class="line-logo-nav english-txt" src="images/line-logo.svg">
-      <img class="line-logo-nav thai-txt" src="images/line-logo.svg">
+      <img class="line-logo-nav english-txt" src="/images/line-logo.svg">
+      <img class="line-logo-nav thai-txt" src="/images/line-logo.svg">
     </a>
   </div>
 
@@ -58,6 +59,10 @@
     height: 32px;
   }
 
+  .active-nav-item {
+    color: var(--primary-color);
+  }
+
   .nav-logo {
     gap: 8px;
     display: flex;
@@ -80,14 +85,15 @@
   }
 
   .nav-buttons {
+    align-items: center;
     display: flex;
     gap: 16px;
   }
 
   .nav-btn {
     position: relative;
-    padding: 16px 32px;
-    transition: all 0.3s ease-in-out;
+    padding: 24px 32px;
+    transition: all 0.25s ease-in-out;
   }
 
   .nav-special {
@@ -179,13 +185,3 @@
     }
   }
 </style>
-
-
-<script>
-  const hamburger = document.querySelector('.hamburger');
-  const navButtons = document.querySelector('.nav-buttons');
-
-  hamburger.addEventListener('click', () => {
-    navButtons.classList.toggle('nav-buttons--open');
-  });
-</script>

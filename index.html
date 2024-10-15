@@ -5,67 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bangkok Rent A Car</title>
     <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <!-- Scripts -->
-    <script src="script.js" defer></script>
+    <script src="/script.js" defer></script>
 </head>
 <body>
 
   <!-- NavBar -->
   <div id="navbar"></div>
-  <script>
-    // Adding Nav
-    const navbarElement = document.getElementById('navbar');
-    fetch('nav.html')
-      .then(response => response.text())
-      .then(data => {
-        navbarElement.innerHTML = data;
-  
-        // Nav Scrolling
-        let lastScrollTop = 0;
-        const root = document.documentElement;
-        const nav = navbarElement.querySelector('nav');
-        const navHeight = getComputedStyle(root).getPropertyValue('--nav-height');
-        const scrollThreshold = 5; // amount to scroll down
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-          if (!ticking) {
-            window.requestAnimationFrame(() => {
-              let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-              if (scrollTop > lastScrollTop + scrollThreshold) {
-                nav.style.top = `-${navHeight}`; // Hide nav
-              } else if (scrollTop < lastScrollTop) {
-                nav.style.top = '0'; // Show nav
-              }
-              lastScrollTop = Math.max(scrollTop, 0); // For mobile devices / negative scrolling
-              ticking = false;
-            });
-            ticking = true; // Ensures one update per frame
-          }
-        });
-  
-        // Hamburger code
-        const hamburger = navbarElement.querySelector('.hamburger');
-        const navButtons = navbarElement.querySelector('.nav-buttons');
-        hamburger.addEventListener('click', () => {
-          navButtons.classList.toggle('nav-buttons--open');
-        });
-      });
-  </script>
-  
+  <script src="/nav.js"></script>
 
+
+  <!-- Lang Switcher -->
+  <div class="switch-lang">
+    <input type="checkbox" id="lang-toggle">
+    <label for="lang-toggle" class="toggle-label"></label>
+    <span class="toggle-text toggle-text-left">English</span>
+    <span class="toggle-text toggle-text-right">ภาษาไทย</span>
+  </div>
+  
 
   <!-- Hero Section -->
   <div class="hero-section section">
-
-    <!-- Lang Switcher -->
-    <div class="switch-lang">
-      <input type="checkbox" id="lang-toggle">
-      <label for="lang-toggle" class="toggle-label"></label>
-      <span class="toggle-text toggle-text-left">English</span>
-      <span class="toggle-text toggle-text-right">ภาษาไทย</span>
-    </div>
 
 
     <!-- Hero Text -->
@@ -90,7 +52,7 @@
         </button>
         <!-- Line Button -->
         <a class="line-cta cta-btn btn-shine thai-txt" href="https://line.me/R/ti/p/@bangkokrentacar" target="_blank">
-          <div class="horiz-txt"><img src="images/line-logo.svg" alt="Line logo" class="line-icon">ติดต่อ</div>
+          <div class="horiz-txt"><img src="/images/line-logo.svg" alt="Line logo" class="line-icon">ติดต่อ</div>
         </a>
       </div>
 
@@ -100,7 +62,7 @@
         <h1 class="pi-do-txt thai-txt">รับส่งรถฟรี</h1>
         <div class="separator-vert"></div>
         <div class="bc-ma-txt">
-          <img src="images/location-pin.svg">
+          <img src="/images/location-pin.svg">
           <h1 class="english-txt"><strong>BANGKOK</strong> CENTRAL & MAJOR AIRPORTS</h1>
           <h1 class="thai-txt">ใจกลางกรุงเทพและสนามบินหลัก</h1>
         </div>
@@ -110,7 +72,7 @@
     <!-- Background Image -->
     <div class="cover-img-container">
       <!-- <img class="cover-img" src="images/cover-bg.png"> -->
-      <img class="cover-img" src="images/car-bg.jpg">
+      <img class="cover-img" src="/images/car-bg.jpg">
     </div>
 
   </div>
@@ -127,14 +89,14 @@
     <h2 class="about-us-header english-txt"><span>WHY US?</span></h2>
     <h2 class="about-us-header thai-txt"><span>ทำไมเรา?</span></h2>
     <div class="about-us-content">
-      <img class="why-us-img" src="images/why-us-img.png">
+      <img class="why-us-img" src="/images/why-us-img.png">
       <!-- We look forward to making your visit to Thailand even more enjoyable with our reliable, hassle-free car rental services! -->
       <ul class="features-list">
         <li><span>✔</span><p class="perk-text english-txt"><span class="highlight">FREE DELIVERY</span>&nbsp;&nbsp;and drop-off in Bangkok and at the airport.</p><p class="perk-text thai-txt"><span class="highlight">จัดส่งฟรี</span>&nbsp;&nbsp;และรับส่งรถฟรีในกรุงเทพและที่สนามบิน</p></li>
         <li><span>✔</span><p class="perk-text english-txt"><span class="highlight">FULL INSURANCE COVERAGE</span>&nbsp;&nbsp;included in all rental rates.</p><p class="perk-text thai-txt"><span class="highlight">ประกันภัยครอบคลุมเต็มรูปแบบ</span>&nbsp;&nbsp;รวมอยู่ในทุกอัตราค่าเช่า</p></li>
-        <li><span>✔</span><p class="perk-text english-txt"><span class="highlight">NATIONWIDE ROADSIDE ASSISTANCE</span>&nbsp;&nbsp;available 24/7 for peace of mind.</p><p class="perk-text thai-txt"><span class="highlight">บริการช่วยเหลือฉุกเฉินทั่วประเทศ</span>&nbsp;&nbsp;ให้บริการตลอด 24 ชั่วโมงทุกวันเพื่อความสบายใจ</p></li>
         <li><span>✔</span><p class="perk-text english-txt"><span class="highlight">ENGLISH-SPEAKING STAFF</span>&nbsp;&nbsp;for clear and easy communication.</p><p class="perk-text thai-txt"><span class="highlight">พนักงานที่เป็นมิตร</span>&nbsp;&nbsp;สำหรับการสื่อสารที่ชัดเจนและง่ายดาย</p></li>
-        <li><span>✔</span><p class="perk-text english-txt"><span class="highlight">HIGH QUALITY CARS</span>&nbsp;&nbsp;regularly serviced for safety and performance.</p><p class="perk-text thai-txt"><span class="highlight">รถคุณภาพสูง</span>&nbsp;&nbsp;ที่ได้รับการบำรุงรักษาเป็นประจำเพื่อความปลอดภัยและประสิทธิภาพ</p></li>
+        <li><span>✔</span><p class="perk-text english-txt"><span class="highlight">NATIONWIDE ROADSIDE ASSISTANCE</span>&nbsp;&nbsp;available 24/7 for peace of mind.</p><p class="perk-text thai-txt"><span class="highlight">บริการช่วยเหลือฉุกเฉินทั่วประเทศ</span>&nbsp;&nbsp;ให้บริการตลอด 24 ชั่วโมงทุกวันเพื่อความสบายใจ</p></li>
+        <li><span>✔</span><p class="perk-text english-txt"><span class="highlight">HIGHEST QUALITY CARS</span>&nbsp;&nbsp;regularly serviced for safety and performance.</p><p class="perk-text thai-txt"><span class="highlight">รถคุณภาพสูง</span>&nbsp;&nbsp;ที่ได้รับการบำรุงรักษาเป็นประจำเพื่อความปลอดภัยและประสิทธิภาพ</p></li>
         <!-- <li><span>✔</span><p class="perk-text english-txt"><span class="highlight">NO EXTRA CHARGES</span>&nbsp;&nbsp;for credit card payments.</p><p class="perk-text thai-txt"><span class="highlight">ไม่มีค่าใช้จ่ายเพิ่มเติม</span>&nbsp;&nbsp;สำหรับการชำระเงินด้วยบัตรเครดิต</p></li> -->
         <!-- <button class="view-all-cars btn-shine book-end nav-btn">
           <p class="english-txt">BOOK <strong>NOW</strong></p>
@@ -147,7 +109,7 @@
 
   <!-- Skyline Page Break -->
   <div class="skyline-wrapper unselectable">
-    <img class="skyline" src="images/skyline.png">
+    <img class="skyline" src="/images/skyline.png">
   </div>
 
 
@@ -221,14 +183,14 @@
       <p class="thai-txt">อีเมล: <a href="mailto:info@bangkokrentacar.com">info@bangkokrentacar.com</a></p>
       <!-- line link -->
       <a class="line-link" href="https://line.me/R/ti/p/@bangkokrentacar" target="_blank">
-        <img src="images/line-logo.svg" alt="Line logo" class="line-icon"> 
+        <img src="/images/line-logo.svg" alt="Line logo" class="line-icon"> 
         <span>@bangkokrentacar</span>
       </a>
 
     </div>
     <!-- Background -->
     <div class="skyline-wrapper">
-      <img class="skyline" src="images/skyline.png" alt="Bangkok skyline image">
+      <img class="skyline" src="/images/skyline.png" alt="Bangkok skyline image">
     </div>
   </footer>
 

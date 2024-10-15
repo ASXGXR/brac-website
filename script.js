@@ -10,7 +10,7 @@ if (dark_mode) {
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-fetch('cars.txt')
+fetch('/cars.txt')
 .then(response => response.text())
 .then(data => {
   // Split data into individual car entries
@@ -44,7 +44,7 @@ fetch('cars.txt')
       <p class="car-price english-txt">${car['price-per-day']}<br>per day</p>
       <p class="car-price thai-txt">${car['price-per-day']}<br>ต่อวัน</p>
       <div class="car-img-container ${car.isPopular ? 'popular' : ''}">
-        <img class="car-img" src="images/cars/${car['img-name']}" alt="${car.make} ${car.model}">
+        <img class="car-img" src="/images/cars/${car['img-name']}" alt="${car.make} ${car.model}">
       </div>
       <!-- Specs -->
       <div class="specs">

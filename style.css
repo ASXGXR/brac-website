@@ -105,9 +105,6 @@ body, h1, h2, h3, h4, h5, h6, p, ul {
   .spec-value {
     color: var(--white);
   }
-  h2 {
-    box-shadow: inset var(--h2-box-shadow) 0px var(--black);
-  }
   .view-all-cars {
     color: var(--black);
   }
@@ -421,7 +418,7 @@ h2 {
   font-weight: 700;
   position: relative;
   padding-left: 24px;
-  box-shadow: inset var(--h2-box-shadow) 0px var(--white);
+  box-shadow: inset var(--h2-box-shadow) 0px currentColor;
 }
 h2:hover {
   transform: translateX(10px);
@@ -695,10 +692,10 @@ h3 {
 }
 
 .switch-lang {
-  top: 32px;
+  z-index: 10;
+  top: 22vh;
   right: 64px;
   position: absolute;
-
   gap: 8px;
   display: flex;
   align-items: center;
@@ -884,6 +881,7 @@ h4 {
   width: fit-content;
   color: var(--black);
   font-weight: 400;
+  cursor: default;
 
   /* Line */
   /* padding-right: 16px;
