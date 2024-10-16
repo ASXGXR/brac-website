@@ -23,7 +23,6 @@ function checkImageExists(url) {
 fetch('/cars.txt')
 .then(response => response.text())
 .then(data => {
-
   // Split data into individual car entries
   const cars = data.trim().split('\n\n').map(carData => {
     const car = {};
@@ -31,46 +30,58 @@ fetch('/cars.txt')
       const [key, value] = line.split(': ');
       const trimmedKey = key.trim();
       car[trimmedKey] = value.trim();
-      // Check if the car is popular
+      // Check if the car is popular or luxury
       if (trimmedKey.toLowerCase() === 'popular') car.isPopular = true;
       if (trimmedKey.toLowerCase() === 'luxury') car.isLuxury = true;
-
     });
     return car;
   });
 
-  // Check if image exists for car
+  // Check if image exists for each car
   Promise.all(
     cars.map(car =>
       checkImageExists(`/images/cars/${car['img-name']}`).then(exists => (exists ? car : null))
     )
   ).then(carsWithImages => {
-
-    // Image Exists
+    // Image exists
     carsWithImages.filter(Boolean).forEach(car => {
       const carContainer = document.createElement('div');
       carContainer.classList.add('car-details');
 
+      // Extract specs
+      const seats = car.seats; // Add corresponding keys from car object
+      const capacity = car.capacity; // Adjust as per your data
+      const engine = car.engine; // Adjust as per your data
+      const gears = car.gears; // Adjust as per your data
+
       // Create the inner HTML with car data
       carContainer.innerHTML = `
-        <h3 class="car-name">
-          <span class="car-make">${capitalizeFirstLetter(car.make)}</span>
-          <span class="car-model">${capitalizeFirstLetter(car.model)}</span>
-        </h3>
-        <p class="car-price english-txt">${car['price-per-day']}<br>per day</p>
-        <p class="car-price thai-txt">${car['price-per-day']}<br>ต่อวัน</p>
-        <div class="car-img-container ${car.isPopular ? 'popular' : ''} ${car.isLuxury ? 'luxury' : ''}">
-          <img class="car-img" src="/images/cars/${car['img-name']}" alt="${car.make} ${car.model}">
+      <h3 class="car-name">
+        <span class="car-make">${capitalizeFirstLetter(car.make)}</span>
+        <span class="car-model">${capitalizeFirstLetter(car.model)}</span>
+      </h3>
+      <p class="car-price english-txt">${car['price-per-day']}<br>per day</p>
+      <p class="car-price thai-txt">${car['price-per-day']}<br>ต่อวัน</p>
+      <div class="car-img-container ${car.isPopular ? 'popular' : ''} ${car.isLuxury ? 'luxury' : ''}">
+        <img class="car-img" src="/images/cars/${car['img-name']}" alt="${car.make} ${car.model}">
+      </div>
+      <!-- Specs -->
+      <div class="specs">
+        <div class="spec-value">
+          <img src="/svgs/seats.svg" alt="${seats} Seats"> ${seats} Seats
         </div>
-        <!-- Specs -->
-        <div class="specs">
-          ${['seats', 'engine', 'gears'].map((key, i) => `
-            <div class="spec-item english-txt">${['NO. SEATS', 'ENGINE', 'GEARS'][i]}<div class="spec-value">${car[key]}</div></div>
-            <div class="spec-item thai-txt">${['จำนวนที่นั่ง', 'เครื่องยนต์', 'เกียร์'][i]}<div class="spec-value">${car[key]}</div></div>
-          `).join('')}
+        <div class="spec-value">
+          <img src="/svgs/bags.svg" alt="Capacity: ${capacity}"> ${capacity}
         </div>
-        <button class="car-book-btn btn-shine english-txt" style="--shine-speed: 0.9s;">&gt; BOOK</button>
-        <button class="car-book-btn btn-shine thai-txt" style="--shine-speed: 0.9s;">&gt; จอง</button>
+        <div class="spec-value">
+          <img src="/svgs/engine.svg" alt="${engine} Engine"> ${engine} Engine
+        </div>
+        <div class="spec-value">
+          <img src="/svgs/gears.svg" alt="${gears} Gears"> ${capitalizeFirstLetter(gears)}
+        </div>
+      </div>
+      <button class="car-book-btn btn-shine english-txt" style="--shine-speed: 0.9s;">&gt; BOOK</button>
+      <button class="car-book-btn btn-shine thai-txt" style="--shine-speed: 0.9s;">&gt; จอง</button>
       `;
 
       // Adds redirect to the book form

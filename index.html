@@ -114,40 +114,73 @@
 
 
   <!-- Cars Section -->
+
   <div class="cars-section section">
     <div class="black-overlay"></div>
     <h2 class="english-txt">OUR VEHICLES</h2>
     <h2 class="thai-txt">รถเช่าของเรา</h2>
+
+    <div class="ordering-cars">
+
+      <div class="sort-button" onclick="toggleSort()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="sort-svg">
+          <path d="M10.28 15.22a.75.75 0 0 1 0 1.06l-4.5 4.5a.8.8 0 0 1-.24.16.73.73 0 0 1-.58 0 .8.8 0 0 1-.24-.16l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V3.75a.75.75 0 0 1 1.5 0v14.69l3.22-3.22a.75.75 0 0 1 1.06 0m13.5-7.5-4.5-4.5a.8.8 0 0 0-.28-.16.73.73 0 0 0-.58 0 .8.8 0 0 0-.24.16l-4.5 4.5a.75.75 0 1 0 1.06 1.06L18 5.56v14.69a.75.75 0 0 0 1.5 0V5.56l3.22 3.22a.75.75 0 0 0 1.06 0 .75.75 0 0 0 0-1.06"></path>
+        </svg>
+        Sort By:&nbsp;<span id="sort-type">Recommended</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="sort-svg">
+          <path d="M12 20.09a1.24 1.24 0 0 1-.88-.36L6 14.61a.75.75 0 1 1 1.06-1.06L12 18.49l4.94-4.94A.75.75 0 0 1 18 14.61l-5.12 5.12a1.24 1.24 0 0 1-.88.36m6-9.46a.75.75 0 0 0 0-1.06l-5.12-5.11a1.24 1.24 0 0 0-1.754-.006l-.006.006L6 9.57a.75.75 0 0 0 0 1.06.74.74 0 0 0 1.06 0L12 5.7l4.94 4.93a.73.73 0 0 0 .53.22c.2 0 .39-.078.53-.22"></path>
+        </svg>
+      </div>
+
+      <div class="car-button-container">
+        <input type="checkbox" name="car" id="sedans" class="car-button">
+        <label for="sedans" class="car-button extrude">
+          Sedans
+          <img src="/svgs/sedan-icon.svg" alt="Sedans">
+        </label>
+        <input type="checkbox" name="car" id="suvs" class="car-button">
+        <label for="suvs" class="car-button extrude">
+          SUVs
+          <img src="/svgs/suv-icon.svg" alt="SUVs">
+        </label>
+        <input type="checkbox" name="car" id="pickups" class="car-button">
+        <label for="pickups" class="car-button extrude">
+          Pick-Ups
+          <img src="/svgs/pickup-icon.svg" alt="Pick-Ups">
+        </label>
+      </div>
+
+    </div>
 
     <!-- Sedans -->
     <h4>Sedans ></h4>
     <div class="cars-grid" id="sedans"></div>
     <!-- Sedans, loaded by JS -->
     <!-- View All Button -->
-    <button class="view-all-cars nav-btn" id="sedan-view-all" style="--shine-speed: 0.94s;">
+    <!-- <button class="view-all-cars nav-btn" id="sedan-view-all" style="--shine-speed: 0.94s;">
       <p class="english-txt">View All <strong>Sedans ></strong></p>
       <p class="thai-txt">ดูทั้งหมด <strong>ซีดาน ></strong></p>
-    </button>
+    </button> -->
 
     <!-- SUVs -->
     <h4>SUVs ></h4>
     <div class="cars-grid" id="suvs"></div>
     <!-- SUVs, loaded by JS -->
     <!-- View All Button -->
-    <button class="view-all-cars nav-btn" id="suv-view-all" style="--shine-speed: 0.94s;">
+    <!-- <button class="view-all-cars nav-btn" id="suv-view-all" style="--shine-speed: 0.94s;">
       <p class="english-txt">View All <strong>SUVs ></strong></p>
       <p class="thai-txt">ดูทั้งหมด <strong>เอสยูวี ></strong></p>
-    </button>
+    </button> -->
 
     <!-- Pickups -->
     <h4>Pick-Ups ></h4>
     <div class="cars-grid" id="pickups"></div>
     <!-- Pickups here, loaded by JS -->
     <!-- View All Button -->
-    <button class="view-all-cars nav-btn" id="pickup-view-all" style="--shine-speed: 0.94s;">
+    <!-- <button class="view-all-cars nav-btn" id="pickup-view-all" style="--shine-speed: 0.94s;">
       <p class="english-txt">View All <strong>Pick-Ups ></strong></p>
       <p class="thai-txt">ดูทั้งหมด <strong>ซีดาน ></strong></p>
-    </button>
+    </button> -->
 
 
     <!-- View All Cars BTN -->
