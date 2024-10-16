@@ -1,17 +1,72 @@
-make: toyota
-model: cross
-price-per-day: £32.99 | ฿1,430
-img-name: toyota-cross.png
+make: honda
+model: civic
+price-per-day: £29.99 | ฿1,290
+img-name: honda-civic.png
 seats: 5
-engine: 1.8 L Hybrid
+engine: 1.8 L
 gears: automatic
-type: suv
+type: sedan
+luxury: y
+
+make: honda
+model: city
+price-per-day: £22.95 | ฿1,000
+img-name: honda-city.png
+seats: 5
+engine: 1.5 L
+gears: automatic
+type: sedan
 popular: y
+
+make: mazda
+model: 2
+price-per-day: £22.95 | ฿1,000
+img-name: mazda-2.png
+seats: 5
+engine: 1.3 L
+gears: automatic
+type: sedan
+
+make: toyota
+model: ativ
+price-per-day: £21.95 | ฿930
+img-name: toyota-ativ.png
+seats: 5
+engine: 1.2 L
+gears: automatic
+type: sedan
+
+make: honda
+model: city hatchback
+price-per-day: £22.95 | ฿1,000
+img-name: honda-city-hatchback.png
+seats: 5
+engine: 1.5 L
+gears: automatic
+type: sedan
+
+make: toyota
+model: yaris
+price-per-day: £19.99 | ฿860
+img-name: toyota-yaris.png
+seats: 5
+engine: 1.2 L
+gears: automatic
+type: sedan
 
 make: toyota
 model: veloz
 price-per-day: £29.99 | ฿1,290
 img-name: toyota-veloz.png
+seats: 7
+engine: 1.5 L
+gears: automatic
+type: suv
+
+make: toyota
+model: sienta
+price-per-day: £29.99 | ฿1,290
+img-name: toyota-sienta.png
 seats: 7
 engine: 1.5 L
 gears: automatic
@@ -25,6 +80,17 @@ seats: 7
 engine: 1.5 L
 gears: automatic
 type: suv
+luxury: y
+
+make: toyota
+model: cross
+price-per-day: £32.99 | ฿1,430
+img-name: toyota-cross.png
+seats: 5
+engine: 1.8 L Hybrid
+gears: automatic
+type: suv
+popular: y
 
 make: toyota
 model: yaris cross
@@ -52,70 +118,6 @@ seats: 7
 engine: 2.4 L Diesel
 gears: automatic
 type: suv
-
-make: toyota
-model: sienta
-price-per-day: £29.99 | ฿1,290
-img-name: toyota-sienta.png
-seats: 7
-engine: 1.5 L
-gears: automatic
-type: suv
-
-make: mazda
-model: 2
-price-per-day: £22.95 | ฿1,000
-img-name: mazda-2.png
-seats: 5
-engine: 1.3 L
-gears: automatic
-type: sedan
-popular: y
-
-make: honda
-model: civic
-price-per-day: £29.99 | ฿1,290
-img-name: honda-civic.png
-seats: 5
-engine: 1.8 L
-gears: automatic
-type: sedan
-
-make: honda
-model: city
-price-per-day: £22.95 | ฿1,000
-img-name: honda-city.png
-seats: 5
-engine: 1.5 L
-gears: automatic
-type: sedan
-
-make: toyota
-model: yaris
-price-per-day: £19.99 | ฿860
-img-name: toyota-yaris.png
-seats: 5
-engine: 1.2 L
-gears: automatic
-type: sedan
-
-make: toyota
-model: ativ
-price-per-day: £21.95 | ฿930
-img-name: toyota-ativ.png
-seats: 5
-engine: 1.2 L
-gears: automatic
-type: sedan
-
-make: honda
-model: city hatchback
-price-per-day: £22.95 | ฿1,000
-img-name: honda-city-hatchback.png
-seats: 5
-engine: 1.5 L
-gears: automatic
-type: sedan
 
 make: toyota
 model: revo smart cab

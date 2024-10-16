@@ -6,7 +6,7 @@ if (dark_mode) {
 };
 
 
-// Loading Vehicles
+// Capitalise Word
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -19,98 +19,85 @@ function checkImageExists(url) {
     img.src = url;
   });
 }
-
+// Loads Vehicles
 fetch('/cars.txt')
 .then(response => response.text())
 .then(data => {
+
   // Split data into individual car entries
-  const carsData = data.trim().split('\n\n');
-  const cars = carsData.map(carData => {
+  const cars = data.trim().split('\n\n').map(carData => {
     const car = {};
-    const lines = carData.split('\n');
-    lines.forEach(line => {
+    carData.split('\n').forEach(line => {
       const [key, value] = line.split(': ');
-      car[key.trim()] = value.trim();
-    
+      const trimmedKey = key.trim();
+      car[trimmedKey] = value.trim();
       // Check if the car is popular
-      if (key.trim().toLowerCase() === 'popular') {
-        car.isPopular = true;
-      }
-    });    
+      if (trimmedKey.toLowerCase() === 'popular') car.isPopular = true;
+      if (trimmedKey.toLowerCase() === 'luxury') car.isLuxury = true;
+
+    });
     return car;
   });
 
-  // Prepare an array of promises for checking if images exist
-  const imagePromises = cars.map(car => {
-    const imageUrl = `/images/cars/${car['img-name']}`;
-    return checkImageExists(imageUrl).then(exists => {
-      if (exists) {
-        return car; // Return the car if the image exists
-      } else {
-        console.error(`Image not found for ${car.make} ${car.model}`);
-        return null; // Return null if the image doesn't exist
-      }
-    });
-  });
+  // Check if image exists for car
+  Promise.all(
+    cars.map(car =>
+      checkImageExists(`/images/cars/${car['img-name']}`).then(exists => (exists ? car : null))
+    )
+  ).then(carsWithImages => {
 
-  // Wait for all image existence checks to complete
-  Promise.all(imagePromises).then(carsWithImages => {
-    carsWithImages.forEach(car => {
-      if (car) { // Only proceed with cars that have an image
-        const carContainer = document.createElement('div');
-        carContainer.classList.add('car-details');
-        
-        // Create the inner HTML with car data
-        carContainer.innerHTML = `
-          <h3 class="car-name">
-            <span class="car-make">${capitalizeFirstLetter(car.make)}</span>
-            <span class="car-model">${capitalizeFirstLetter(car.model)}</span>
-          </h3>
-          <p class="car-price english-txt">${car['price-per-day']}<br>per day</p>
-          <p class="car-price thai-txt">${car['price-per-day']}<br>ต่อวัน</p>
-          <div class="car-img-container ${car.isPopular ? 'popular' : ''}">
-            <img class="car-img" src="/images/cars/${car['img-name']}" alt="${car.make} ${car.model}">
-          </div>
-          <!-- Specs -->
-          <div class="specs">
-            <div class="spec-item english-txt">NO. SEATS<div class="spec-value">${car.seats}</div></div>
-            <div class="spec-item thai-txt">จำนวนที่นั่ง<div class="spec-value">${car.seats}</div></div> 
-            <div class="spec-item english-txt">ENGINE<div class="spec-value">${car.engine}</div></div>
-            <div class="spec-item thai-txt">เครื่องยนต์<div class="spec-value">${car.engine}</div></div>
-            <div class="spec-item english-txt">GEARS<div class="spec-value">${car.gears}</div></div>
-            <div class="spec-item thai-txt">เกียร์<div class="spec-value">${car.gears}</div></div>
-          </div>
-          <button class="car-book-btn btn-shine english-txt" style="--shine-speed: 0.9s;">&gt; BOOK</button>
-          <button class="car-book-btn btn-shine thai-txt" style="--shine-speed: 0.9s;">&gt; จอง</button>
-        `;
-        
-        // Determine the section based on car type
-        let sectionId = car.type.toLowerCase() + 's';
-        const section = document.getElementById(sectionId);
+    // Image Exists
+    carsWithImages.filter(Boolean).forEach(car => {
+      const carContainer = document.createElement('div');
+      carContainer.classList.add('car-details');
 
-        if (section) {
-          // Get the button by constructing its ID
-          const buttonId = car.type.toLowerCase() + '-view-all';
-          const button = document.getElementById(buttonId);
+      // Create the inner HTML with car data
+      carContainer.innerHTML = `
+        <h3 class="car-name">
+          <span class="car-make">${capitalizeFirstLetter(car.make)}</span>
+          <span class="car-model">${capitalizeFirstLetter(car.model)}</span>
+        </h3>
+        <p class="car-price english-txt">${car['price-per-day']}<br>per day</p>
+        <p class="car-price thai-txt">${car['price-per-day']}<br>ต่อวัน</p>
+        <div class="car-img-container ${car.isPopular ? 'popular' : ''} ${car.isLuxury ? 'luxury' : ''}">
+          <img class="car-img" src="/images/cars/${car['img-name']}" alt="${car.make} ${car.model}">
+        </div>
+        <!-- Specs -->
+        <div class="specs">
+          ${['seats', 'engine', 'gears'].map((key, i) => `
+            <div class="spec-item english-txt">${['NO. SEATS', 'ENGINE', 'GEARS'][i]}<div class="spec-value">${car[key]}</div></div>
+            <div class="spec-item thai-txt">${['จำนวนที่นั่ง', 'เครื่องยนต์', 'เกียร์'][i]}<div class="spec-value">${car[key]}</div></div>
+          `).join('')}
+        </div>
+        <button class="car-book-btn btn-shine english-txt" style="--shine-speed: 0.9s;">&gt; BOOK</button>
+        <button class="car-book-btn btn-shine thai-txt" style="--shine-speed: 0.9s;">&gt; จอง</button>
+      `;
 
-          if (button && section.contains(button)) {
-            // Insert carContainer before the button
-            section.insertBefore(carContainer, button);
-          } else {
-            // If the button is not found or not a child, append carContainer to the section
-            section.appendChild(carContainer);
-          }
+      // Adds redirect to the book form
+      carContainer.addEventListener('click', function() {
+        const make = encodeURIComponent(car.make);
+        const model = encodeURIComponent(car.model);
+        window.location.href = `/pages/vehicle-form.html?make=${make}&model=${model}`; // Pass car make and model
+      });        
+
+      // Determine the section based on car type
+      const section = document.getElementById(car.type.toLowerCase() + 's');
+      if (section) {
+        const button = document.getElementById(car.type.toLowerCase() + '-view-all');
+        if (button && section.contains(button)) {
+          // Insert carContainer before the button
+          section.insertBefore(carContainer, button);
         } else {
-          console.error(`Section with id ${sectionId} not found`);
+          // Append carContainer to the section
+          section.appendChild(carContainer);
         }
+      } else {
+        console.error(`Section with id ${car.type.toLowerCase()}s not found`);
       }
     });
   });
 })
-.catch(error => {
-  console.error('Error fetching cars.txt:', error);
-});
-
+.catch(error => console.error('Error fetching cars.txt:', error));
 
 
 // DOM FULLY LOADED

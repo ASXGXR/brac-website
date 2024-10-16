@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicle Booking</title>
+  <!-- Styles -->
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/pages/vehicle-form.css">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <!-- Scripts -->
+  <script src="/script.js" defer></script>
+</head>
+
+<body>
+
+  <!-- NavBar -->
+  <div id="navbar"></div>
+  <script src="/nav.js"></script>
+
+  <div class="section">
+    <h1>Reserve Your Vehicle</h1>
+    <form action="#" method="post" class="vehicle-form">
+      <!-- Pick-Up Section -->
+      <div class="form-group">
+        <label for="pickup-location">Pick-Up Location:</label>
+        <select id="pickup-location" name="pickup-location" required>
+          <option value="" disabled selected>Please select</option>
+          <option value="location1">Location 1</option>
+          <option value="location2">Location 2</option>
+        </select>
+        <input type="text" id="pickup-location-other" name="pickup-location-other" placeholder="Or enter Pick-Up Location">
+      </div>
+
+      <div class="form-group">
+        <label for="pickup-date">Pick-Up Date:</label>
+        <input type="date" id="pickup-date" name="pickup-date" required>
+      </div>
+
+      <div class="form-group">
+        <label for="pickup-time">Pick-Up Time:</label>
+        <input type="time" id="pickup-time" name="pickup-time" required>
+      </div>
+
+      <!-- Drop-Off Section -->
+      <div class="form-group">
+        <label for="dropoff-location">Drop-Off Location:</label>
+        <select id="dropoff-location" name="dropoff-location" required>
+          <option value="" disabled selected>Please select</option>
+          <option value="location1">Location 1</option>
+          <option value="location2">Location 2</option>
+        </select>
+        <input type="text" id="dropoff-location-other" name="dropoff-location-other" placeholder="Or enter Drop-Off Location">
+      </div>
+
+      <div class="form-group">
+        <label for="dropoff-date">Drop-Off Date:</label>
+        <input type="date" id="dropoff-date" name="dropoff-date" required>
+      </div>
+
+      <div class="form-group">
+        <label for="dropoff-time">Drop-Off Time:</label>
+        <input type="time" id="dropoff-time" name="dropoff-time" required>
+      </div>
+
+      <!-- Contact Section -->
+      <div class="form-group">
+        <label for="full-name">Full Name:</label>
+        <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+      </div>
+
+      <div class="form-group">
+        <label for="flight-no">Flight No.:</label>
+        <input type="text" id="flight-no" name="flight-no" placeholder="Enter flight number (optional)">
+      </div>
+
+      <div class="form-group">
+        <label for="hotel">Hotel:</label>
+        <input type="text" id="hotel" name="hotel" placeholder="Enter your hotel (optional)">
+      </div>
+
+      <div class="form-group">
+        <label for="comments">Comments:</label>
+        <textarea id="comments" name="comments" rows="4" cols="50" placeholder="Enter any additional details"></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-group submit-group">
+        <button type="submit" class="submit-btn">Submit Reservation</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Getting query parameters from the URL
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+    // Get the car make and model from the URL
+    const carMake = getQueryParam('make');
+    const carModel = getQueryParam('model');
+    if (carMake && carModel) {
+      // Display or use the car make and model
+      console.log('Car Make:', carMake);
+      console.log('Car Model:', carModel);
+      // Example: Display in a form field or on the page
+      document.getElementById('car-info').textContent = `${carMake} ${carModel}`;
+    } else {
+      console.error('No car make or model provided in URL');
+    }
+  </script>
+  
+  <!-- Example of where you might show the car info on the page -->
+  <div id="car-info"></div>
+
+
+</body>
+</html>

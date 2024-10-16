@@ -518,7 +518,7 @@ h2:hover {
   justify-self: end;
   font-size: 20px;
   width: fit-content;
-  padding: 12px 32px;
+  padding: 16px 32px;
   border: 2px solid var(--white);
 }
 .view-all-cars {
@@ -532,7 +532,9 @@ h2:hover {
   align-self: center;
   justify-self: center;
 }
-
+.view-all-cars:hover {
+  color: inherit !important;
+}
 
 
 
@@ -658,13 +660,15 @@ h3 {
   text-decoration: underline;
   color: var(--primary-color);
 }
-.line-link {
+
+.social-links {
+  gap: 16px;
+  display: flex;
+}
+.footer-link {
   gap: 8px;
   display: flex;
   align-items: center;
-}
-.line-link img {
-  height: 36px;
 }
 
 .footer .skyline-wrapper {
@@ -672,6 +676,10 @@ h3 {
   height: 110px;
   opacity: 0.3;
   bottom: 0;
+}
+
+.footer-icon {
+  height: 34px;
 }
 
 .email a {
@@ -830,27 +838,65 @@ h3 {
 }
 
 
+/* Popular */
 .popular {
   border: 2px solid var(--white);
   position: relative;
 }
 .popular::after {
   content: "MOST POPULAR";
-  position: absolute;
-  top: -12px;
-  left: -17px;
   background-color: var(--black);
   color: var(--white);
-  font-size: 13px;
-  font-weight: bold;
-  padding: 8px 12px;
-  rotate: -10deg;
   border: 2px solid var(--primary-color);
   box-shadow: rgba(0,0,0, 0.7) 2px 2px 4px 3px;
 }
 
+.popular::after,
+.luxury::after,
+.luxury::before {
+  position: absolute;
+  top: -12px;
+  left: -17px;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 8px 12px;
+  rotate: -10deg;
+}
 
-
+/* Luxury */
+:root {
+  --luxury-gradient: linear-gradient(45deg, gold, var(--white));
+  --lux-text: "TOP-RATED";
+  --lux-font-size: 14px;
+}
+.luxury {
+  position: relative;
+  border: 2px solid transparent;
+  background: var(--luxury-gradient);
+  background-origin: border-box;
+  box-shadow: rgba(255, 215, 0, 0.3) 0px 0px 10px;
+}
+.luxury::after {
+  content: var(--lux-text);
+  box-shadow: rgba(255, 215, 0, 0.3) 0px 0px 10px;
+  border: 2px solid;
+  border-image: var(--luxury-gradient) 1;
+  /* Text gradient */
+  background: var(--luxury-gradient);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: var(--lux-font-size);
+}
+/* black bg */
+.luxury::before {
+  content: var(--lux-text);
+  border: 2px solid;
+  color: var(--white);
+  background: var(--white);
+  font-size: var(--lux-font-size);
+}
 
 
 .thai-txt {
