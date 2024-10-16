@@ -51,7 +51,7 @@
           <h1 class="thai-txt">จองรถของคุณ</h1>
         </button>
         <!-- Line Button -->
-        <a class="line-cta cta-btn btn-shine thai-txt" href="https://line.me/R/ti/p/@bangkokrentacar" target="_blank">
+        <a class="line-cta cta-btn btn-shine thai-txt" href="https://line.me/ti/p/%40bangkokrentacar" target="_blank">
           <div class="horiz-txt"><img src="/images/line-logo.svg" alt="Line logo" class="line-icon">ติดต่อ</div>
         </a>
       </div>
@@ -170,30 +170,15 @@
 
 
   <!-- Footer -->
-  <footer class="footer">
-    <!-- Content -->
-    <div class="footer-content">
+  <div id="footer"></div>
+  <script>fetch('/footer.html').then(res=>res.text()).then(data=>document.getElementById('footer').innerHTML=data).catch(err=>console.error('Error:', err));</script>
 
-      <!-- copyright -->
-      <p class="english-txt copyright">&copy; 2024 Bangkok Rent A Car. All rights reserved.</p>
-      <p class="thai-txt">&copy; 2024 Bangkok Rent A Car. สงวนลิขสิทธิ์</p>
-      <!-- phone + email -->
-      <p>Vinnie: <a href="tel:+66855081393">+668 55081393</a>,<a href="tel:+6623823402">+662 3823402</a></p>
-      <p class="english-txt">Email: <a href="mailto:info@bangkokrentacar.com">info@bangkokrentacar.com</a></p>
-      <p class="thai-txt">อีเมล: <a href="mailto:info@bangkokrentacar.com">info@bangkokrentacar.com</a></p>
-      <!-- line link -->
-      <a class="line-link" href="https://line.me/R/ti/p/@bangkokrentacar" target="_blank">
-        <img src="/images/line-logo.svg" alt="Line logo" class="line-icon"> 
-        <span>@bangkokrentacar</span>
-      </a>
 
-    </div>
-    <!-- Background -->
-    <div class="skyline-wrapper">
-      <img class="skyline" src="/images/skyline.png" alt="Bangkok skyline image">
-    </div>
-  </footer>
-
+  <script>
+    if (window.location.pathname === '/terms') {
+      window.location.href = '/pages/terms.html';
+    }
+  </script>
 
 </body>
 </html>

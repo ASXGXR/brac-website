@@ -10,6 +10,16 @@ if (dark_mode) {
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+// Check car image exists
+function checkImageExists(url) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = url;
+  });
+}
+
 fetch('/cars.txt')
 .then(response => response.text())
 .then(data => {
@@ -30,61 +40,77 @@ fetch('/cars.txt')
     return car;
   });
 
-  // Process each car and generate HTML
-  cars.forEach(car => {
-    const carContainer = document.createElement('div');
-    carContainer.classList.add('car-details');
-    
-    // Create the inner HTML with car data
-    carContainer.innerHTML = `
-      <h3 class="car-name">
-        <span class="car-make">${capitalizeFirstLetter(car.make)}</span>
-        <span class="car-model">${capitalizeFirstLetter(car.model)}</span>
-      </h3>
-      <p class="car-price english-txt">${car['price-per-day']}<br>per day</p>
-      <p class="car-price thai-txt">${car['price-per-day']}<br>ต่อวัน</p>
-      <div class="car-img-container ${car.isPopular ? 'popular' : ''}">
-        <img class="car-img" src="/images/cars/${car['img-name']}" alt="${car.make} ${car.model}">
-      </div>
-      <!-- Specs -->
-      <div class="specs">
-        <div class="spec-item english-txt">NO. SEATS<div class="spec-value">${car.seats}</div></div>
-        <div class="spec-item thai-txt">จำนวนที่นั่ง<div class="spec-value">${car.seats}</div></div> 
-        <div class="spec-item english-txt">ENGINE<div class="spec-value">${car.engine}</div></div>
-        <div class="spec-item thai-txt">เครื่องยนต์<div class="spec-value">${car.engine}</div></div>
-        <div class="spec-item english-txt">GEARS<div class="spec-value">${car.gears}</div></div>
-        <div class="spec-item thai-txt">เกียร์<div class="spec-value">${car.gears}</div></div>
-      </div>
-      <button class="car-book-btn btn-shine english-txt" style="--shine-speed: 0.9s;">&gt; BOOK</button>
-      <button class="car-book-btn btn-shine thai-txt" style="--shine-speed: 0.9s;">&gt; จอง</button>
-    `;
-    
-    // Determine the section based on car type
-    let sectionId = car.type.toLowerCase() + 's';
-    const section = document.getElementById(sectionId);
-
-    if (section) {
-      // Get the button by constructing its ID
-      const buttonId = car.type.toLowerCase() + '-view-all';
-      const button = document.getElementById(buttonId);
-
-      if (button && section.contains(button)) {
-        // Insert carContainer before the button
-        section.insertBefore(carContainer, button);
+  // Prepare an array of promises for checking if images exist
+  const imagePromises = cars.map(car => {
+    const imageUrl = `/images/cars/${car['img-name']}`;
+    return checkImageExists(imageUrl).then(exists => {
+      if (exists) {
+        return car; // Return the car if the image exists
       } else {
-        // If the button is not found or not a child, append carContainer to the section
-        section.appendChild(carContainer);
+        console.error(`Image not found for ${car.make} ${car.model}`);
+        return null; // Return null if the image doesn't exist
       }
-    } else {
-      console.error(`Section with id ${sectionId} not found`);
-    }
+    });
+  });
 
+  // Wait for all image existence checks to complete
+  Promise.all(imagePromises).then(carsWithImages => {
+    carsWithImages.forEach(car => {
+      if (car) { // Only proceed with cars that have an image
+        const carContainer = document.createElement('div');
+        carContainer.classList.add('car-details');
+        
+        // Create the inner HTML with car data
+        carContainer.innerHTML = `
+          <h3 class="car-name">
+            <span class="car-make">${capitalizeFirstLetter(car.make)}</span>
+            <span class="car-model">${capitalizeFirstLetter(car.model)}</span>
+          </h3>
+          <p class="car-price english-txt">${car['price-per-day']}<br>per day</p>
+          <p class="car-price thai-txt">${car['price-per-day']}<br>ต่อวัน</p>
+          <div class="car-img-container ${car.isPopular ? 'popular' : ''}">
+            <img class="car-img" src="/images/cars/${car['img-name']}" alt="${car.make} ${car.model}">
+          </div>
+          <!-- Specs -->
+          <div class="specs">
+            <div class="spec-item english-txt">NO. SEATS<div class="spec-value">${car.seats}</div></div>
+            <div class="spec-item thai-txt">จำนวนที่นั่ง<div class="spec-value">${car.seats}</div></div> 
+            <div class="spec-item english-txt">ENGINE<div class="spec-value">${car.engine}</div></div>
+            <div class="spec-item thai-txt">เครื่องยนต์<div class="spec-value">${car.engine}</div></div>
+            <div class="spec-item english-txt">GEARS<div class="spec-value">${car.gears}</div></div>
+            <div class="spec-item thai-txt">เกียร์<div class="spec-value">${car.gears}</div></div>
+          </div>
+          <button class="car-book-btn btn-shine english-txt" style="--shine-speed: 0.9s;">&gt; BOOK</button>
+          <button class="car-book-btn btn-shine thai-txt" style="--shine-speed: 0.9s;">&gt; จอง</button>
+        `;
+        
+        // Determine the section based on car type
+        let sectionId = car.type.toLowerCase() + 's';
+        const section = document.getElementById(sectionId);
 
+        if (section) {
+          // Get the button by constructing its ID
+          const buttonId = car.type.toLowerCase() + '-view-all';
+          const button = document.getElementById(buttonId);
+
+          if (button && section.contains(button)) {
+            // Insert carContainer before the button
+            section.insertBefore(carContainer, button);
+          } else {
+            // If the button is not found or not a child, append carContainer to the section
+            section.appendChild(carContainer);
+          }
+        } else {
+          console.error(`Section with id ${sectionId} not found`);
+        }
+      }
+    });
   });
 })
 .catch(error => {
   console.error('Error fetching cars.txt:', error);
 });
+
 
 
 // DOM FULLY LOADED

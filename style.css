@@ -437,7 +437,7 @@ h2:hover {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  row-gap: 108px;
+  row-gap: 80px;
 }
 .car-details {
   cursor: pointer;
