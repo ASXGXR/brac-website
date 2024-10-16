@@ -20,49 +20,31 @@ function checkImageExists(url) {
   });
 }
 // Loads Vehicles
-// Loads Vehicles
-fetch('/cars.txt')
-  .then(response => {
-    console.log('Response received from cars.txt', response); // Debug log
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.text();
-  })
-  .then(data => {
-    console.log('Raw car data:', data); // Debug log
-
-    // Split data into individual car entries
-    const cars = data.trim().split('\n\n').map(carData => {
-      const car = {};
-      carData.split('\n').forEach(line => {
-        const [key, value] = line.split(': ');
-        const trimmedKey = key.trim();
-        car[trimmedKey] = value.trim();
-        // Check if the car is popular or luxury
-        if (trimmedKey.toLowerCase() === 'popular') car.isPopular = true;
-        if (trimmedKey.toLowerCase() === 'luxury') car.isLuxury = true;
-      });
-      return car;
+fetch('cars.txt')
+.then(response => response.text())
+.then(data => {
+  // Split data into individual car entries
+  const cars = data.trim().split('\n\n').map(carData => {
+    const car = {};
+    carData.split('\n').forEach(line => {
+      const [key, value] = line.split(': ');
+      const trimmedKey = key.trim();
+      car[trimmedKey] = value.trim();
+      // Check if the car is popular or luxury
+      if (trimmedKey.toLowerCase() === 'popular') car.isPopular = true;
+      if (trimmedKey.toLowerCase() === 'luxury') car.isLuxury = true;
     });
+    return car;
+  });
 
-    console.log('Parsed cars:', cars); // Debug log
-
-    // Check if image exists for each car
-    return Promise.all(
-      cars.map(car =>
-        checkImageExists(`/images/cars/${car['img-name']}`).then(exists => {
-          console.log(`Image check for ${car['img-name']}:`, exists); // Debug log
-          return exists ? car : null;
-        })
-      )
-    );
-  })
-  .then(carsWithImages => {
-    const validCars = carsWithImages.filter(Boolean);
-    console.log('Cars with valid images:', validCars); // Debug log
-
-    validCars.forEach(car => {
+  // Check if image exists for each car
+  Promise.all(
+    cars.map(car =>
+      checkImageExists(`images/cars/${car['img-name']}`).then(exists => (exists ? car : null))
+    )
+  ).then(carsWithImages => {
+    // Image exists
+    carsWithImages.filter(Boolean).forEach(car => {
       const carContainer = document.createElement('div');
       carContainer.classList.add('car-details');
 
@@ -106,7 +88,7 @@ fetch('/cars.txt')
       carContainer.addEventListener('click', function() {
         const make = encodeURIComponent(car.make);
         const model = encodeURIComponent(car.model);
-        window.location.href = `/pages/vehicle-form.html?make=${make}&model=${model}`; // Pass car make and model
+        window.location.href = `vehicle-form.html?make=${make}&model=${model}`; // Pass car make and model
       });        
 
       // Determine the section based on car type
@@ -116,18 +98,17 @@ fetch('/cars.txt')
         if (button && section.contains(button)) {
           // Insert carContainer before the button
           section.insertBefore(carContainer, button);
-          console.log(`Car added to section: ${car.type.toLowerCase()}`); // Debug log
         } else {
           // Append carContainer to the section
           section.appendChild(carContainer);
-          console.log(`Car appended to section: ${car.type.toLowerCase()}`); // Debug log
         }
       } else {
         console.error(`Section with id ${car.type.toLowerCase()}s not found`);
       }
     });
-  })
-  .catch(error => console.error('Error fetching cars.txt:', error));
+  });
+})
+.catch(error => console.error('Error fetching cars.txt:', error));
 
 
 // DOM FULLY LOADED

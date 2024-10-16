@@ -39,7 +39,7 @@ body, h1, h2, h3, h4, h5, h6, p, ul {
   -webkit-user-drag: none;
   user-select: none !important;
 }
-input {
+input[type="checkbox"] {
   display: none !important;
 }
 
@@ -1012,7 +1012,6 @@ input[type="checkbox"]:checked + .car-button {
   background: hsl(220, 9%, 18%);
   box-shadow: 6px 6px 8px rgb(12, 12, 12), /* Bottom Right Shadow */
   -4px -4px 8px rgb(40, 40, 40); /* Top Left Highlight */
-  transform: translateY(-1px);
 }
 input[type="checkbox"]:checked + .car-button {
   box-shadow: inset 0px -3px 0px var(--primary-color), /* Inset bottom shadow */
