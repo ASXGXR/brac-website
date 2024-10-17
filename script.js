@@ -19,7 +19,7 @@ function checkImageExists(url) {
     img.src = url;
   });
 }
-// Loads Vehicles
+// Load Vehicles
 fetch('cars.txt')
 .then(response => response.text())
 .then(data => {
@@ -68,13 +68,17 @@ fetch('cars.txt')
       <!-- Specs -->
       <div class="specs">
         <div class="spec-value">
-          <img src="/svgs/seats.svg" alt="${seats} Seats"> ${seats} Seats
+          <img src="/svgs/seats.svg" alt="${seats} Seats">
+          <p class="english-txt">${seats} Seats</p>
+          <p class="thai-txt">${seats} ที่นั่ง</p>
         </div>
         <div class="spec-value">
-          <img src="/svgs/bags.svg" alt="Capacity: ${capacity}"> ${capacity}
+          <img src="/svgs/bags.svg" alt="Capacity: ${capacity}">${capacity}
         </div>
         <div class="spec-value">
-          <img src="/svgs/engine.svg" alt="${engine} Engine"> ${engine} Engine
+          <img src="/svgs/engine.svg" alt="${engine} Engine">
+          <p class="english-txt">${engine} Engine</p>
+          <p class="thai-txt">${engine} เครื่องยนต์</p>
         </div>
         <div class="spec-value">
           <img src="/svgs/gears.svg" alt="${gears} Gears"> ${capitalizeFirstLetter(gears)}
@@ -109,6 +113,7 @@ fetch('cars.txt')
   });
 })
 .catch(error => console.error('Error fetching cars.txt:', error));
+
 
 
 // DOM FULLY LOADED
@@ -169,4 +174,68 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     }
   });
+
+
 });
+
+
+
+
+
+// Hiding/Showing Vehicle Sections
+const carTypes = ['sedans', 'suvs', 'pickups'];
+
+function toggleDisplay(showAll) {
+  carTypes.forEach(type => {
+    const grid = document.getElementById(type);
+    const title = document.getElementById(`${type}-title`);
+    const checkbox = document.getElementById(`show-${type}`);
+
+    const displayStyle = showAll || checkbox.checked ? 'grid' : 'none';
+    const titleStyle = showAll || checkbox.checked ? 'block' : 'none';
+
+    grid.style.display = displayStyle;
+    title.style.display = titleStyle;
+  });
+}
+function onCarTypeChange() {
+  carTypes.forEach(type => {
+    document.getElementById(`show-${type}`).addEventListener('change', () => {
+      const anyChecked = carTypes.some(type => document.getElementById(`show-${type}`).checked);
+      toggleDisplay(!anyChecked);
+    });
+  });
+}
+// Initial call to set up event listeners and show all by default
+onCarTypeChange();
+toggleDisplay(true);
+
+
+// Sort Dropdown
+document.querySelector('.sort-button').addEventListener('click', function(event) {
+  event.stopPropagation(); // Prevents the click from bubbling up to the document
+  document.querySelector('.sort-dropdown').classList.toggle('show');
+});
+// Update the sort type when an option is clicked
+document.querySelectorAll('.sort-option').forEach(function(option) {
+  option.addEventListener('click', function() {
+    document.getElementById('sort-type').innerText = this.innerText;
+    document.querySelector('.sort-dropdown').classList.remove('show');
+  });
+});
+// Close the dropdown if clicked outside
+document.addEventListener('click', function() {
+  var dropdown = document.querySelector('.sort-dropdown');
+  if (dropdown.classList.contains('show')) {
+    dropdown.classList.remove('show');
+  }
+});
+
+
+
+function scrollToCars() {
+  const carsSection = document.querySelector('.cars-section');
+  const offset = 0.5 * window.innerHeight; // 20vh offset
+  const position = carsSection.getBoundingClientRect().top + window.pageYOffset + offset;
+  window.scrollTo({ top: position, behavior: 'smooth' });
+}

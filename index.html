@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bangkok Rent A Car</title>
-    <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <!-- Scripts -->
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bangkok Rent A Car</title>
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- Scripts -->
+  <script src="script.js" defer></script>
 </head>
 <body>
 
   <!-- NavBar -->
   <div id="navbar"></div>
   <script src="nav.js"></script>
-
-
-  <!-- Lang Switcher -->
-  <div class="switch-lang">
-    <input type="checkbox" id="lang-toggle">
-    <label for="lang-toggle" class="toggle-label"></label>
-    <span class="toggle-text toggle-text-left">English</span>
-    <span class="toggle-text toggle-text-right">ภาษาไทย</span>
-  </div>
   
 
   <!-- Hero Section -->
   <div class="hero-section section">
 
+    <!-- Lang Switcher -->
+    <div class="switch-lang">
+      <input type="checkbox" id="lang-toggle">
+      <label for="lang-toggle" class="toggle-label"></label>
+      <span class="toggle-text toggle-text-left">English</span>
+      <span class="toggle-text toggle-text-right">ภาษาไทย</span>
+    </div>
+
+    
 
     <!-- Hero Text -->
     <div class="hero-text">
@@ -46,7 +46,7 @@
       <!-- Buttons -->
       <div class="cta-wrapper">
         <!-- Book Button -->
-        <button class="main-cta cta-btn btn-shine">
+        <button class="main-cta cta-btn btn-shine" onclick="scrollToCars();">
           <h1 class="english-txt">Book Your Vehicle</h1>
           <h1 class="thai-txt">จองรถของคุณ</h1>
         </button>
@@ -89,20 +89,16 @@
     <h2 class="about-us-header english-txt"><span>WHY US?</span></h2>
     <h2 class="about-us-header thai-txt"><span>ทำไมเรา?</span></h2>
     <div class="about-us-content">
-      <img class="why-us-img" src="images/why-us-img.png">
-      <!-- We look forward to making your visit to Thailand even more enjoyable with our reliable, hassle-free car rental services! -->
+      <!-- Perks List -->
       <ul class="features-list">
         <li><span>✔</span><p class="perk-text english-txt"><span class="highlight">FREE DELIVERY</span>&nbsp;&nbsp;and drop-off in Bangkok and at the airport.</p><p class="perk-text thai-txt"><span class="highlight">จัดส่งฟรี</span>&nbsp;&nbsp;และรับส่งรถฟรีในกรุงเทพและที่สนามบิน</p></li>
         <li><span>✔</span><p class="perk-text english-txt"><span class="highlight">FULL INSURANCE COVERAGE</span>&nbsp;&nbsp;included in all rental rates.</p><p class="perk-text thai-txt"><span class="highlight">ประกันภัยครอบคลุมเต็มรูปแบบ</span>&nbsp;&nbsp;รวมอยู่ในทุกอัตราค่าเช่า</p></li>
         <li><span>✔</span><p class="perk-text english-txt"><span class="highlight">ENGLISH-SPEAKING STAFF</span>&nbsp;&nbsp;for clear and easy communication.</p><p class="perk-text thai-txt"><span class="highlight">พนักงานที่เป็นมิตร</span>&nbsp;&nbsp;สำหรับการสื่อสารที่ชัดเจนและง่ายดาย</p></li>
         <li><span>✔</span><p class="perk-text english-txt"><span class="highlight">NATIONWIDE ROADSIDE ASSISTANCE</span>&nbsp;&nbsp;available 24/7 for peace of mind.</p><p class="perk-text thai-txt"><span class="highlight">บริการช่วยเหลือฉุกเฉินทั่วประเทศ</span>&nbsp;&nbsp;ให้บริการตลอด 24 ชั่วโมงทุกวันเพื่อความสบายใจ</p></li>
         <li><span>✔</span><p class="perk-text english-txt"><span class="highlight">HIGHEST QUALITY CARS</span>&nbsp;&nbsp;regularly serviced for safety and performance.</p><p class="perk-text thai-txt"><span class="highlight">รถคุณภาพสูง</span>&nbsp;&nbsp;ที่ได้รับการบำรุงรักษาเป็นประจำเพื่อความปลอดภัยและประสิทธิภาพ</p></li>
-        <!-- <li><span>✔</span><p class="perk-text english-txt"><span class="highlight">NO EXTRA CHARGES</span>&nbsp;&nbsp;for credit card payments.</p><p class="perk-text thai-txt"><span class="highlight">ไม่มีค่าใช้จ่ายเพิ่มเติม</span>&nbsp;&nbsp;สำหรับการชำระเงินด้วยบัตรเครดิต</p></li> -->
-        <!-- <button class="view-all-cars btn-shine book-end nav-btn">
-          <p class="english-txt">BOOK <strong>NOW</strong></p>
-          <p class="thai-txt">จอง<strong>></strong></p>
-        </button> -->
       </ul>
+      <!-- Image -->
+      <img class="why-us-img" src="images/why-us-img.png">
     </div>
   </div>
 
@@ -122,46 +118,63 @@
 
     <div class="ordering-cars">
 
-      <div class="sort-button" onclick="toggleSort()">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="sort-svg">
-          <path d="M10.28 15.22a.75.75 0 0 1 0 1.06l-4.5 4.5a.8.8 0 0 1-.24.16.73.73 0 0 1-.58 0 .8.8 0 0 1-.24-.16l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V3.75a.75.75 0 0 1 1.5 0v14.69l3.22-3.22a.75.75 0 0 1 1.06 0m13.5-7.5-4.5-4.5a.8.8 0 0 0-.28-.16.73.73 0 0 0-.58 0 .8.8 0 0 0-.24.16l-4.5 4.5a.75.75 0 1 0 1.06 1.06L18 5.56v14.69a.75.75 0 0 0 1.5 0V5.56l3.22 3.22a.75.75 0 0 0 1.06 0 .75.75 0 0 0 0-1.06"></path>
-        </svg>
-        Sort By:&nbsp;<span id="sort-type">Recommended</span>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="sort-svg">
-          <path d="M12 20.09a1.24 1.24 0 0 1-.88-.36L6 14.61a.75.75 0 1 1 1.06-1.06L12 18.49l4.94-4.94A.75.75 0 0 1 18 14.61l-5.12 5.12a1.24 1.24 0 0 1-.88.36m6-9.46a.75.75 0 0 0 0-1.06l-5.12-5.11a1.24 1.24 0 0 0-1.754-.006l-.006.006L6 9.57a.75.75 0 0 0 0 1.06.74.74 0 0 0 1.06 0L12 5.7l4.94 4.93a.73.73 0 0 0 .53.22c.2 0 .39-.078.53-.22"></path>
-        </svg>
+      <div class="sort-container">
+        <div class="sort-button unselectable">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="sort-svg">
+            <path d="M10.28 15.22a.75.75 0 0 1 0 1.06l-4.5 4.5a.8.8 0 0 1-.24.16.73.73 0 0 1-.58 0 .8.8 0 0 1-.24-.16l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V3.75a.75.75 0 0 1 1.5 0v14.69l3.22-3.22a.75.75 0 0 1 1.06 0m13.5-7.5-4.5-4.5a.8.8 0 0 0-.28-.16.73.73 0 0 0-.58 0 .8.8 0 0 0-.24.16l-4.5 4.5a.75.75 0 1 0 1.06 1.06L18 5.56v14.69a.75.75 0 0 0 1.5 0V5.56l3.22 3.22a.75.75 0 0 0 1.06 0 .75.75 0 0 0 0-1.06"></path>
+          </svg>
+          Sort By:&nbsp;<span id="sort-type">Recommended</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="sort-svg">
+            <path d="M12 20.09a1.24 1.24 0 0 1-.88-.36L6 14.61a.75.75 0 1 1 1.06-1.06L12 18.49l4.94-4.94A.75.75 0 0 1 18 14.61l-5.12 5.12a1.24 1.24 0 0 1-.88.36m6-9.46a.75.75 0 0 0 0-1.06l-5.12-5.11a1.24 1.24 0 0 0-1.754-.006l-.006.006L6 9.57a.75.75 0 0 0 0 1.06.74.74 0 0 0 1.06 0L12 5.7l4.94 4.93a.73.73 0 0 0 .53.22c.2 0 .39-.078.53-.22"></path>
+          </svg>
+        </div>
+        <div class="sort-dropdown">
+          <div class="sort-option">Recommended</div>
+          <div class="sort-option">Price (Lowest First)</div>
+          <div class="sort-option">Price (Highest First)</div>
+          <div class="sort-option">Newest</div>
+        </div>
       </div>
+      
 
       <div class="car-button-container">
-        <input type="checkbox" name="car" id="show-sedans" class="car-button">
+        <p class="view-txt">View Only:</p>
+        <input type="checkbox" name="car" id="show-sedans">
         <label for="show-sedans" class="car-button extrude">
           Sedans
           <img src="svgs/sedan-icon.svg" alt="Sedans">
         </label>
-        <input type="checkbox" name="car" id="show-suvs" class="car-button">
+        <input type="checkbox" name="car" id="show-suvs">
         <label for="show-suvs" class="car-button extrude">
           SUVs
           <img src="svgs/suv-icon.svg" alt="SUVs">
         </label>
-        <input type="checkbox" name="car" id="show-pickups" class="car-button">
+        <input type="checkbox" name="car" id="show-pickups">
         <label for="show-pickups" class="car-button extrude">
           Pick-Ups
           <img src="svgs/pickup-icon.svg" alt="Pick-Ups">
+        </label>
+        <label for="show-vans" class="car-button extrude">
+          Vans
+          <img src="svgs/van-icon.svg" alt="Vans">
         </label>
       </div>
 
     </div>
 
+    <div class="separator-horiz"></div>
+
+
     <!-- Sedans, loaded by JS -->
-    <h4>Sedans ></h4>
+    <h4 id="sedans-title">Sedans ></h4>
     <div class="cars-grid" id="sedans"></div>
 
     <!-- SUVs, loaded by JS -->
-    <h4>SUVs ></h4>
+    <h4 id="suvs-title">SUVs ></h4>
     <div class="cars-grid" id="suvs"></div>
 
     <!-- Pickups, loaded by JS -->
-    <h4>Pick-Ups ></h4>
+    <h4 id="pickups-title">Pick-Ups ></h4>
     <div class="cars-grid" id="pickups"></div>
 
   </div>
