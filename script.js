@@ -235,7 +235,7 @@ document.addEventListener('click', function() {
 
 function scrollToCars() {
   const carsSection = document.querySelector('.cars-section');
-  const offset = 0.5 * window.innerHeight; // 20vh offset
+  const offset = 0.27 * window.innerHeight; // 20vh offset
   const position = carsSection.getBoundingClientRect().top + window.pageYOffset + offset;
   window.scrollTo({ top: position, behavior: 'smooth' });
 }

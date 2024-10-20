@@ -21,6 +21,8 @@ button, a {
   all: unset;
   cursor: pointer !important;
   text-decoration: none;
+  width: min-content;
+  white-space: nowrap;
 }
 body, h1, h2, h3, h4, h5, h6, p, ul {
   margin: 0;
@@ -438,9 +440,9 @@ h2:hover {
   background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, var(--black) 50%, rgba(0, 0, 0, 0) 100%);
 }
 .cars-grid {
-  position: relative;
   width: 100%;
   display: grid;
+  position: relative;
   grid-template-columns: repeat(2, 1fr);
   row-gap: 10vmin;
   column-gap: 22vmin;
@@ -681,7 +683,7 @@ h3 {
 .footer .skyline-wrapper {
   position: absolute;
   height: 110px;
-  opacity: 0.3;
+  opacity: 0.5;
   bottom: 0;
 }
 
