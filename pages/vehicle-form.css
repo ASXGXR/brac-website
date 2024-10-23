@@ -1,10 +1,18 @@
 /* vehicle-form.css */
 
-.section {
+
+.book-vehicle-section {
   max-width: 800px;
   margin: 0 auto;
   padding: 50px 20px;
+  margin-top: var(--nav-height);
   font-family: var(--primary-font) !important;
+}
+
+.vehicle-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 .section h1 {
@@ -13,11 +21,6 @@
   margin-bottom: 40px;
 }
 
-.vehicle-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
 
 .form-group {
   display: flex;

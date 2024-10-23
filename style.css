@@ -58,12 +58,13 @@ html {
   --primary-color: #E34949;
   --white: #f9f9f9;
   --black: #1d1e21;
-  --side-padding: 12vmin;
+  --side-padding: 13vmin;
   --button-padding: 15px 30px;
   --shine-speed: 1s;
   --shadow-color-rgb: 30,32,36;
   /* --gradient-black: hsl(225, 12%, 7%); */
   --all-cars-padding: 24px 40px;
+  --subheader-font-size: clamp(16px,3vmin,20px);
 }
 .dark-mode {
   --white: #1e2024;
@@ -212,7 +213,7 @@ body {
   width: 100%;
   height: 100%;
   /* background: linear-gradient(to right, var(--white) 19%, transparent max(500px,67%)); */
-  background: linear-gradient(to right, var(--white) 12%, transparent max(500px,72%));
+  background: linear-gradient(to right, var(--white) 22%, transparent max(500px,72%));
   z-index: 1;
 }
 .cover-img-container::after {
@@ -319,7 +320,7 @@ body {
   position: absolute;
   background: var(--black);
   color: var(--white);
-  font-size: clamp(16px,3vmin,20px);
+  font-size: var(--subheader-font-size);
   right: 0;
   gap: 6vmin;
 }
@@ -451,18 +452,19 @@ h2:hover {
   display: flex;
   cursor: pointer;
   gap: 0px 32px;
-  width: 100%;
   display: grid;
   color: var(--white);
   grid-template-columns: 44vmin min-content;
   grid-template-rows: 0.9fr 2fr;
-  max-width: 40vw;
   transition: transform 0.3s ease-in-out;
 
   /* background: #1a1616;
   box-shadow: inset 0 4px 8px rgb(34, 12, 12);
   padding: 32px 48px;
   max-width: 42vw; */
+}
+.car-details > :nth-child(5) {
+  align-self: center;
 }
 .car-details:hover {
   transform: translateY(-4px);
@@ -1087,4 +1089,15 @@ input[type="checkbox"]:checked + .car-button {
     gap: 64px;
     flex-direction: column;
   }
+}
+
+
+.sub-and-buttons {
+  gap: 32px;
+  display: flex;
+  align-items: center;
+}
+.subheader {
+  font-weight: 600;
+  font-size: var(--subheader-font-size);
 }

@@ -119,10 +119,14 @@ fetch('cars.txt')
 // DOM FULLY LOADED
 document.addEventListener("DOMContentLoaded", function() {
 
+
   // CHANGING LANGUAGE
+
   const changeLangSpeed = 400;
   const langToggle = document.getElementById('lang-toggle');
   langToggle.addEventListener('change', function() {
+    
+    // When switch flicked
     const isThai = this.checked;
 
     // Re-select elements dynamically in case new elements have been added
