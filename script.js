@@ -1,16 +1,17 @@
 
-// Dark Mode
+// DARK MODE
 const dark_mode = "y";
 if (dark_mode) {
   document.body.classList.toggle('dark-mode');
 };
 
 
-// Capitalise Word
+// CAPITALISE
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-// Check car image exists
+
+// CHECK CAR IMAGE
 function checkImageExists(url) {
   return new Promise((resolve) => {
     const img = new Image();
@@ -19,7 +20,15 @@ function checkImageExists(url) {
     img.src = url;
   });
 }
-// Load Vehicles
+
+// HANDLE VEHICLE SELECTION
+function selectVehicle(car) {
+  const make = encodeURIComponent(car.make);
+  const model = encodeURIComponent(car.model);
+  window.location.href = `vehicle-form.html?make=${make}&model=${model}`; // Pass car make and model
+}
+
+// LOAD VEHICLES INTO GRID
 fetch('cars.txt')
 .then(response => response.text())
 .then(data => {
@@ -49,10 +58,10 @@ fetch('cars.txt')
       carContainer.classList.add('car-details');
 
       // Extract specs
-      const seats = car.seats; // Add corresponding keys from car object
-      const capacity = car.capacity; // Adjust as per your data
-      const engine = car.engine; // Adjust as per your data
-      const gears = car.gears; // Adjust as per your data
+      const seats = car.seats;
+      const capacity = car.capacity;
+      const engine = car.engine;
+      const gears = car.gears;
 
       // Create the inner HTML with car data
       carContainer.innerHTML = `
@@ -88,12 +97,10 @@ fetch('cars.txt')
       <button class="car-book-btn btn-shine thai-txt" style="--shine-speed: 0.9s;">&gt; จอง</button>
       `;
 
-      // Adds redirect to the book form
+      // Attach vehicle selection handler
       carContainer.addEventListener('click', function() {
-        const make = encodeURIComponent(car.make);
-        const model = encodeURIComponent(car.model);
-        window.location.href = `vehicle-form.html?make=${make}&model=${model}`; // Pass car make and model
-      });        
+        selectVehicle(car);  // Call the new function
+      });
 
       // Determine the section based on car type
       const section = document.getElementById(car.type.toLowerCase() + 's');
@@ -115,8 +122,7 @@ fetch('cars.txt')
 .catch(error => console.error('Error fetching cars.txt:', error));
 
 
-
-// DOM FULLY LOADED
+// DOC FULLY LOADED
 document.addEventListener("DOMContentLoaded", function() {
 
 
@@ -125,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const changeLangSpeed = 400;
   const langToggle = document.getElementById('lang-toggle');
   langToggle.addEventListener('change', function() {
-    
+
     // When switch flicked
     const isThai = this.checked;
 
@@ -186,7 +192,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-// Hiding/Showing Vehicle Sections
+// SUV/SEDAN/PICKUP CHECKBOXES
+
 const carTypes = ['sedans', 'suvs', 'pickups'];
 
 function toggleDisplay(showAll) {
@@ -215,7 +222,8 @@ onCarTypeChange();
 toggleDisplay(true);
 
 
-// Sort Dropdown
+// SORT DROPDOWN - FUNCTION
+
 document.querySelector('.sort-button').addEventListener('click', function(event) {
   event.stopPropagation(); // Prevents the click from bubbling up to the document
   document.querySelector('.sort-dropdown').classList.toggle('show');
@@ -236,6 +244,7 @@ document.addEventListener('click', function() {
 });
 
 
+// SCROLL TO CARS
 
 function scrollToCars() {
   const carsSection = document.querySelector('.cars-section');
@@ -243,3 +252,74 @@ function scrollToCars() {
   const position = carsSection.getBoundingClientRect().top + window.pageYOffset + offset;
   window.scrollTo({ top: position, behavior: 'smooth' });
 }
+
+
+
+
+// VEHICLE FORM - DISPLAY IMAGE
+function displaySelectedCar() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const make = decodeURIComponent(urlParams.get('make'));
+  const model = decodeURIComponent(urlParams.get('model'));
+
+  // Fetch the car data from cars.txt
+  fetch('cars.txt')
+    .then(response => response.text())
+    .then(data => {
+      const cars = data.trim().split('\n\n').map(carData => {
+        const car = {};
+        carData.split('\n').forEach(line => {
+          const [key, value] = line.split(': ');
+          car[key.trim()] = value.trim();
+        });
+        return car;
+      });
+
+      // Find the matching car based on the make and model
+      const selectedCar = cars.find(car => car.make.toLowerCase() === make.toLowerCase() && car.model.toLowerCase() === model.toLowerCase());
+
+      if (selectedCar) {
+        // Create HTML for the selected car
+        const carDetailsHTML = `
+          <h3 class="car-name">
+            <span class="car-make">${capitalizeFirstLetter(selectedCar.make)}</span>
+            <span class="car-model">${capitalizeFirstLetter(selectedCar.model)}</span>
+          </h3>
+          <p class="car-price english-txt">${selectedCar['price-per-day']} per day</p>
+          <div class="car-img-container">
+            <img class="car-img" src="/images/cars/${selectedCar['img-name']}" alt="${selectedCar.make} ${selectedCar.model}">
+          </div>
+          <div class="specs">
+            <div class="spec-value">
+              <img src="/svgs/seats.svg" alt="${selectedCar.seats} Seats">
+              <p class="english-txt">${selectedCar.seats} Seats</p>
+            </div>
+            <div class="spec-value">
+              <img src="/svgs/engine.svg" alt="${selectedCar.engine} Engine">
+              <p class="english-txt">${selectedCar.engine} Engine</p>
+            </div>
+            <div class="spec-value">
+              <img src="/svgs/gears.svg" alt="${selectedCar.gears} Gears"> ${capitalizeFirstLetter(selectedCar.gears)}
+            </div>
+            <div class="spec-value">
+              <img src="/svgs/bags.svg" alt="Capacity: ${selectedCar.capacity}">${selectedCar.capacity}
+            </div>
+          </div>
+        `;
+
+        // Insert the car details into the page
+        document.getElementById('selected-car').innerHTML = carDetailsHTML;
+      } else {
+        console.error('Car not found');
+      }
+    })
+    .catch(error => console.error('Error fetching car data:', error));
+}
+
+// Helper function to capitalize the first letter
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+// Call the function to display the selected car when the page loads
+displaySelectedCar();

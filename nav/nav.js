@@ -2,7 +2,7 @@
 
 // Adding Nav
 const navbarElement = document.getElementById('navbar');
-fetch('nav.html')
+fetch('nav/nav.html')
 .then(response => response.text())
 .then(data => {
   navbarElement.innerHTML = data;

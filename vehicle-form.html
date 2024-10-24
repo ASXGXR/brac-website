@@ -12,94 +12,137 @@
   <script src="script.js" defer></script>
 </head>
 
+
 <body>
 
   <!-- NavBar -->
   <div id="navbar"></div>
-  <script src="nav.js"></script>
+  <script src="nav/nav.js"></script>
 
+
+  <!-- BOOKING PAGE -->
   <div class="section book-vehicle-section">
-    <h1>Reserve Your Vehicle</h1>
-    <form action="#" method="post" class="vehicle-form">
-      <!-- Pick-Up Section -->
-      <div class="form-group">
-        <label for="pickup-location">Pick-Up Location:</label>
-        <select id="pickup-location" name="pickup-location" required>
-          <option value="" disabled selected>Please select</option>
-          <option value="location1">Location 1</option>
-          <option value="location2">Location 2</option>
-        </select>
-        <input type="text" id="pickup-location-other" name="pickup-location-other" placeholder="Or enter Pick-Up Location">
+
+
+    <!-- CAR DETAILS + NOTE -->
+    <div class="section car-details-and-note">
+
+      <h2 class="book-page-header">YOUR BOOKING OVERVIEW</h2>
+      <div class="note">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"></path>
+        </svg>
+        Please note: The minimum driving age for all our vehicles is 21.
+      </div>
+      <!-- CAR DISPLAY -->
+      <div class="car-details" id="car-details-container">
+        <!-- Car details will be dynamically inserted here -->
       </div>
 
-      <div class="form-group">
+    </div>
+
+
+    <!-- INCLUDES -->
+    <ul class="includes">
+      <h3 class="book-page-header">Booking Includes:</h2>
+      <li>Third party insurance</li>
+      <li>24/7 Breakdown assistance</li>
+      <li>Loss damage waiver for collision damages, scratches, bumps and theft up to £1,500.00 financial responsibility</li>
+      <li>Registration Fee / Road Tax</li>
+      <li>600 miles are included, each additional mile costs £0.38</li>
+    </ul>
+
+
+
+    <!-- VEHICLE FORM -->
+
+    <form action="#" method="post" class="vehicle-form">
+
+      <!-- PICKUP QUESTIONS -->
+
+      <div class="questions pickup-qs">
+        <h2 class="book-page-header">BOOKING PREFS.</h2>
+    
+
+        <!-- Pickup -->
+        <div class="q">
+          <label for="pickup-location">Pick-Up Location:</label>
+          <select id="pickup-location" name="pickup-location" required>
+            <option value="" disabled selected>Please select</option>
+            <option value="location2">Suvannabhumi International Airport</option>
+            <option value="location3">Don Muang International Airport</option>
+            <option value="location1">Vista Garden Sukhumvit 71</option>
+          </select>
+          <input type="text" id="pickup-location-other" name="pickup-location-other" placeholder="Or enter Pick-Up Location">
+        </div>
+
+
         <label for="pickup-date">Pick-Up Date:</label>
         <input type="date" id="pickup-date" name="pickup-date" required>
-      </div>
+    
 
-      <div class="form-group">
         <label for="pickup-time">Pick-Up Time:</label>
         <input type="time" id="pickup-time" name="pickup-time" required>
-      </div>
+    
 
-      <!-- Drop-Off Section -->
-      <div class="form-group">
-        <label for="dropoff-location">Drop-Off Location:</label>
-        <select id="dropoff-location" name="dropoff-location" required>
-          <option value="" disabled selected>Please select</option>
-          <option value="location1">Location 1</option>
-          <option value="location2">Location 2</option>
-        </select>
-        <input type="text" id="dropoff-location-other" name="dropoff-location-other" placeholder="Or enter Drop-Off Location">
-      </div>
+        <!-- Drop-Off -->
+        <div class="q">
+          <label for="dropoff-location">Drop-Off Location:</label>
+          <select id="dropoff-location" name="dropoff-location" required>
+            <option value="" disabled selected>Please select</option>
+            <option value="location2">Suvannabhumi International Airport</option>
+            <option value="location3">Don Muang International Airport</option>
+            <option value="location1">Vista Garden Sukhumvit 71</option>
+          </select>
+          <input type="text" id="dropoff-location-other" name="dropoff-location-other" placeholder="Or enter Drop-Off Location">
+        </div>
+    
 
-      <div class="form-group">
         <label for="dropoff-date">Drop-Off Date:</label>
         <input type="date" id="dropoff-date" name="dropoff-date" required>
-      </div>
+    
 
-      <div class="form-group">
         <label for="dropoff-time">Drop-Off Time:</label>
         <input type="time" id="dropoff-time" name="dropoff-time" required>
+
       </div>
 
-      <!-- Contact Section -->
-      <div class="form-group">
+    
+      <!-- CONTACT QUESTIONS -->
+      <div class="questions contact-qs">
+        <h2 class="book-page-header">CONTACT INFO.</h2>
+    
         <label for="full-name">Full Name:</label>
         <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
-      </div>
-
-      <div class="form-group">
+    
         <label for="email">E-mail:</label>
         <input type="email" id="email" name="email" placeholder="Enter your email" required>
-      </div>
-
-      <div class="form-group">
+    
         <label for="phone">Phone:</label>
         <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
-      </div>
-
-      <div class="form-group">
+    
         <label for="flight-no">Flight No.:</label>
         <input type="text" id="flight-no" name="flight-no" placeholder="Enter flight number (optional)">
-      </div>
-
-      <div class="form-group">
+    
         <label for="hotel">Hotel:</label>
         <input type="text" id="hotel" name="hotel" placeholder="Enter your hotel (optional)">
-      </div>
-
-      <div class="form-group">
+    
         <label for="comments">Comments:</label>
-        <textarea id="comments" name="comments" rows="4" cols="50" placeholder="Enter any additional details"></textarea>
+        <textarea id="comments" name="comments" rows="4" placeholder="Enter any additional details or preferences you may have."></textarea>
+    
       </div>
 
       <!-- Submit Button -->
-      <div class="form-group submit-group">
-        <button type="submit" class="submit-btn">Submit Reservation</button>
-      </div>
+      <button type="submit" class="main-cta cta-btn btn-shine">
+        <p class="english-txt">Submit</p>
+      </button>
+    
     </form>
+    
+
   </div>
+
+
 
   <script>
     // Getting query parameters from the URL
@@ -120,14 +163,15 @@
       console.error('No car make or model provided in URL');
     }
   </script>
-  
-  <!-- Example of where you might show the car info on the page -->
-  <div id="car-info"></div>
 
 
   <!-- Footer -->
   <div id="footer"></div>
   <script>fetch('footer.html').then(res=>res.text()).then(data=>document.getElementById('footer').innerHTML=data).catch(err=>console.error('Error:', err));</script>
+
+
+
+  <script src="pages/vehicle-form.js" defer></script>
 
 </body>
 </html>

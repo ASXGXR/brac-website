@@ -24,13 +24,14 @@ button, a {
   width: min-content;
   white-space: nowrap;
 }
-body, h1, h2, h3, h4, h5, h6, p, ul {
+body, h1, h2, h3, h4, h5, h6, p, ul, li {
   margin: 0;
   padding: 0;
   font-weight: inherit;
   font-size: inherit;
   line-height: inherit;
   color: inherit;
+  list-style: none;
 }
 .unselectable {
   -webkit-touch-callout: none;
@@ -48,7 +49,6 @@ html {
   scroll-behavior: smooth;
 }
 
-
 /* MAIN CSS */
 
 
@@ -62,7 +62,6 @@ html {
   --button-padding: 15px 30px;
   --shine-speed: 1s;
   --shadow-color-rgb: 30,32,36;
-  /* --gradient-black: hsl(225, 12%, 7%); */
   --all-cars-padding: 24px 40px;
   --subheader-font-size: clamp(16px,3vmin,20px);
 }
@@ -84,22 +83,6 @@ html {
   .cta-btn {
     border-color: var(--black);
     color: var(--black);
-  }
-  .gradient-line-title {
-    background: linear-gradient(
-      to bottom,
-      var(--gradient-black) 50px,
-      var(--gradient-red) 110px,
-      var(--gradient-black) 170px
-    );
-  }
-  .gradient-line-cars {
-    background: linear-gradient(
-      to bottom,
-      var(--gradient-black) 380px,
-      hsl(0, 64%, 16%) 440px,
-      var(--gradient-black) 500px
-    );
   }
   .cars-section,
   .car-details {
@@ -213,7 +196,7 @@ body {
   width: 100%;
   height: 100%;
   /* background: linear-gradient(to right, var(--white) 19%, transparent max(500px,67%)); */
-  background: linear-gradient(to right, var(--white) 22%, transparent max(500px,72%));
+  background: linear-gradient(to right, var(--white) 22%, transparent max(500px,68%));
   z-index: 1;
 }
 .cover-img-container::after {
@@ -426,6 +409,7 @@ h2 {
   font-weight: 700;
   position: relative;
   padding-left: 24px;
+  transition: transform 0.8s ease !important;
   box-shadow: inset var(--h2-box-shadow) 0px currentColor;
 }
 h2:hover {
