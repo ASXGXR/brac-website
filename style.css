@@ -487,9 +487,9 @@ h2:hover {
   width: 100%;
   gap: 16px;
   display: flex;
+  font-size: 18px;
   font-weight: 700;
   flex-direction: column;
-  font-size: clamp(16px,3vmin,17px);
   align-self: end;
   justify-self: end;
 }
@@ -500,7 +500,6 @@ h2:hover {
   justify-content: space-between; */
 }
 .spec-value {
-  font-size: 18px;
   gap: 12px;
   display: flex;
   align-items: center;
@@ -968,7 +967,7 @@ h4 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 120px; height: var(--car-btn-dm);
+  width: 16vmin; height: var(--car-btn-dm);
   transition: all 0.5s ease-in-out transform 0.2s ease-in-out border 0.05s ease;
 }
 .car-button {
@@ -1084,4 +1083,76 @@ input[type="checkbox"]:checked + .car-button {
 .subheader {
   font-weight: 600;
   font-size: var(--subheader-font-size);
+}
+
+
+
+
+
+
+
+/* Style for the info icon */
+.info-icon {
+  margin-bottom: 1px;
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  margin-left: 12px;
+  color: var(--primary-color);
+}
+.info-icon svg {
+  height: 22px;
+  width: min-content;
+}
+
+/* Hidden pop-up box */
+.info-icon::after {
+  content: attr(data-info);
+  position: absolute;
+  bottom: 120%; /* Above the icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--white);
+  color: var(--black);
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+  z-index: 10;
+  white-space: normal;
+  width: 160px;
+  font-weight: 400;
+}
+
+/* Show pop-up on hover or focus */
+.info-icon:hover::after,
+.info-icon:focus::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Optional: Pop-up pointer/arrow */
+.info-icon::before {
+  content: "";
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--white) transparent transparent transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* Show the pointer/arrow on hover or focus */
+.info-icon:hover::before,
+.info-icon:focus::before {
+  opacity: 1;
+  visibility: visible;
 }

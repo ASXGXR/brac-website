@@ -10,10 +10,9 @@
 }
 
 .book-vehicle-section {
+  padding: 0;
   max-width: 800px;
-  margin: 0 auto;
-  padding: 50px 20px;
-  margin-top: var(--nav-height);
+  margin: var(--nav-height) auto;
   font-family: var(--primary-font) !important;
 }
 
@@ -54,6 +53,7 @@ h2 {
 }
 
 label {
+  white-space: nowrap;
   margin-top: 48px; /* Gap between questions */
 
   margin-bottom: 8px;
@@ -104,16 +104,6 @@ textarea:focus {
   }
 }
 
-.car-details {
-  cursor: unset;
-}
-.car-details:hover {
-  transform: unset;
-}
-.car-details > :nth-child(4) {
-  align-self: center;
-}
-
 
 .includes {
   font-size: 18px;
@@ -132,16 +122,15 @@ textarea:focus {
   left: 0;
   top: 0;
 }
-.includes h3 {
+.book-includes-header {
   color: var(--primary-color);
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
   margin-bottom: 8px;
 }
 
 .includes li {
-  text-transform: capitalize;
   position: relative;
   padding-left: 25px;
   font-weight: 400;
@@ -152,14 +141,12 @@ textarea:focus {
   display: flex;
   flex-direction: column;
 }
-.questions h2 {
-  margin-bottom: 8px;
-}
 .book-vehicle-section {
-  gap: 88px;
+  gap: 96px;
 }
 
 .car-details-and-note {
+  gap: 64px;
   padding: 0;
 }
 
@@ -173,4 +160,119 @@ textarea {
   gap: 4px;
   display: flex;
   flex-direction: column;
+}
+
+.car-wrapper {
+  gap: 32px;
+  width: 100%;
+  display: flex;
+}
+.car-form-details {
+  gap: 32px;
+  display: flex;
+  min-width: 30%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mile-allow img {
+  margin-right: 12px;
+}
+
+select,
+.contact-qs input,
+textarea {
+  max-width: 360px;
+}
+
+textarea {
+  line-height: 150%;
+}
+
+.datetime .q {
+  width: 100%;
+}
+
+
+input,
+.datetime {
+  max-width: 300px;
+}
+
+input[type="date"],
+input[type="time"] {
+  color: var(--black);
+  max-width: 200px;
+  box-sizing: border-box;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  padding: 8px;
+  cursor: pointer;
+  filter: invert(1);
+}
+
+input[type="tel"] {
+  width: 100%;
+}
+
+.datetime {
+  width: 100%;
+  gap: 16px;
+  display: flex;
+}
+
+
+.car-price {
+  font-weight: 700;
+  font-size: 18px;
+  white-space: unset;
+}
+
+.car-img-container {
+  width: 60%;
+  border: 2px solid var(--black);
+}
+
+
+.mile-allow::before {
+  content: unset !important;
+}
+
+
+.mile-allow {
+  gap: 0px;
+  font-weight: 600 !important;
+  padding-left: 0 !important;
+}
+
+
+
+/* country telephone codes */
+span.iti__country-name {
+  color: var(--white) !important;
+}
+.iti__country-list {
+  background-color: var(--black) !important;
+}
+
+
+
+
+
+
+
+
+input:-webkit-autofill {
+  background-color: transparent !important;
+  color: var(--black);
+  -webkit-text-fill-color: var(--black);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* For other browsers */
+input:autofill {
+  background-color: var(--white) !important;
+  color: var(--white);
 }

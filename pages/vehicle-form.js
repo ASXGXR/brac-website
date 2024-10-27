@@ -1,10 +1,10 @@
 
-// Utility function to capitalize the first letter
+// Capitalize function
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// Function to get query parameters from the URL
+// Get query parameters from the URL
 function getQueryParams() {
   const params = {};
   window.location.search.substring(1).split('&').forEach(param => {
@@ -56,17 +56,32 @@ function displaySelectedCar() {
         const pricePerDay = selectedCar['price-per-day'];
         const imgName = selectedCar['img-name'];
 
-        // Create the HTML content
-        const carContent = `
-          <h3 class="car-name">
+        // Get the elements inside the car-details-container
+        const carNameElement = carDetailsContainer.querySelector('.car-name');
+        const carPriceElement = carDetailsContainer.querySelector('.car-price');
+        const carImgContainer = carDetailsContainer.querySelector('.car-img-container');
+        const specsElement = carDetailsContainer.querySelector('.specs');
+
+        // Set the content for each element if it exists
+        if (carNameElement) {
+          carNameElement.innerHTML = `
             <span class="car-make">${capitalizeFirstLetter(selectedCar.make)}</span>
             <span class="car-model">${capitalizeFirstLetter(selectedCar.model)}</span>
-          </h3>
-          <p class="car-price english-txt">${selectedCar['price-per-day']} per day</p>
-          <div class="car-img-container">
+          `;
+        }
+
+        if (carPriceElement) {
+          carPriceElement.textContent = `${selectedCar['price-per-day']} per day`;
+        }
+
+        if (carImgContainer) {
+          carImgContainer.innerHTML = `
             <img class="car-img" src="/images/cars/${selectedCar['img-name']}" alt="${selectedCar.make} ${selectedCar.model}">
-          </div>
-          <div class="specs">
+          `;
+        }
+
+        if (specsElement) {
+          specsElement.innerHTML = `
             <div class="spec-value">
               <img src="/svgs/seats.svg" alt="${selectedCar.seats} Seats">
               <p class="english-txt">${selectedCar.seats} Seats</p>
@@ -76,16 +91,16 @@ function displaySelectedCar() {
               <p class="english-txt">${selectedCar.engine} Engine</p>
             </div>
             <div class="spec-value">
-              <img src="/svgs/gears.svg" alt="${selectedCar.gears} Gears"> ${capitalizeFirstLetter(selectedCar.gears)}
+              <img src="/svgs/gears.svg" alt="${selectedCar.gears} Gears">
+              <p class="english-txt">${capitalizeFirstLetter(selectedCar.gears)}</p>
             </div>
             <div class="spec-value">
-              <img src="/svgs/bags.svg" alt="Capacity: ${selectedCar.capacity}">${selectedCar.capacity}
+              <img src="/svgs/bags.svg" alt="Capacity: ${selectedCar.capacity}">
+              <p class="english-txt">${selectedCar.capacity}</p>
             </div>
-          </div>
-        `;
+          `;
+        }
 
-        // Insert the car content into the container
-        carDetailsContainer.innerHTML = carContent;
 
       } else {
         console.error('Selected car not found');
@@ -99,3 +114,33 @@ function displaySelectedCar() {
 
 // Call the function to display the selected car
 displaySelectedCar();
+
+
+
+// DOC Loaded
+document.addEventListener("DOMContentLoaded", function() {
+
+
+  // TODAYS DATE IN INPUT FIELDS
+  const today = new Date();
+  const dropoffDate = new Date();
+  dropoffDate.setDate(today.getDate() + 7);
+
+  const formatDate = (date) => date.toISOString().split('T')[0];
+
+  document.getElementById('pickup-date').value = formatDate(today);
+  document.getElementById('dropoff-date').value = formatDate(dropoffDate);
+
+
+  // DROP-OFF AUTOFILL
+  const pickupLocation = document.getElementById('pickup-location');
+  const dropoffLocation = document.getElementById('dropoff-location');
+
+  // When the pickup location is changed, set the dropoff location to the same value
+  pickupLocation.addEventListener('change', function() {
+    const selectedValue = this.value;
+
+    // Set the dropoff location to the same as pickup location
+    dropoffLocation.value = selectedValue;
+  });
+});
