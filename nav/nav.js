@@ -47,13 +47,16 @@ fetch('nav/nav.html')
     }
   });
 
-  // Optional: Add click event listeners to buttons for navigation
+  // Add click event listeners to buttons for navigation
   navItems.forEach(navItem => {
     if (navItem.tagName.toLowerCase() === 'button') {
       const page = navItem.getAttribute('data-page');
-      navItem.addEventListener('click', () => {
-        window.location.href = page;
-      });
+      if (page) {
+        navItem.addEventListener('click', () => {
+          window.location.href = page;
+        });
+      }
+      // If page is null, do not add a click listener
     }
   });
 

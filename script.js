@@ -6,6 +6,64 @@ if (dark_mode) {
 };
 
 
+// CHANGE LANGUAGE
+function applyLanguage(isThai) {
+  const changeLangSpeed = 400;
+
+  // Re-select elements dynamically in case new elements have been added
+  const thaiTexts = document.querySelectorAll('.thai-txt');
+  const englishTexts = document.querySelectorAll('.english-txt');
+
+  // Hide English text with animation
+  englishTexts.forEach(en => {
+    en.style.transform = 'translateY(-20px)';
+    en.style.opacity = 0;
+    setTimeout(() => {
+      en.style.display = 'none';
+    }, changeLangSpeed);
+  });
+
+  if (isThai) {
+    // Show Thai text with animation
+    thaiTexts.forEach(thai => {
+      setTimeout(() => {
+        thai.style.display = 'block';
+        thai.style.transform = 'translateY(20px)';
+        thai.style.opacity = 0;
+        setTimeout(() => {
+          thai.style.transform = '';
+          thai.style.opacity = 1;
+        }, 55);
+      }, changeLangSpeed);
+    });
+  } else {
+    // Hide Thai text and show English text
+    thaiTexts.forEach(thai => {
+      thai.style.transform = 'translateY(-20px)';
+      thai.style.opacity = 0;
+      setTimeout(() => {
+        thai.style.display = 'none';
+      }, changeLangSpeed);
+    });
+
+    englishTexts.forEach(en => {
+      setTimeout(() => {
+        en.style.display = 'block';
+        en.style.transform = 'translateY(20px)';
+        en.style.opacity = 0;
+        setTimeout(() => {
+          en.style.transform = '';
+          en.style.opacity = 1;
+        }, 55);
+      }, changeLangSpeed);
+    });
+  }
+}
+
+// Expose the function globally
+window.applyLanguage = applyLanguage;
+
+
 // CAPITALISE
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -125,68 +183,22 @@ fetch('cars.txt')
 // DOC FULLY LOADED
 document.addEventListener("DOMContentLoaded", function() {
 
-
   // CHANGING LANGUAGE
-
-  const changeLangSpeed = 400;
   const langToggle = document.getElementById('lang-toggle');
+
+  // Event listener for language toggle switch
   langToggle.addEventListener('change', function() {
-
-    // When switch flicked
+    // When switch is toggled
     const isThai = this.checked;
-
-    // Re-select elements dynamically in case new elements have been added
-    const thaiTexts = document.querySelectorAll('.thai-txt');
-    const englishTexts = document.querySelectorAll('.english-txt');
-
-    // Hide English text with animation
-    englishTexts.forEach(en => {
-      en.style.transform = 'translateY(-20px)'; // Only apply the necessary transform
-      en.style.opacity = 0;
-      setTimeout(() => {
-        en.style.display = 'none';
-      }, changeLangSpeed);
-    });
-
-    if (isThai) {
-      // Show Thai text with animation
-      thaiTexts.forEach(thai => {
-        setTimeout(() => {
-          thai.style.display = 'block';
-          thai.style.transform = 'translateY(20px)'; // Apply animation transform directly
-          thai.style.opacity = 0;
-          setTimeout(() => {
-            thai.style.transform = ''; // Allow the element to return to its natural state without forcing translateY(0)
-            thai.style.opacity = 1;
-          }, 55);
-        }, changeLangSpeed);
-      });
-    } else {
-      // Hide Thai text and show English text
-      thaiTexts.forEach(thai => {
-        thai.style.transform = 'translateY(-20px)'; // Apply the necessary animation
-        thai.style.opacity = 0;
-        setTimeout(() => {
-          thai.style.display = 'none';
-        }, changeLangSpeed);
-      });
-
-      englishTexts.forEach(en => {
-        setTimeout(() => {
-          en.style.display = 'block';
-          en.style.transform = 'translateY(20px)'; // Apply the necessary animation
-          en.style.opacity = 0;
-          setTimeout(() => {
-            en.style.transform = ''; // Let it go back to its natural state
-            en.style.opacity = 1;
-          }, 55);
-        }, changeLangSpeed);
-      });
-    }
+    applyLanguage(isThai);
   });
 
+  // Optionally, call reapplyLanguage on page load to set initial state
+  // For example, if you want to default to English:
+  // reapplyLanguage(false);
 
 });
+
 
 
 

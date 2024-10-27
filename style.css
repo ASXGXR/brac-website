@@ -55,10 +55,10 @@ html {
 :root {
   --primary-font: 'Kantumruy Pro', sans-serif;
   --thai-font: 'Sarabun', sans-serif;
-  --primary-color: #E34949;
+  /* --primary-color: #E34949; */
   --white: #f9f9f9;
   --black: #1d1e21;
-  --side-padding: 13vmin;
+  --side-padding: 14vmin;
   --button-padding: 15px 30px;
   --shine-speed: 1s;
   --shadow-color-rgb: 30,32,36;
@@ -1155,4 +1155,9 @@ input[type="checkbox"]:checked + .car-button {
 .info-icon:focus::before {
   opacity: 1;
   visibility: visible;
+}
+
+
+.smaller-font {
+  font-size: 23px;
 }

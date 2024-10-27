@@ -17,6 +17,7 @@
 }
 
 .vehicle-form {
+  position: relative;
   gap: 80px;
   display: flex;
   flex-direction: column;
@@ -106,6 +107,7 @@ textarea:focus {
 
 
 .includes {
+  cursor: default !important;
   font-size: 18px;
   display: flex;
   flex-direction: column;
@@ -275,4 +277,16 @@ input:-webkit-autofill {
 input:autofill {
   background-color: var(--white) !important;
   color: var(--white);
+}
+
+
+
+.submit {
+  position: fixed; /* Keeps the button in a fixed position relative to the viewport */
+  bottom: 116px;    /* Distance from the bottom of the page */
+  right: 72px;     /* Distance from the right side of the page */
+  z-index: 1000;   /* Ensures the button stays above other elements */
+}
+button.disabled {
+  opacity: 0.5;
 }

@@ -1,3 +1,4 @@
+// vehicle-form.js
 
 // Capitalize function
 function capitalizeFirstLetter(string) {
@@ -120,6 +121,7 @@ displaySelectedCar();
 // DOC Loaded
 document.addEventListener("DOMContentLoaded", function() {
 
+  applyLanguage(isThai);
 
   // TODAYS DATE IN INPUT FIELDS
   const today = new Date();
@@ -132,15 +134,61 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById('dropoff-date').value = formatDate(dropoffDate);
 
 
+
   // DROP-OFF AUTOFILL
-  const pickupLocation = document.getElementById('pickup-location');
-  const dropoffLocation = document.getElementById('dropoff-location');
+  // const pickupLocation = document.getElementById('pickup-location');
+  // const dropoffLocation = document.getElementById('dropoff-location');
 
-  // When the pickup location is changed, set the dropoff location to the same value
-  pickupLocation.addEventListener('change', function() {
-    const selectedValue = this.value;
+  // // When the pickup location is changed, set the dropoff location to the same value
+  // pickupLocation.addEventListener('change', function() {
+  //   const selectedValue = this.value;
 
-    // Set the dropoff location to the same as pickup location
-    dropoffLocation.value = selectedValue;
-  });
+  //   // Set the dropoff location to the same as pickup location
+  //   dropoffLocation.value = selectedValue;
+  // });
+
+
+
+  // BUTTON OPACITY
+  const form = document.querySelector('.vehicle-form');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const requiredFields = form.querySelectorAll('input[required], select[required], textarea[required]');
+
+    const isFormComplete = () => [...requiredFields].every(field => field.value.trim() !== '');
+
+    const toggleSubmitButton = () => {
+        if (isFormComplete()) {
+            submitButton.disabled = false;
+            submitButton.style.pointerEvents = 'auto';
+            submitButton.classList.remove('disabled');
+        } else {
+            submitButton.disabled = true;
+            submitButton.style.pointerEvents = 'none';
+            submitButton.classList.add('disabled');
+        }
+    };
+
+    const observer = new IntersectionObserver(entries => {
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+            toggleSubmitButton();
+            requiredFields.forEach(field => {
+                field.addEventListener('input', toggleSubmitButton);
+                field.addEventListener('change', toggleSubmitButton);
+            });
+        } else {
+            requiredFields.forEach(field => {
+                field.removeEventListener('input', toggleSubmitButton);
+                field.removeEventListener('change', toggleSubmitButton);
+            });
+            // Ensure the submit button is enabled when form is not in view
+            submitButton.disabled = false;
+            submitButton.style.pointerEvents = 'auto';
+            submitButton.classList.remove('disabled');
+        }
+    });
+
+    observer.observe(form);
+
+
 });
