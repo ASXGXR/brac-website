@@ -64,6 +64,7 @@ html {
   --shadow-color-rgb: 30,32,36;
   --all-cars-padding: 24px 40px;
   --subheader-font-size: clamp(16px,3vmin,20px);
+  --cta-transform: 0.4s;
 }
 .dark-mode {
   --white: #1e2024;
@@ -226,7 +227,7 @@ body {
   padding: var(--button-padding);
   color: var(--white);
   box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
-  transition: transform 0.4s ease, color 0.3s ease, background 0.3s ease;
+  transition: transform var(--cta-transform) ease, color 0.3s ease, background 0.3s ease;
 }
 .cta-btn:hover {
   color: var(--primary-color);
@@ -957,26 +958,26 @@ h4 {
 :root {
   --car-btn-dm: 96px;
 }
-.car-button,
-.view-txt {
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 600;
-  gap: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 16vmin; height: var(--car-btn-dm);
-  transition: all 0.5s ease-in-out transform 0.2s ease-in-out border 0.05s ease;
-}
-.car-button {
-  border-bottom: 1px solid var(--black);
-}
 .view-txt {
   font-size: 18px;
   font-weight: 400;
-  cursor: default;
+}
+.car-button,
+.view-txt {
+  width: 16vmin;
+  font-size: 15px;
+  font-weight: 600;
+}
+.car-button {
+  gap: 8px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid var(--black);
+  height: var(--car-btn-dm);
+  transition: all 0.5s ease-in-out transform 0.2s ease-in-out border 0.05s ease;
 }
 /* car icons */
 .car-button img {

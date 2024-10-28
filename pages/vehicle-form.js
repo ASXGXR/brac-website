@@ -121,8 +121,6 @@ displaySelectedCar();
 // DOC Loaded
 document.addEventListener("DOMContentLoaded", function() {
 
-  applyLanguage(isThai);
-
   // TODAYS DATE IN INPUT FIELDS
   const today = new Date();
   const dropoffDate = new Date();
@@ -151,44 +149,57 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // BUTTON OPACITY
   const form = document.querySelector('.vehicle-form');
-    const submitButton = form.querySelector('button[type="submit"]');
-    const requiredFields = form.querySelectorAll('input[required], select[required], textarea[required]');
+  const submitButton = form.querySelector('button[type="submit"]');
+  const requiredFields = form.querySelectorAll('input[required], select[required], textarea[required]');
 
-    const isFormComplete = () => [...requiredFields].every(field => field.value.trim() !== '');
+  // Get initial CSS values for bottom and right
+  const initialStyles = window.getComputedStyle(submitButton);
+  const initialBottom = parseInt(initialStyles.bottom, 10) || 0;
+  const initialRight = parseInt(initialStyles.right, 10) || 0;
 
-    const toggleSubmitButton = () => {
-        if (isFormComplete()) {
-            submitButton.disabled = false;
-            submitButton.style.pointerEvents = 'auto';
-            submitButton.classList.remove('disabled');
-        } else {
-            submitButton.disabled = true;
-            submitButton.style.pointerEvents = 'none';
-            submitButton.classList.add('disabled');
-        }
-    };
+  const isFormComplete = () => [...requiredFields].every(field => field.value.trim() !== '');
 
-    const observer = new IntersectionObserver(entries => {
-        const entry = entries[0];
-        if (entry.isIntersecting) {
-            toggleSubmitButton();
-            requiredFields.forEach(field => {
-                field.addEventListener('input', toggleSubmitButton);
-                field.addEventListener('change', toggleSubmitButton);
-            });
-        } else {
-            requiredFields.forEach(field => {
-                field.removeEventListener('input', toggleSubmitButton);
-                field.removeEventListener('change', toggleSubmitButton);
-            });
-            // Ensure the submit button is enabled when form is not in view
-            submitButton.disabled = false;
-            submitButton.style.pointerEvents = 'auto';
-            submitButton.classList.remove('disabled');
-        }
-    });
+  const moveButtonIfScrolled = () => {
+    const distanceFromBottom = document.documentElement.scrollHeight - (window.scrollY + window.innerHeight);
+    const threshold = 320; // Adjust this value as needed (distance in pixels from the bottom)
+    if (distanceFromBottom <= threshold) {
+      // Move the submit button away from the initial position
+      submitButton.style.bottom = (initialBottom + 88) + 'px';
+      submitButton.style.right = (initialRight + 144) + 'px';
+    } else {
+      // Reset the submit button to the initial position
+      submitButton.style.bottom = initialBottom + 'px';
+      submitButton.style.right = initialRight + 'px';
+    }
+  };
 
-    observer.observe(form);
+  const toggleSubmitButton = () => {
+    if (isFormComplete()) {
+      submitButton.disabled = false;
+      submitButton.style.pointerEvents = 'auto';
+      submitButton.classList.remove('disabled');
+      // Add scroll event listener
+      window.addEventListener('scroll', moveButtonIfScrolled);
+      // Initial check
+      moveButtonIfScrolled();
+    } else {
+      submitButton.disabled = true;
+      submitButton.style.pointerEvents = 'none';
+      submitButton.classList.add('disabled');
+      // Reset position and remove scroll listener
+      submitButton.style.bottom = initialBottom + 'px';
+      submitButton.style.right = initialRight + 'px';
+      window.removeEventListener('scroll', moveButtonIfScrolled);
+    }
+  };
+
+  requiredFields.forEach(field => {
+    field.addEventListener('input', toggleSubmitButton);
+    field.addEventListener('change', toggleSubmitButton);
+  });
+
+  // Initial check
+  toggleSubmitButton();
 
 
 });

@@ -286,6 +286,7 @@ input:autofill {
   bottom: 116px;    /* Distance from the bottom of the page */
   right: 72px;     /* Distance from the right side of the page */
   z-index: 1000;   /* Ensures the button stays above other elements */
+  transition: transform var(--cta-transform) ease, bottom 1s ease, right 1s ease, opacity 0.3s ease;
 }
 button.disabled {
   opacity: 0.5;
