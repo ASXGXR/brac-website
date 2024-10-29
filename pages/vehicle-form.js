@@ -122,14 +122,16 @@ displaySelectedCar();
 document.addEventListener("DOMContentLoaded", function() {
 
   // TODAYS DATE IN INPUT FIELDS
-  const today = new Date();
-  const dropoffDate = new Date();
-  dropoffDate.setDate(today.getDate() + 7);
-
   const formatDate = (date) => date.toISOString().split('T')[0];
 
+  // pick-up
+  const today = new Date();
   document.getElementById('pickup-date').value = formatDate(today);
-  document.getElementById('dropoff-date').value = formatDate(dropoffDate);
+
+  // drop-off
+  // const dropoffDate = new Date();
+  // dropoffDate.setDate(today.getDate() + 7);
+  // document.getElementById('dropoff-date').value = formatDate(dropoffDate);
 
 
 
@@ -161,10 +163,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const moveButtonIfScrolled = () => {
     const distanceFromBottom = document.documentElement.scrollHeight - (window.scrollY + window.innerHeight);
-    const threshold = 320; // Adjust this value as needed (distance in pixels from the bottom)
+    const threshold = 360; // Adjust this value as needed (distance in pixels from the bottom)
     if (distanceFromBottom <= threshold) {
       // Move the submit button away from the initial position
-      submitButton.style.bottom = (initialBottom + 88) + 'px';
+      submitButton.style.bottom = (initialBottom + 80) + 'px';
       submitButton.style.right = (initialRight + 144) + 'px';
     } else {
       // Reset the submit button to the initial position
@@ -178,28 +180,63 @@ document.addEventListener("DOMContentLoaded", function() {
       submitButton.disabled = false;
       submitButton.style.pointerEvents = 'auto';
       submitButton.classList.remove('disabled');
-      // Add scroll event listener
-      window.addEventListener('scroll', moveButtonIfScrolled);
-      // Initial check
-      moveButtonIfScrolled();
     } else {
       submitButton.disabled = true;
       submitButton.style.pointerEvents = 'none';
       submitButton.classList.add('disabled');
-      // Reset position and remove scroll listener
-      submitButton.style.bottom = initialBottom + 'px';
-      submitButton.style.right = initialRight + 'px';
-      window.removeEventListener('scroll', moveButtonIfScrolled);
     }
   };
 
-  requiredFields.forEach(field => {
-    field.addEventListener('input', toggleSubmitButton);
-    field.addEventListener('change', toggleSubmitButton);
-  });
+  let formInView = false;
 
-  // Initial check
-  toggleSubmitButton();
+  const handleScroll = () => {
+    if (formInView && isFormComplete()) {
+      moveButtonIfScrolled();
+    } else {
+      // Reset the submit button to the initial position
+      submitButton.style.bottom = initialBottom + 'px';
+      submitButton.style.right = initialRight + 'px';
+    }
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.target === form) {
+        if (entry.isIntersecting) {
+          formInView = true;
+          // Start monitoring required fields
+          requiredFields.forEach(field => {
+            field.addEventListener('input', toggleSubmitButton);
+            field.addEventListener('change', toggleSubmitButton);
+          });
+          // Initial check
+          toggleSubmitButton();
+          // Add scroll event listener
+          window.addEventListener('scroll', handleScroll);
+          // Initial scroll check
+          handleScroll();
+        } else {
+          formInView = false;
+          // Remove required fields listeners
+          requiredFields.forEach(field => {
+            field.removeEventListener('input', toggleSubmitButton);
+            field.removeEventListener('change', toggleSubmitButton);
+          });
+          // Enable the submit button when form is not in view
+          submitButton.disabled = false;
+          submitButton.style.pointerEvents = 'auto';
+          submitButton.classList.remove('disabled');
+          // Reset button position
+          submitButton.style.bottom = initialBottom + 'px';
+          submitButton.style.right = initialRight + 'px';
+          // Remove scroll event listener
+          window.removeEventListener('scroll', handleScroll);
+        }
+      }
+    });
+  }, { threshold: 0 });
+
+  observer.observe(form);
 
 
 });
