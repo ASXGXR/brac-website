@@ -7,13 +7,11 @@
 }
 @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@100;200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sarabun&display=swap');
-
 /* ALL */
 * {
   box-sizing: border-box;
   object-fit: contain;
 }
-
 /* RESETS */
 button, a {
   margin: 0;
@@ -49,7 +47,12 @@ html {
   scroll-behavior: smooth;
 }
 
+
+
+/* -------- */
 /* MAIN CSS */
+/* -------- */
+
 
 
 :root {
@@ -65,7 +68,12 @@ html {
   --all-cars-padding: 24px 40px;
   --subheader-font-size: clamp(16px,3vmin,20px);
   --cta-transform: 0.4s;
+
+  /* font sizes */
+  --car-title-fs: 10vmin;
 }
+
+
 .dark-mode {
   --white: #1e2024;
   /* --white: #151719; */
@@ -465,7 +473,7 @@ h2:hover {
 }
 /* car title */
 .car-name {
-  font-size: 36px;
+  font-size: var(--car-title-fs);
   font-weight: 600;
   text-transform: capitalize;
 }
@@ -1023,7 +1031,7 @@ input[type="checkbox"]:checked + .car-button {
     max-width: 39vmin;
   }
   :root {
-    --side-padding: 64px;
+    --side-padding: 12vmin;
   }
   .switch-lang {
     display: none;

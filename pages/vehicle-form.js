@@ -180,10 +180,29 @@ document.addEventListener("DOMContentLoaded", function() {
       submitButton.disabled = false;
       submitButton.style.pointerEvents = 'auto';
       submitButton.classList.remove('disabled');
+
+      // Trigger the check to see if confirm button should move
+      moveButtonIfScrolled();
+
+      // Add scroll event listener if not already added
+      if (!window.hasMoveButtonScrollListener) {
+        window.addEventListener('scroll', moveButtonIfScrolled);
+        window.hasMoveButtonScrollListener = true;
+      }
     } else {
       submitButton.disabled = true;
       submitButton.style.pointerEvents = 'none';
       submitButton.classList.add('disabled');
+
+      // Reset the submit button to the initial position
+      submitButton.style.bottom = initialBottom + 'px';
+      submitButton.style.right = initialRight + 'px';
+
+      // Remove scroll event listener if it was added
+      if (window.hasMoveButtonScrollListener) {
+        window.removeEventListener('scroll', moveButtonIfScrolled);
+        window.hasMoveButtonScrollListener = false;
+      }
     }
   };
 
