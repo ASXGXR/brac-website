@@ -247,7 +247,7 @@ body {
 }
 .main-cta {
   background-color: var(--primary-color);
-  font-size: clamp(16px, 5vmin, 26px);
+  font-size: clamp(20px, 5vmin, 26px);
 }
 /* line CTA */
 .line-cta {
@@ -1016,11 +1016,14 @@ input[type="checkbox"]:checked + .car-button {
 
 /* Mobile (smaller) Devices */
 @media (max-width: 950px) {
+  :root {
+    --button-padding: 14px 20px;
+  }
   .cover-img-container {
     display: none;
-    }
+  }
   .hero-section {
-    justify-content: space-between;
+    gap: 16vmin;
   }
   .btn-wrapper {
     gap: 18vmin;
@@ -1096,6 +1099,17 @@ input[type="checkbox"]:checked + .car-button {
   .car-price {
     white-space: unset;
   }
+}
+
+
+/* Even Smaller Devices */
+@media (max-width: 600px) {
+
+  .hero-h1 {
+    font-size: 15vmin;
+    width: 66.96vmin;
+  }
+
 }
 
 
