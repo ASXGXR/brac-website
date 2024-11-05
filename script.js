@@ -86,6 +86,7 @@ function selectVehicle(car) {
   window.location.href = `vehicle-form.html?make=${make}&model=${model}`; // Pass car make and model
 }
 
+
 // LOAD VEHICLES INTO GRID
 fetch('cars.txt')
 .then(response => response.text())
