@@ -70,7 +70,7 @@ html {
   --cta-transform: 0.4s;
 
   /* font sizes */
-  --car-title-fs: 10vmin;
+  --car-title-fs: clamp(12px,7vmin,36px);
 }
 
 
@@ -1014,7 +1014,7 @@ input[type="checkbox"]:checked + .car-button {
 
 
 
-/* Mobile Devices */
+/* Mobile (smaller) Devices */
 @media (max-width: 950px) {
   .view-txt {
     display: none;
@@ -1080,6 +1080,9 @@ input[type="checkbox"]:checked + .car-button {
   .ordering-cars {
     gap: 64px;
     flex-direction: column;
+  }
+  .car-price {
+    white-space: unset;
   }
 }
 

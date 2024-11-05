@@ -1,6 +1,7 @@
 // nav.js
 
-// Adding Nav
+
+// ADDS NAV BAR
 const navbarElement = document.getElementById('navbar');
 fetch('nav/nav.html')
 .then(response => response.text())
@@ -17,7 +18,9 @@ fetch('nav/nav.html')
     `);
   }
 
-  // Highlight current page's nav item
+
+
+  // ASSIGN PAGES TO NAV
   const currentPath = window.location.pathname;
 
   // For all nav buttons (both <a> and <button> elements)
@@ -47,7 +50,9 @@ fetch('nav/nav.html')
     }
   });
 
-  // Add click event listeners to buttons for navigation
+
+
+  // ADD CLICK EVENT LISTENERS
   navItems.forEach(navItem => {
     if (navItem.tagName.toLowerCase() === 'button') {
       const page = navItem.getAttribute('data-page');
@@ -60,12 +65,17 @@ fetch('nav/nav.html')
     }
   });
 
-  // Nav Scrolling
-  let lastScrollTop = 0;
+
+
+  // NAV SCROLL HIDE
+
+  const scrollThreshold = 5; // scroll amt before hiding
+
+
+  let lastScrollTop = 0; //start from 0
   const root = document.documentElement;
   const nav = navbarElement.querySelector('nav');
   const navHeight = getComputedStyle(root).getPropertyValue('--nav-height');
-  const scrollThreshold = 5; // amount to scroll down
   let ticking = false;
   window.addEventListener('scroll', () => {
     if (!ticking) {
@@ -83,9 +93,12 @@ fetch('nav/nav.html')
     }
   });
 
-  // Hamburger code
+
+  // HAMBURGER CODE
   const hamburger = navbarElement.querySelector('.hamburger');
   hamburger.addEventListener('click', () => {
     navButtons.classList.toggle('nav-buttons--open');
   });
+
+
 });
