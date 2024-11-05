@@ -29,7 +29,28 @@
   <div class="hamburger">
     <span></span>
     <span></span>
+    <span></span>
+    <style>
+      /* Hamburger styles */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 6px;
+      }
+      .hamburger span {
+        width: 30px;
+        height: 2px;
+        background-color: var(--black);
+        border-radius: 0px;
+      }
+    </style>
   </div>
+
+
+
+
+
 </nav>
 
 <style>
@@ -131,21 +152,6 @@
   }
   .nav-special:hover::after {
   transform: scaleX(1);
-  }
-
-  /* Hamburger styles */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 8px;
-  }
-
-  .hamburger span {
-    width: 30px;
-    height: 3px;
-    background-color: var(--black);
-    border-radius: 0px;
   }
 
   .dark-mode {
