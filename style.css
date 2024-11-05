@@ -168,10 +168,11 @@ body {
 
 /* Hero H1 */
 .hero-h1 {
-  font-size: 13vmin;
   font-weight: 700;
   line-height: 85%;
+  font-size: max(36px,13vmin);
   width: 58.04vmin; /* Breaks Words Perfectly */
+  min-width: 160.71px;
   word-break: break-word;
 }
 
@@ -1019,7 +1020,7 @@ input[type="checkbox"]:checked + .car-button {
 
 
 /* Mobile (smaller) Devices */
-@media (max-width: 950px) {
+@media (max-width: 975px) {
   :root {
     --button-padding: 14px 20px;
   }
@@ -1105,16 +1106,6 @@ input[type="checkbox"]:checked + .car-button {
   }
 }
 
-
-/* Even Smaller Devices */
-@media (max-width: 600px) {
-
-  .hero-h1 {
-    font-size: 15vmin;
-    width: 66.96vmin;
-  }
-
-}
 
 
 .sub-and-buttons {
