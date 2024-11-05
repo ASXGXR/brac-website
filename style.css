@@ -1059,8 +1059,7 @@ input[type="checkbox"]:checked + .car-button {
     margin-bottom: 15vh;
   }
   .cars-grid {
-    display: flex !important;
-    flex-direction: column;
+    grid-template-columns: 1fr; /* One item wide */
     gap: 64px;
   }
   .car-details {
@@ -1073,13 +1072,14 @@ input[type="checkbox"]:checked + .car-button {
     min-width: unset;
   }
   .about-us-content {
-    gap: 32px;
+    gap: 64px;
     flex-direction: column;
   }
   .about-us-content > * {
     width: 100%;
   }
   .features-list {
+    order: 2;
     max-width: unset;
   }
   .why-us-img {
