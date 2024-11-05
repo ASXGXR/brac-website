@@ -131,25 +131,25 @@ fetch('cars.txt')
       <p class="car-price english-txt">${car['price-per-day']}<br>per day</p>
       <p class="car-price thai-txt">${car['price-per-day']}<br>ต่อวัน</p>
       <div class="car-img-container ${car.isPopular ? 'popular' : ''} ${car.isLuxury ? 'luxury' : ''}">
-        <img class="car-img" src="/images/cars/${car['img-name']}" alt="${car.make} ${car.model}">
+        <img class="car-img" src="images/cars/${car['img-name']}" alt="${car.make} ${car.model}">
       </div>
       <!-- Specs -->
       <div class="specs">
         <div class="spec-value">
-          <img src="/svgs/seats.svg" alt="${seats} Seats">
+          <img src="svgs/seats.svg" alt="${seats} Seats">
           <p class="english-txt">${seats} Seats</p>
           <p class="thai-txt">${seats} ที่นั่ง</p>
         </div>
         <div class="spec-value">
-          <img src="/svgs/bags.svg" alt="Capacity: ${capacity}">${capacity}
+          <img src="svgs/bags.svg" alt="Capacity: ${capacity}">${capacity}
         </div>
         <div class="spec-value">
-          <img src="/svgs/engine.svg" alt="${engine} Engine">
+          <img src="svgs/engine.svg" alt="${engine} Engine">
           <p class="english-txt">${engine} Engine</p>
           <p class="thai-txt">${engine} เครื่องยนต์</p>
         </div>
         <div class="spec-value">
-          <img src="/svgs/gears.svg" alt="${gears} Gears"> ${capitalizeFirstLetter(gears)}
+          <img src="svgs/gears.svg" alt="${gears} Gears"> ${capitalizeFirstLetter(gears)}
         </div>
       </div>
       <button class="car-book-btn btn-shine english-txt" style="--shine-speed: 0.9s;">&gt; BOOK</button>
@@ -300,22 +300,22 @@ function displaySelectedCar() {
           </h3>
           <p class="car-price english-txt">${selectedCar['price-per-day']} per day</p>
           <div class="car-img-container">
-            <img class="car-img" src="/images/cars/${selectedCar['img-name']}" alt="${selectedCar.make} ${selectedCar.model}">
+            <img class="car-img" src="images/cars/${selectedCar['img-name']}" alt="${selectedCar.make} ${selectedCar.model}">
           </div>
           <div class="specs">
             <div class="spec-value">
-              <img src="/svgs/seats.svg" alt="${selectedCar.seats} Seats">
+              <img src="svgs/seats.svg" alt="${selectedCar.seats} Seats">
               <p class="english-txt">${selectedCar.seats} Seats</p>
             </div>
             <div class="spec-value">
-              <img src="/svgs/engine.svg" alt="${selectedCar.engine} Engine">
+              <img src="svgs/engine.svg" alt="${selectedCar.engine} Engine">
               <p class="english-txt">${selectedCar.engine} Engine</p>
             </div>
             <div class="spec-value">
-              <img src="/svgs/gears.svg" alt="${selectedCar.gears} Gears"> ${capitalizeFirstLetter(selectedCar.gears)}
+              <img src="svgs/gears.svg" alt="${selectedCar.gears} Gears"> ${capitalizeFirstLetter(selectedCar.gears)}
             </div>
             <div class="spec-value">
-              <img src="/svgs/bags.svg" alt="Capacity: ${selectedCar.capacity}">${selectedCar.capacity}
+              <img src="svgs/bags.svg" alt="Capacity: ${selectedCar.capacity}">${selectedCar.capacity}
             </div>
           </div>
         `;

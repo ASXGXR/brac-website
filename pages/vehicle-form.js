@@ -77,26 +77,26 @@ function displaySelectedCar() {
 
         if (carImgContainer) {
           carImgContainer.innerHTML = `
-            <img class="car-img" src="/images/cars/${selectedCar['img-name']}" alt="${selectedCar.make} ${selectedCar.model}">
+            <img class="car-img" src="images/cars/${selectedCar['img-name']}" alt="${selectedCar.make} ${selectedCar.model}">
           `;
         }
 
         if (specsElement) {
           specsElement.innerHTML = `
             <div class="spec-value">
-              <img src="/svgs/seats.svg" alt="${selectedCar.seats} Seats">
+              <img src="svgs/seats.svg" alt="${selectedCar.seats} Seats">
               <p class="english-txt">${selectedCar.seats} Seats</p>
             </div>
             <div class="spec-value">
-              <img src="/svgs/engine.svg" alt="${selectedCar.engine} Engine">
+              <img src="svgs/engine.svg" alt="${selectedCar.engine} Engine">
               <p class="english-txt">${selectedCar.engine} Engine</p>
             </div>
             <div class="spec-value">
-              <img src="/svgs/gears.svg" alt="${selectedCar.gears} Gears">
+              <img src="svgs/gears.svg" alt="${selectedCar.gears} Gears">
               <p class="english-txt">${capitalizeFirstLetter(selectedCar.gears)}</p>
             </div>
             <div class="spec-value">
-              <img src="/svgs/bags.svg" alt="Capacity: ${selectedCar.capacity}">
+              <img src="svgs/bags.svg" alt="Capacity: ${selectedCar.capacity}">
               <p class="english-txt">${selectedCar.capacity}</p>
             </div>
           `;
