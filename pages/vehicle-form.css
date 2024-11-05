@@ -41,7 +41,7 @@ h2 {
   text-transform: capitalize;
 }
 .note svg {
-  height: 22px; width: min-content;
+  height: 22px; width: 22px;
 }
 .note svg path {
   fill: var(--white);

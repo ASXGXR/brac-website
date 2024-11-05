@@ -1035,6 +1035,12 @@ input[type="checkbox"]:checked + .car-button {
   .btn-wrapper {
     gap: 12vmin;
   }
+  .cars-section {
+    overflow: hidden;
+  }
+  .hero-section {
+    overflow: hidden;
+  }
   .view-txt {
     display: none;
   }
