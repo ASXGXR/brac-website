@@ -95,8 +95,9 @@ fetch('nav/nav.html')
 
 
   // HAMBURGER CODE
-  const hamburger = navbarElement.querySelector('.hamburger');
+  const hamburger = document.querySelector('.hamburger');
   hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('hamburger--open');
     navButtons.classList.toggle('nav-buttons--open');
   });
 

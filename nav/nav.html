@@ -31,18 +31,29 @@
     <span></span>
     <span></span>
     <style>
-      /* Hamburger styles */
       .hamburger {
+        padding: 12px;
+        padding-right: 0;
+        gap: 8px;
         display: none;
-        flex-direction: column;
         cursor: pointer;
-        gap: 6px;
+        flex-direction: column;
       }
       .hamburger span {
-        width: 30px;
+        width: 24px;
         height: 2px;
         background-color: var(--black);
-        border-radius: 0px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+      /* Turning Hamburger into X */
+      .hamburger.hamburger--open span:nth-child(1) {
+        transform: rotate(45deg) translate(7px, 7px);
+      }
+      .hamburger.hamburger--open span:nth-child(2) {
+        opacity: 0; /* Hide the middle bar */
+      }
+      .hamburger.hamburger--open span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
       }
     </style>
   </div>
@@ -161,10 +172,11 @@
     }
   }
 
+
   /* Media query for smaller screens */
   @media (max-width: 768px) {
     .nav-buttons {
-      display: none;
+      display: flex;
       flex-direction: column;
       position: absolute;
       top: var(--nav-height);
@@ -174,12 +186,14 @@
       padding: 0;
       margin: 0;
       z-index: 1;
-      gap: 0px;
-    }
-    .hamburger {
-      display: flex;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out; /* Smooth transition */
     }
     .nav-buttons.nav-buttons--open {
+      max-height: calc(100vh - var(--nav-height)); /* Adjust to fit your menu height */
+    }
+    .hamburger {
       display: flex;
     }
     .nav-btn {

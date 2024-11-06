@@ -1025,7 +1025,12 @@ input[type="checkbox"]:checked + .car-button {
     --button-padding: 14px 20px;
   }
   .cover-img {
-    opacity: 0.3;
+    opacity: 0.4;
+    width: 200%;
+    object-fit: cover;
+    transform: scaleX(-100%);
+    object-position: left center; /* Starts the image from the left edge */
+    margin-left: -14vmin; /* lower value, more left */
   }
   .btn-wrapper {
     flex-direction: column;
@@ -1089,7 +1094,7 @@ input[type="checkbox"]:checked + .car-button {
     width: 100%;
   }
   .features-list {
-    order: 2;
+    /* order: 2; */
     max-width: unset;
   }
   .why-us-img {
