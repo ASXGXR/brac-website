@@ -1004,19 +1004,21 @@ input[type="checkbox"]:checked + .car-button {
   box-shadow: inset 0px -3px 0px var(--primary-color);
 }
 
-.subheader {
+
+.cta-arrow {
   display: none;
+}
+
+.icon {
+  width: 24px; height: 24px;
 }
 
 
 
 
-
-
-
-
-
-
+.subheader {
+  display: none;
+}
 
 
 
@@ -1025,14 +1027,38 @@ input[type="checkbox"]:checked + .car-button {
   :root {
     --button-padding: 14px 20px;
   }
+
+  .main-cta {
+    gap: 12px;
+    display: flex;
+    align-items: center;
+    width: 50.5vmin;
+  }
+  .cta-arrow {
+    display: block;
+  }
+
+  .pi-do {
+    display: none;
+  }
+
+  .subheader {
+    font-weight: 500;
+    display: flex;
+
+    color: white;
+    opacity: 0.9;
+    width: 58.8vmin;
+    font-size: 3.13vmin
+  }
+  }
+
   .cover-img {
     opacity: 0.4;
     width: 200%;
     object-fit: cover;
+    transform: scaleX(-100%);
     object-position: left center; /* Starts the image from the left edge */
-
-    margin-left: -32vmin; /* lower value, more left */
-
   }
   .btn-wrapper {
     flex-direction: column;
@@ -1121,10 +1147,6 @@ input[type="checkbox"]:checked + .car-button {
   gap: 32px;
   display: flex;
   align-items: center;
-}
-.subheader {
-  font-weight: 600;
-  font-size: var(--subheader-font-size);
 }
 
 
