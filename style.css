@@ -169,6 +169,7 @@ body {
 
 /* Hero H1 */
 .hero-h1 {
+  word-break: keep-all !important;
   font-weight: 700;
   line-height: 85%;
   font-size: max(36px,13vmin);
@@ -1028,6 +1029,10 @@ input[type="checkbox"]:checked + .car-button {
     --button-padding: 14px 20px;
   }
 
+  .hero-h1 {
+    font-size: max(65px, 10vmin);
+  }
+
   .main-cta {
     gap: 12px;
     display: flex;
@@ -1050,7 +1055,6 @@ input[type="checkbox"]:checked + .car-button {
     opacity: 0.9;
     width: 58.8vmin;
     font-size: 3.13vmin
-  }
   }
 
   .cover-img {
