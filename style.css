@@ -1093,7 +1093,7 @@ input[type="checkbox"]:checked + .car-button {
   .btn-wrapper {
     gap: clamp(
       10px, /* Minimum Gap */
-      calc(30vmin - 5rem), /* Calc */
+      calc(36vmin - 5rem), /* Calc */
       3.2rem); /* Maximum Gap */
   }
   .cars-section {
