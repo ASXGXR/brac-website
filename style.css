@@ -137,10 +137,11 @@ html {
 body {
   font-family: var(--primary-font);
   background-color: var(--white);
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   color: var(--black);
 }
 .section {
+  overflow-x: hidden !important;
   display: flex;
   flex-direction: column;
   padding: var(--side-padding);
