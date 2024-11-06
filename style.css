@@ -638,6 +638,7 @@ h3 {
   padding: 24px 48px;
   position: relative;
   font-size: 16px;
+  overflow-x: hidden;
   border-top: 16px solid var(--black);
 }
 
@@ -1051,6 +1052,7 @@ input[type="checkbox"]:checked + .car-button {
     display: block;
   }
 
+
   .pi-do {
     display: none;
   }
@@ -1061,15 +1063,20 @@ input[type="checkbox"]:checked + .car-button {
 
     color: white;
     opacity: 0.9;
-    font-size: 4.13vmin
+    font-size: min(4.13vmin,18px)
   }
 
+
+  .cover-img-container {
+    right: unset;
+  }
   .cover-img {
     opacity: 0.4;
     width: 200%;
     object-fit: cover;
     transform: scaleX(-100%);
-    object-position: left center; /* Starts the image from the left edge */
+    object-position: right; /* Starts the image from the left edge */
+    margin-left: -48vmin;
   }
   .btn-wrapper {
     flex-direction: column;
