@@ -1,93 +1,15 @@
 
 // DARK MODE
+
 const dark_mode = "y";
 if (dark_mode) {
   document.body.classList.toggle('dark-mode');
 };
 
 
-// CHANGE LANGUAGE
-function applyLanguage(isThai) {
-  const changeLangSpeed = 400;
-
-  // Re-select elements dynamically in case new elements have been added
-  const thaiTexts = document.querySelectorAll('.thai-txt');
-  const englishTexts = document.querySelectorAll('.english-txt');
-
-  // Hide English text with animation
-  englishTexts.forEach(en => {
-    en.style.transform = 'translateY(-20px)';
-    en.style.opacity = 0;
-    setTimeout(() => {
-      en.style.display = 'none';
-    }, changeLangSpeed);
-  });
-
-  if (isThai) {
-    // Show Thai text with animation
-    thaiTexts.forEach(thai => {
-      setTimeout(() => {
-        thai.style.display = 'block';
-        thai.style.transform = 'translateY(20px)';
-        thai.style.opacity = 0;
-        setTimeout(() => {
-          thai.style.transform = '';
-          thai.style.opacity = 1;
-        }, 55);
-      }, changeLangSpeed);
-    });
-  } else {
-    // Hide Thai text and show English text
-    thaiTexts.forEach(thai => {
-      thai.style.transform = 'translateY(-20px)';
-      thai.style.opacity = 0;
-      setTimeout(() => {
-        thai.style.display = 'none';
-      }, changeLangSpeed);
-    });
-
-    englishTexts.forEach(en => {
-      setTimeout(() => {
-        en.style.display = 'block';
-        en.style.transform = 'translateY(20px)';
-        en.style.opacity = 0;
-        setTimeout(() => {
-          en.style.transform = '';
-          en.style.opacity = 1;
-        }, 55);
-      }, changeLangSpeed);
-    });
-  }
-}
-
-// Expose the function globally
-window.applyLanguage = applyLanguage;
-
-
-// CAPITALISE
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-// CHECK CAR IMAGE
-function checkImageExists(url) {
-  return new Promise((resolve) => {
-    const img = new Image();
-    img.onload = () => resolve(true);
-    img.onerror = () => resolve(false);
-    img.src = url;
-  });
-}
-
-// HANDLE VEHICLE SELECTION
-function selectVehicle(car) {
-  const make = encodeURIComponent(car.make);
-  const model = encodeURIComponent(car.model);
-  window.location.href = `vehicle-form.html?make=${make}&model=${model}`; // Pass car make and model
-}
-
 
 // LOAD VEHICLES INTO GRID
+
 fetch('cars.txt')
 .then(response => response.text())
 .then(data => {
@@ -179,36 +101,99 @@ fetch('cars.txt')
   });
 })
 .catch(error => console.error('Error fetching cars.txt:', error));
+// HANDLE VEHICLE SELECTION
+function selectVehicle(car) {
+  const make = encodeURIComponent(car.make);
+  const model = encodeURIComponent(car.model);
+  window.location.href = `vehicle-form.html?make=${make}&model=${model}`; // Pass car make and model
+}
+// CHECK CAR IMAGE
+function checkImageExists(url) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = url;
+  });
+}
+
+
+
+// CHANGING LANGUAGE
+function applyLanguage(isThai) {
+  const changeLangSpeed = 400;
+
+  // Re-select elements dynamically in case new elements have been added
+  const thaiTexts = document.querySelectorAll('.thai-txt');
+  const englishTexts = document.querySelectorAll('.english-txt');
+
+  // Hide English text with animation
+  englishTexts.forEach(en => {
+    en.style.transform = 'translateY(-20px)';
+    en.style.opacity = 0;
+    setTimeout(() => {
+      en.style.display = 'none';
+    }, changeLangSpeed);
+  });
+
+  if (isThai) {
+    // Show Thai text with animation
+    thaiTexts.forEach(thai => {
+      setTimeout(() => {
+        thai.style.display = 'block';
+        thai.style.transform = 'translateY(20px)';
+        thai.style.opacity = 0;
+        setTimeout(() => {
+          thai.style.transform = '';
+          thai.style.opacity = 1;
+        }, 55);
+      }, changeLangSpeed);
+    });
+  } else {
+    // Hide Thai text and show English text
+    thaiTexts.forEach(thai => {
+      thai.style.transform = 'translateY(-20px)';
+      thai.style.opacity = 0;
+      setTimeout(() => {
+        thai.style.display = 'none';
+      }, changeLangSpeed);
+    });
+
+    englishTexts.forEach(en => {
+      setTimeout(() => {
+        en.style.display = 'block';
+        en.style.transform = 'translateY(20px)';
+        en.style.opacity = 0;
+        setTimeout(() => {
+          en.style.transform = '';
+          en.style.opacity = 1;
+        }, 55);
+      }, changeLangSpeed);
+    });
+  }
+}
+// Exposes language function globally
+window.applyLanguage = applyLanguage;
+
 
 
 // DOC FULLY LOADED
 document.addEventListener("DOMContentLoaded", function() {
 
-  // CHANGING LANGUAGE
+  // Event listener for language toggle
   const langToggle = document.getElementById('lang-toggle');
-
-  // Event listener for language toggle switch
   langToggle.addEventListener('change', function() {
-    // When switch is toggled
     const isThai = this.checked;
     applyLanguage(isThai);
   });
 
-  // Optionally, call reapplyLanguage on page load to set initial state
-  // For example, if you want to default to English:
-  // reapplyLanguage(false);
-
 });
-
-
-
 
 
 
 // SUV/SEDAN/PICKUP CHECKBOXES
 
 const carTypes = ['sedans', 'suvs', 'pickups'];
-
 function toggleDisplay(showAll) {
   carTypes.forEach(type => {
     const grid = document.getElementById(type);
@@ -230,12 +215,12 @@ function onCarTypeChange() {
     });
   });
 }
-// Initial call to set up event listeners and show all by default
 onCarTypeChange();
 toggleDisplay(true);
 
 
-// SORT DROPDOWN - FUNCTION
+
+// SORT DROPDOWN
 
 document.querySelector('.sort-button').addEventListener('click', function(event) {
   event.stopPropagation(); // Prevents the click from bubbling up to the document
@@ -248,13 +233,14 @@ document.querySelectorAll('.sort-option').forEach(function(option) {
     document.querySelector('.sort-dropdown').classList.remove('show');
   });
 });
-// Close the dropdown if clicked outside
+// Closes dropdown if clicked outside
 document.addEventListener('click', function() {
   var dropdown = document.querySelector('.sort-dropdown');
   if (dropdown.classList.contains('show')) {
     dropdown.classList.remove('show');
   }
 });
+
 
 
 // SCROLL TO CARS
@@ -268,71 +254,7 @@ function scrollToCars() {
 
 
 
-
-// VEHICLE FORM - DISPLAY IMAGE
-function displaySelectedCar() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const make = decodeURIComponent(urlParams.get('make'));
-  const model = decodeURIComponent(urlParams.get('model'));
-
-  // Fetch the car data from cars.txt
-  fetch('cars.txt')
-    .then(response => response.text())
-    .then(data => {
-      const cars = data.trim().split('\n\n').map(carData => {
-        const car = {};
-        carData.split('\n').forEach(line => {
-          const [key, value] = line.split(': ');
-          car[key.trim()] = value.trim();
-        });
-        return car;
-      });
-
-      // Find the matching car based on the make and model
-      const selectedCar = cars.find(car => car.make.toLowerCase() === make.toLowerCase() && car.model.toLowerCase() === model.toLowerCase());
-
-      if (selectedCar) {
-        // Create HTML for the selected car
-        const carDetailsHTML = `
-          <h3 class="car-name">
-            <span class="car-make">${capitalizeFirstLetter(selectedCar.make)}</span>
-            <span class="car-model">${capitalizeFirstLetter(selectedCar.model)}</span>
-          </h3>
-          <p class="car-price english-txt">${selectedCar['price-per-day']} per day</p>
-          <div class="car-img-container">
-            <img class="car-img" src="images/cars/${selectedCar['img-name']}" alt="${selectedCar.make} ${selectedCar.model}">
-          </div>
-          <div class="specs">
-            <div class="spec-value">
-              <img src="svgs/seats.svg" alt="${selectedCar.seats} Seats">
-              <p class="english-txt">${selectedCar.seats} Seats</p>
-            </div>
-            <div class="spec-value">
-              <img src="svgs/engine.svg" alt="${selectedCar.engine} Engine">
-              <p class="english-txt">${selectedCar.engine} Engine</p>
-            </div>
-            <div class="spec-value">
-              <img src="svgs/gears.svg" alt="${selectedCar.gears} Gears"> ${capitalizeFirstLetter(selectedCar.gears)}
-            </div>
-            <div class="spec-value">
-              <img src="svgs/bags.svg" alt="Capacity: ${selectedCar.capacity}">${selectedCar.capacity}
-            </div>
-          </div>
-        `;
-
-        // Insert the car details into the page
-        document.getElementById('selected-car').innerHTML = carDetailsHTML;
-      } else {
-        console.error('Car not found');
-      }
-    })
-    .catch(error => console.error('Error fetching car data:', error));
-}
-
-// Helper function to capitalize the first letter
+// CAPITALIZE
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
-// Call the function to display the selected car when the page loads
-displaySelectedCar();
