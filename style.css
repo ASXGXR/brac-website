@@ -1025,6 +1025,10 @@ input[type="checkbox"]:checked + .car-button {
 .main-cta svg {
   color: var(--black);
 }
+.main-cta:hover svg,
+.main-cta:checked svg {
+  color: var(--primary-color);
+}
 
 
 
@@ -1047,7 +1051,7 @@ input[type="checkbox"]:checked + .car-button {
   }
 
   .main-cta {
-    gap: 2.4vmin;
+    gap: 2.2vmin;
     display: flex;
     align-items: center;
   }
