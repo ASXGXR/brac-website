@@ -1029,9 +1029,12 @@ input[type="checkbox"]:checked + .car-button {
     opacity: 0.4;
     width: 200%;
     object-fit: cover;
-    transform: scaleX(-100%);
     object-position: left center; /* Starts the image from the left edge */
+
+    transform: scaleX(-100%);
     margin-left: -14vmin; /* lower value, more left */
+
+    margin-left: -36vmin;
   }
   .btn-wrapper {
     flex-direction: column;
