@@ -1078,9 +1078,9 @@ input[type="checkbox"]:checked + .car-button {
   .hero-section,
   .btn-wrapper {
     gap: clamp(
-      10px, 
-      calc(30vmin - 5rem), 
-      3rem);
+      10px, /* Minimum Gap */
+      calc(30vmin - 5rem), /* Calc */
+      3.2rem); /* Maximum Gap */
   }
   .cars-section {
     overflow: hidden;
