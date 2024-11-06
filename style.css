@@ -9,7 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Sarabun&display=swap');
 /* ALL */
 * {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   object-fit: contain;
 }
 /* RESETS */
@@ -169,7 +169,7 @@ body {
 
 /* Hero H1 */
 .hero-h1 {
-  word-break: keep-all !important;
+  word-break: keep-all;
   font-weight: 700;
   line-height: 85%;
   font-size: max(36px,13vmin);
@@ -945,7 +945,7 @@ h4 {
 }
 /* Arrows */
 .sort-svg {
-  box-sizing: unset;
+  box-sizing: unset !important;
   height: 22px;
   padding: 14px;
   fill: var(--black);
@@ -1029,15 +1029,23 @@ input[type="checkbox"]:checked + .car-button {
     --button-padding: 14px 20px;
   }
 
+  .btn-wrapper,
+  .sub-and-buttons,
+  .cta-wrapper,
+  .main-cta {
+    width: 100%;
+  }
+
   .hero-h1 {
-    font-size: max(65px, 10vmin);
+    width: 100%;
+    font-size: min(90px,17.02vmin);
   }
 
   .main-cta {
     gap: 12px;
     display: flex;
     align-items: center;
-    width: 50.5vmin;
+    justify-content: center;
   }
   .cta-arrow {
     display: block;
@@ -1053,8 +1061,7 @@ input[type="checkbox"]:checked + .car-button {
 
     color: white;
     opacity: 0.9;
-    width: 58.8vmin;
-    font-size: 3.13vmin
+    font-size: 4.13vmin
   }
 
   .cover-img {
@@ -1070,7 +1077,10 @@ input[type="checkbox"]:checked + .car-button {
   }
   .hero-section,
   .btn-wrapper {
-    gap: 12vmin;
+    gap: clamp(
+      10px, 
+      calc(30vmin - 5rem), 
+      3rem);
   }
   .cars-section {
     overflow: hidden;
