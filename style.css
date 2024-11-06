@@ -1012,7 +1012,7 @@ input[type="checkbox"]:checked + .car-button {
 }
 
 .icon {
-  width: 24px; height: 24px;
+  width:6vmin;height:6vmin;
 }
 
 
@@ -1020,6 +1020,10 @@ input[type="checkbox"]:checked + .car-button {
 
 .subheader {
   display: none;
+}
+
+.main-cta svg {
+  color: var(--black);
 }
 
 
@@ -1043,10 +1047,9 @@ input[type="checkbox"]:checked + .car-button {
   }
 
   .main-cta {
-    gap: 12px;
+    gap: 2.4vmin;
     display: flex;
     align-items: center;
-    justify-content: center;
   }
   .cta-arrow {
     display: block;
