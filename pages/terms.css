@@ -108,3 +108,22 @@ ul li:hover::before {
 .terms-section:last-child {
   border-bottom: none;
 }
+
+
+/* Mobile (smaller) Devices */
+@media (max-width: 975px) {
+  ul {
+    max-width: unset;
+  }
+  .info-icon {
+    padding: 6px;
+    margin-left: unset;
+  }
+  ul li {
+    font-size: min(20px,4.5vmin);
+  }
+  .container {
+    padding: 0;
+    box-shadow: unset;
+  }
+}

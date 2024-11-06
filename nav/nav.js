@@ -20,33 +20,17 @@ fetch('nav/nav.html')
 
 
 
-  // ASSIGN PAGES TO NAV
+  // HIGHLIGHT PAGE USER IS ON
   const currentPath = window.location.pathname;
-
-  // For all nav buttons (both <a> and <button> elements)
   const navItems = navButtons.querySelectorAll('.nav-btn');
-
   navItems.forEach(navItem => {
-    let itemPath = null;
+    let itemPath = navItem.tagName.toLowerCase() === 'a' ? navItem.getAttribute('href') : null;
 
-    if (navItem.tagName.toLowerCase() === 'a') {
-      itemPath = navItem.getAttribute('href');
-    } else if (navItem.tagName.toLowerCase() === 'button') {
-      itemPath = navItem.getAttribute('data-page');
+    if (itemPath && (itemPath.startsWith('http') || itemPath.startsWith('//'))) {
+      itemPath = new URL(itemPath, window.location.origin).pathname;
     }
-
-    if (itemPath) {
-      // Handle absolute URLs
-      if (itemPath.startsWith('http') || itemPath.startsWith('//')) {
-        const url = new URL(itemPath, window.location.origin);
-        itemPath = url.pathname;
-      }
-
-      // Compare itemPath with currentPath
-      if (itemPath === currentPath) {
-        // Apply the --primary-color style to this nav item
-        navItem.classList.add('active-nav-item');
-      }
+    if (itemPath === currentPath) {
+      navItem.classList.add('active-nav-item');
     }
   });
 
@@ -100,6 +84,16 @@ fetch('nav/nav.html')
     hamburger.classList.toggle('hamburger--open');
     navButtons.classList.toggle('nav-buttons--open');
   });
+
+
+  // Close nav-buttons on click (Mobile)
+  navItems.forEach(navItem => {
+    navItem.addEventListener('click', () => {
+      navButtons.classList.remove('nav-buttons--open'); // Close the nav menu
+      hamburger.classList.remove('hamburger--open'); // Reset the hamburger icon
+    });
+  });
+
 
 
 });
