@@ -1086,6 +1086,7 @@ input[type="checkbox"]:checked + .car-button {
     overflow: hidden;
   }
   .hero-section {
+    padding: 32px var(--side-padding);
     overflow: hidden;
   }
   .view-txt {
