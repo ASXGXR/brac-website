@@ -1024,8 +1024,8 @@ input[type="checkbox"]:checked + .car-button {
   :root {
     --button-padding: 14px 20px;
   }
-  .cover-img-container {
-    display: none;
+  .cover-img {
+    opacity: 0.3;
   }
   .btn-wrapper {
     flex-direction: column;
@@ -1067,10 +1067,6 @@ input[type="checkbox"]:checked + .car-button {
     flex-direction: column;
     gap: 24px;
     font-size: 18px;
-  }
-  .cover-img {
-    margin-left: -36vw;
-    margin-bottom: 15vh;
   }
   .cars-grid {
     grid-template-columns: 1fr; /* One item wide */
