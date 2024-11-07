@@ -1074,7 +1074,9 @@ input[type="checkbox"]:checked + .car-button {
 
     color: white;
     opacity: 0.9;
-    font-size: min(4.13vmin,18px)
+    padding-left: 5vmin;
+    font-size: min(4.13vmin,18px);
+    box-shadow: inset 1vmin 0px currentColor;
   }
 
 
