@@ -1023,6 +1023,7 @@ input[type="checkbox"]:checked + .car-button {
 }
 
 .main-cta svg {
+  display: none;
   color: var(--black);
 }
 .main-cta:hover svg,
@@ -1036,6 +1037,10 @@ input[type="checkbox"]:checked + .car-button {
 @media (max-width: 975px) {
   :root {
     --button-padding: 14px 20px;
+  }
+
+  .main-cta svg {
+    display: block;
   }
 
   .btn-wrapper,
