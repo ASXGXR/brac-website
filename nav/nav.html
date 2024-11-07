@@ -45,6 +45,7 @@
         background-color: var(--black);
         transition: transform 0.3s ease, opacity 0.3s ease;
       }
+      
       /* Turning Hamburger into X */
       .hamburger.hamburger--open span:nth-child(1) {
         transform: rotate(45deg) translate(7px, 7px);
@@ -186,13 +187,15 @@
       width: 100%;
       padding: 0;
       margin: 0;
-      z-index: 1;
-      max-height: 0;
+      z-index: 10000;
       overflow: hidden;
-      transition: max-height 0.4s ease-out; /* Smooth transition */
+
+      /* Smooth transition */
+      max-height: 0; 
+      transition: max-height 0.4s ease-out;
     }
     .nav-buttons.nav-buttons--open {
-      max-height: calc(100vh - var(--nav-height)); /* Adjust to fit your menu height */
+      max-height: calc(100vh - var(--nav-height));
     }
     .hamburger {
       display: flex;
