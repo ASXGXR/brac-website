@@ -1070,7 +1070,7 @@ input[type="checkbox"]:checked + .car-button {
 
   .subheader {
     font-weight: 500;
-    display: flex;
+    display: block;
 
     color: white;
     line-height: 160%;
