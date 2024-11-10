@@ -1073,6 +1073,7 @@ input[type="checkbox"]:checked + .car-button {
     display: flex;
 
     color: white;
+    line-height: 160%;
     opacity: 0.9;
     padding-left: 5vmin;
     font-size: min(4.13vmin,18px);
