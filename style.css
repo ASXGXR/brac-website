@@ -437,6 +437,7 @@ h2:hover {
   background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, var(--black) 50%, rgba(0, 0, 0, 0) 100%);
 }
 .cars-grid {
+  padding: 1px;
   width: 100%;
   display: grid;
   position: relative;
