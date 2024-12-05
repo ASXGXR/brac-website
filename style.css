@@ -433,6 +433,7 @@ h2:hover {
   font-size: var(--p-text);
   white-space: nowrap;
   font-weight: 600;
+  margin: 8px 0;
 }
 .car-img {
   aspect-ratio: 18 / 11;

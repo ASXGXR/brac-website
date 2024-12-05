@@ -162,8 +162,10 @@ document.addEventListener("DOMContentLoaded", function() {
   const isFormComplete = () => [...requiredFields].every(field => field.value.trim() !== '');
 
   const moveButtonIfScrolled = () => {
+    
     const distanceFromBottom = document.documentElement.scrollHeight - (window.scrollY + window.innerHeight);
     const threshold = 360; // Adjust this value as needed (distance in pixels from the bottom)
+
     if (distanceFromBottom <= threshold) {
       // Move the submit button away from the initial position
       submitButton.style.bottom = (initialBottom + 80) + 'px';
@@ -223,17 +225,20 @@ document.addEventListener("DOMContentLoaded", function() {
       if (entry.target === form) {
         if (entry.isIntersecting) {
           formInView = true;
+
           // Start monitoring required fields
           requiredFields.forEach(field => {
             field.addEventListener('input', toggleSubmitButton);
             field.addEventListener('change', toggleSubmitButton);
           });
+
           // Initial check
           toggleSubmitButton();
           // Add scroll event listener
           window.addEventListener('scroll', handleScroll);
           // Initial scroll check
           handleScroll();
+
         } else {
           formInView = false;
           // Remove required fields listeners
@@ -241,6 +246,7 @@ document.addEventListener("DOMContentLoaded", function() {
             field.removeEventListener('input', toggleSubmitButton);
             field.removeEventListener('change', toggleSubmitButton);
           });
+
           // Enable the submit button when form is not in view
           submitButton.disabled = false;
           submitButton.style.pointerEvents = 'auto';
@@ -250,10 +256,11 @@ document.addEventListener("DOMContentLoaded", function() {
           submitButton.style.right = initialRight + 'px';
           // Remove scroll event listener
           window.removeEventListener('scroll', handleScroll);
+
         }
       }
     });
-  }, { threshold: 0 });
+  }, { threshold: 0.14 }); // Change this to change when button first gets disabled
 
   observer.observe(form);
 

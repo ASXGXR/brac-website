@@ -80,8 +80,6 @@ fetch('cars.txt')
         <div class="car-img-container">
           <img class="car-img" src="images/cars/${car['img-name']}" alt="${capitalize(car.make)} ${capitalize(car.model)}">
         </div>
-        <p class="car-price english-txt">£${numericPrice.toFixed(2)} | ฿${priceInBaht} <span class="pd">per day</span></p>
-        <p class="car-price thai-txt">£${numericPrice.toFixed(2)} | ฿${priceInBaht} <span class="pd">ต่อวัน</span></p>
         <div class="specs">
           <div class="spec-value">
             <img src="svgs/seats.svg" alt="${car.seats} Seats">
@@ -102,17 +100,24 @@ fetch('cars.txt')
             ${capitalize(car.gears)}
           </div>
         </div>
+        <p class="car-price english-txt">£${numericPrice.toFixed(2)} | ฿${priceInBaht} <span class="pd">per day</span></p>
+        <p class="car-price thai-txt">£${numericPrice.toFixed(2)} | ฿${priceInBaht} <span class="pd">ต่อวัน</span></p>
         <!-- <button class="car-book-btn btn-shine english-txt" style="--shine-speed: 0.9s;">&gt; BOOK</button> -->
         <!-- <button class="car-book-btn btn-shine thai-txt" style="--shine-speed: 0.9s;">&gt; จอง</button> -->
       `;
 
       // Check if image is available
       const img = carContainer.querySelector('.car-img');
+      // Image Valid:
       img.onload = () => {
-        // Add the car to originalCarOrder only if the image is valid
+        // Add car to originalCarOrder
         originalCarOrder.push(car);
         // Append car container
         carsGrid.appendChild(carContainer);
+        // Add click event to redirect to the booking form
+        carContainer.addEventListener('click', () => {
+          window.location.href = `vehicle-form.html?make=${encodeURIComponent(car.make)}&model=${encodeURIComponent(car.model)}`;
+        });
       };
 
       img.onerror = () => {
