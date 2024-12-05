@@ -1288,7 +1288,7 @@ input[type="checkbox"]:checked + .car-button {
 
 .car-details.placeholder {
   width: 100%;
-  height: 480px; /* Adjust height as needed */
+  height: 484px; /* Adjust height as needed */
   background: var(--white);
   position: relative;
   overflow: hidden;

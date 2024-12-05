@@ -1,44 +1,3 @@
-make: toyota
-model: yaris
-price-per-day: £19.99
-img-name: toyota-yaris.png
-seats: 5
-engine: 1.2L
-gears: automatic
-type: sedan
-capacity: 2
-
-make: toyota
-model: ativ
-price-per-day: £21.95
-img-name: toyota-ativ.png
-seats: 5
-engine: 1.2L
-gears: automatic
-type: sedan
-capacity: 3
-
-make: honda
-model: city
-price-per-day: £22.95
-img-name: honda-city.png
-seats: 5
-engine: 1.5L
-gears: automatic
-type: sedan
-capacity: 3
-popular: y
-
-make: honda
-model: city hatchback
-price-per-day: £22.95
-img-name: honda-city-hatchback.png
-seats: 5
-engine: 1.5L
-gears: automatic
-type: sedan
-capacity: 2
-
 make: mazda
 model: 2
 price-per-day: £22.95
@@ -50,14 +9,24 @@ type: sedan
 capacity: 2
 
 make: toyota
-model: revo smart cab
+model: veloz
+price-per-day: £29.99
+img-name: toyota-veloz.png
+seats: 7
+engine: 1.5L
+gears: automatic
+type: suv
+capacity: 2-3
+
+make: honda
+model: city hatchback
 price-per-day: £22.95
-img-name: toyota-revo-smart-cab.png
+img-name: honda-city-hatchback.png
 seats: 5
-engine: 2.4L Diesel
-gears: manual
-type: pickup
-capacity: 5
+engine: 1.5L
+gears: automatic
+type: sedan
+capacity: 2
 
 make: honda
 model: CR-V
@@ -71,14 +40,46 @@ capacity: 4
 luxury: y
 
 make: toyota
-model: veloz
-price-per-day: £29.99
-img-name: toyota-veloz.png
-seats: 7
-engine: 1.5L
+model: cross
+price-per-day: £32.99
+img-name: toyota-cross.png
+seats: 5
+engine: 1.8L Hybrid
 gears: automatic
 type: suv
-capacity: 2-3
+capacity: 3
+popular: y
+
+make: toyota
+model: revo smart cab
+price-per-day: £22.95
+img-name: toyota-revo-smart-cab.png
+seats: 5
+engine: 2.4L Diesel
+gears: manual
+type: pickup
+capacity: 5
+
+make: toyota
+model: revo double cab
+price-per-day: £29.99
+img-name: toyota-revo-double-cab.png
+seats: 5
+engine: 2.5L Diesel
+gears: automatic
+type: pickup
+capacity: 5
+
+make: honda
+model: city
+price-per-day: £22.95
+img-name: honda-city.png
+seats: 5
+engine: 1.5L
+gears: automatic
+type: sedan
+capacity: 3
+popular: y
 
 make: toyota
 model: sienta
@@ -89,17 +90,6 @@ engine: 1.5L
 gears: automatic
 type: suv
 capacity: 2
-
-make: honda
-model: civic
-price-per-day: £29.99
-img-name: honda-civic.png
-seats: 5
-engine: 1.8L
-gears: automatic
-type: sedan
-capacity: 4
-luxury: y
 
 make: toyota
 model: yaris cross
@@ -122,25 +112,35 @@ type: suv
 capacity: 2
 
 make: toyota
-model: revo double cab
-price-per-day: £29.99
-img-name: toyota-revo-double-cab.png
+model: yaris
+price-per-day: £19.99
+img-name: toyota-yaris.png
 seats: 5
-engine: 2.5L Diesel
+engine: 1.2L
 gears: automatic
-type: pickup
-capacity: 5
+type: sedan
+capacity: 2
+
+make: honda
+model: civic
+price-per-day: £29.99
+img-name: honda-civic.png
+seats: 5
+engine: 1.8L
+gears: automatic
+type: sedan
+capacity: 4
+luxury: y
 
 make: toyota
-model: cross
-price-per-day: £32.99
-img-name: toyota-cross.png
+model: ativ
+price-per-day: £21.95
+img-name: toyota-ativ.png
 seats: 5
-engine: 1.8L Hybrid
+engine: 1.2L
 gears: automatic
-type: suv
+type: sedan
 capacity: 3
-popular: y
 
 make: toyota
 model: fortuner

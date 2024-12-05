@@ -53,12 +53,8 @@ fetch('cars.txt')
       return car;
     });
 
-    // Store the original order for "recommended" sorting
-    originalCarOrder = [...cars];
-
     // Append each car
     cars.forEach(car => {
-
       // Add car-details class + get car type
       const carType = car.type ? car.type.toLowerCase() : 'unknown';
       const carContainer = document.createElement('div');
@@ -71,13 +67,21 @@ fetch('cars.txt')
 
       // Convert GBP price to THB (to nearest 9)
       const priceInBaht = Math.round(numericPrice * exchangeRate / 10) * 10 - 1;
-      // const priceInBaht = (numericPrice * exchangeRate).toFixed(0);
 
       carContainer.innerHTML = `
         <h3 class="car-name">
           <span class="car-make">${capitalize(car.make)}</span>
           <span class="car-model">${capitalize(car.model)}</span>
         </h3>
+        <p class="insurance-cover spec-value"><span class="ic-tick">✔</span>
+          <span class="english-txt">Full Insurance Cover</span>
+          <span class="thai-txt">ความคุ้มครองประกันภัยเต็มรูปแบบ</span>
+        </p>
+        <div class="car-img-container">
+          <img class="car-img" src="images/cars/${car['img-name']}" alt="${capitalize(car.make)} ${capitalize(car.model)}">
+        </div>
+        <p class="car-price english-txt">£${numericPrice.toFixed(2)} | ฿${priceInBaht} <span class="pd">per day</span></p>
+        <p class="car-price thai-txt">£${numericPrice.toFixed(2)} | ฿${priceInBaht} <span class="pd">ต่อวัน</span></p>
         <div class="specs">
           <div class="spec-value">
             <img src="svgs/seats.svg" alt="${car.seats} Seats">
@@ -98,37 +102,28 @@ fetch('cars.txt')
             ${capitalize(car.gears)}
           </div>
         </div>
-        <div class="car-img-container">
-          <img class="car-img" src="images/cars/${car['img-name']}" alt="${capitalize(car.make)} ${capitalize(car.model)}">
-        </div>
-        <p class="car-price english-txt">£${numericPrice.toFixed(2)} | ฿${priceInBaht} <span class="pd">per day</span></p>
-        <p class="car-price thai-txt">£${numericPrice.toFixed(2)} | ฿${priceInBaht} <span class="pd">ต่อวัน</span></p>
-        <p class="insurance-cover spec-value"><span class="ic-tick">✔</span> Full Insurance Cover</p>
-        <button class="car-book-btn btn-shine english-txt" style="--shine-speed: 0.9s;">&gt; BOOK</button>
-        <button class="car-book-btn btn-shine thai-txt" style="--shine-speed: 0.9s;">&gt; จอง</button>
+        <!-- <button class="car-book-btn btn-shine english-txt" style="--shine-speed: 0.9s;">&gt; BOOK</button> -->
+        <!-- <button class="car-book-btn btn-shine thai-txt" style="--shine-speed: 0.9s;">&gt; จอง</button> -->
       `;
 
-      // Check if image available
+      // Check if image is available
       const img = carContainer.querySelector('.car-img');
+      img.onload = () => {
+        // Add the car to originalCarOrder only if the image is valid
+        originalCarOrder.push(car);
+        // Append car container
+        carsGrid.appendChild(carContainer);
+      };
+
       img.onerror = () => {
         console.error(`Image not found for car: ${car.make} ${car.model} (img: ${car['img-name']})`);
         carContainer.remove(); // Remove the car container if image not found
       };
-
-      // Redirect click to the booking form
-      carContainer.addEventListener('click', () => {
-        window.location.href = `vehicle-form.html?make=${encodeURIComponent(car.make)}&model=${encodeURIComponent(car.model)}`;
-      });
-
-      // Append car container
-      carsGrid.appendChild(carContainer);
     });
-    
 
     // Remove placeholder cards
     const placeholders = document.querySelectorAll('.car-details.placeholder');
     placeholders.forEach(placeholder => placeholder.remove());
-
   })
   .catch(error => console.error('Error fetching cars.txt:', error));
 
@@ -263,15 +258,19 @@ function sortCars(sortType) {
   } else if (sortType === 'price-desc') {
     sortedCars = cars.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
   } else if (sortType === 'recommended') {
-    // Reset to original order using the originalCarOrder array
     grid.innerHTML = ''; // Clear grid
     originalCarOrder.forEach(car => {
-      const matchingElement = cars.find(el => el.querySelector('.car-make').innerText.toLowerCase() === car.make &&
-                                              el.querySelector('.car-model').innerText.toLowerCase() === car.model);
-      if (matchingElement) grid.appendChild(matchingElement);
+      const matchingElement = cars.find(el => 
+        el.querySelector('.car-make').innerText.toLowerCase() === car.make.toLowerCase() &&
+        el.querySelector('.car-model').innerText.toLowerCase() === car.model.toLowerCase()
+      );
+      if (matchingElement) {
+        grid.appendChild(matchingElement);
+      }
     });
     return;
   }
+
   // Reattach sorted elements to the grid
   grid.innerHTML = '';
   sortedCars.forEach(car => grid.appendChild(car));
