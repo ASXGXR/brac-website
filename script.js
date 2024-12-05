@@ -123,6 +123,12 @@ fetch('cars.txt')
       // Append car container
       carsGrid.appendChild(carContainer);
     });
+    
+
+    // Remove placeholder cards
+    const placeholders = document.querySelectorAll('.car-details.placeholder');
+    placeholders.forEach(placeholder => placeholder.remove());
+
   })
   .catch(error => console.error('Error fetching cars.txt:', error));
 
