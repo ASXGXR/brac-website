@@ -549,7 +549,8 @@ h2:hover {
 
   padding: 14px 0px; /* Around List Items*/
 }
-.features-list li span {
+.perk-tick {
+  height: 17px;
   color: #27ae60;
   color: var(--primary-color);
 }
@@ -848,6 +849,7 @@ h4 {
   display: flex;
 }
 .sort-container {
+  font-size: var(--p-text);
   position: relative;
   display: inline-block;
 }
@@ -886,7 +888,6 @@ h4 {
 }
 .sort-button,
 .sort-option {
-  font-size: var(--p-text);
   cursor: pointer;
 }
 .sort-option {
@@ -920,19 +921,19 @@ h4 {
   gap: 3vmin;
   display: flex;
   align-items: center;
+  font-size: var(--s-text);
 }
 :root {
   --car-btn-dm: 96px;
 }
-.view-txt {
-  font-size: var(--p-text);
-  font-weight: 400;
-}
 .car-button,
 .view-txt {
   width: 16vmin;
-  font-size: clamp(14px,2.2vmin,16px);
-  font-weight: 600;
+  font-weight: 500;
+}
+.view-txt {
+  white-space: nowrap;
+  text-align: center;
 }
 .car-button {
   gap: 8px;
@@ -1219,7 +1220,8 @@ input[type="checkbox"]:checked + .car-button {
 }
 .ic-tick {
   color: var(--primary-color);
-  margin-right: 4px;
+  margin-right: 2px;
+  height: 12px;
 }
 
 

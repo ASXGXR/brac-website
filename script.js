@@ -73,13 +73,16 @@ fetch('cars.txt')
           <span class="car-make">${capitalize(car.make)}</span>
           <span class="car-model">${capitalize(car.model)}</span>
         </h3>
-        <p class="insurance-cover spec-value"><span class="ic-tick">✔</span>
+        <p class="insurance-cover spec-value">
+          <svg class="ic-tick" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 42.121 41.242" fill="currentColor"><path d="M15.186 41.112C10.671 42.956.165 24.65 0 21.055c9.39-8.909 10.84 3.641 15.532 9.622.585.563 1.621 3.473 2.393 2.552 5.678-9.826 10.476-20.102 15.331-30.347C34.914.11 38.689-.297 41.596.16c1.967.967-2.203 5.806-2.476 7.668-5.641 9.175-11.974 32.719-23.934 33.284Z"/></svg>
           <span class="english-txt">Full Insurance Cover</span>
           <span class="thai-txt">ความคุ้มครองประกันภัยเต็มรูปแบบ</span>
         </p>
         <div class="car-img-container">
           <img class="car-img" src="images/cars/${car['img-name']}" alt="${capitalize(car.make)} ${capitalize(car.model)}">
         </div>
+        <p class="car-price english-txt">£${numericPrice.toFixed(2)} | ฿${priceInBaht} <span class="pd">per day</span></p>
+        <p class="car-price thai-txt">£${numericPrice.toFixed(2)} | ฿${priceInBaht} <span class="pd">ต่อวัน</span></p>
         <div class="specs">
           <div class="spec-value">
             <img src="svgs/seats.svg" alt="${car.seats} Seats">
@@ -100,8 +103,6 @@ fetch('cars.txt')
             ${capitalize(car.gears)}
           </div>
         </div>
-        <p class="car-price english-txt">£${numericPrice.toFixed(2)} | ฿${priceInBaht} <span class="pd">per day</span></p>
-        <p class="car-price thai-txt">£${numericPrice.toFixed(2)} | ฿${priceInBaht} <span class="pd">ต่อวัน</span></p>
         <!-- <button class="car-book-btn btn-shine english-txt" style="--shine-speed: 0.9s;">&gt; BOOK</button> -->
         <!-- <button class="car-book-btn btn-shine thai-txt" style="--shine-speed: 0.9s;">&gt; จอง</button> -->
       `;
