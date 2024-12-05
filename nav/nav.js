@@ -13,12 +13,10 @@ fetch('nav/nav.html')
   // Check if not on the main page
   if (window.location.pathname !== '/') {
     navButtons.insertAdjacentHTML('afterbegin', `
-      <a href="/" class="nav-btn english-txt">HOME</a>
-      <a href="/" class="nav-btn thai-txt">หน้าหลัก</a>
+      <a href="https://asxgxr.github.io/brac-website" class="nav-btn english-txt">HOME</a>
+      <a href="https://asxgxr.github.io/brac-website" class="nav-btn thai-txt">หน้าหลัก</a>
     `);
   }
-
-
 
   // HIGHLIGHT PAGE USER IS ON
   const currentPath = window.location.pathname;

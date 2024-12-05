@@ -74,8 +74,8 @@ fetch('cars.txt')
           <img src="svgs/gears.svg" alt="${gears} Gears"> ${capitalizeFirstLetter(gears)}
         </div>
       </div>
-      <button class="car-book-btn btn-shine english-txt" style="--shine-speed: 0.9s;">&gt; BOOK</button>
-      <button class="car-book-btn btn-shine thai-txt" style="--shine-speed: 0.9s;">&gt; จอง</button>
+      <!-- <button class="car-book-btn btn-shine english-txt" style="--shine-speed: 0.9s;">&gt; BOOK</button> -->
+      <!-- <button class="car-book-btn btn-shine thai-txt" style="--shine-speed: 0.9s;">&gt; จอง</button> -->
       `;
 
       // Attach vehicle selection handler
