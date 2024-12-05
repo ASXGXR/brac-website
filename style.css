@@ -858,7 +858,7 @@ h4 {
   top: 100%;
   left: 0;
   right: 0;
-  width: 328px;
+  width: 100%;
   max-height: 0;
   overflow: hidden;
   color: var(--black);
@@ -1112,6 +1112,9 @@ input[type="checkbox"]:checked + .car-button {
   }
   .car-price {
     white-space: unset;
+  }
+  .sort-container {
+    font-size: var(--s-text);
   }
 }
 
