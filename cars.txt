@@ -1,153 +1,163 @@
-make: honda
-model: civic
-price-per-day: £29.99 | ฿1,290
-img-name: honda-civic.png
-seats: 5
-engine: 1.8L
-gears: automatic
-type: sedan
-capacity: 3 Large Bags
-luxury: y
-
-make: honda
-model: city
-price-per-day: £22.95 | ฿1,000
-img-name: honda-city.png
-seats: 5
-engine: 1.5L
-gears: automatic
-type: sedan
-capacity: 3 Large Bags
-popular: y
-
-make: mazda
-model: 2
-price-per-day: £22.95 | ฿1,000
-img-name: mazda-2.png
-seats: 5
-engine: 1.3L
-gears: automatic
-type: sedan
-capacity: 2 Large Bags
-
-make: toyota
-model: ativ
-price-per-day: £21.95 | ฿930
-img-name: toyota-ativ.png
-seats: 5
-engine: 1.2L
-gears: automatic
-type: sedan
-capacity: 3 Large Bags
-
-make: honda
-model: city hatchback
-price-per-day: £22.95 | ฿1,000
-img-name: honda-city-hatchback.png
-seats: 5
-engine: 1.5L
-gears: automatic
-type: sedan
-capacity: 2 Small Bags
-
 make: toyota
 model: yaris
-price-per-day: £19.99 | ฿860
+price-per-day: £19.99
 img-name: toyota-yaris.png
 seats: 5
 engine: 1.2L
 gears: automatic
 type: sedan
-capacity: 2 Large Bags
+capacity: 2
 
 make: toyota
-model: veloz
-price-per-day: £29.99 | ฿1,290
-img-name: toyota-veloz.png
-seats: 7
-engine: 1.5L
+model: ativ
+price-per-day: £21.95
+img-name: toyota-ativ.png
+seats: 5
+engine: 1.2L
 gears: automatic
-type: suv
-capacity: 2-3 Large Bags
-
-make: toyota
-model: sienta
-price-per-day: £29.99 | ฿1,290
-img-name: toyota-sienta.png
-seats: 7
-engine: 1.5L
-gears: automatic
-type: suv
-capacity: 2 Small Bags
+type: sedan
+capacity: 3
 
 make: honda
-model: CR-V
-price-per-day: £45.99 | ฿2,000
-img-name: honda-crv.png
-seats: 7
+model: city
+price-per-day: £22.95
+img-name: honda-city.png
+seats: 5
 engine: 1.5L
 gears: automatic
-type: suv
-capacity: 4 Large Bags
-luxury: y
-
-make: toyota
-model: cross
-price-per-day: £32.99 | ฿1,430
-img-name: toyota-cross.png
-seats: 5
-engine: 1.8L Hybrid
-gears: automatic
-type: suv
-capacity: 3 Large Bags
+type: sedan
+capacity: 3
 popular: y
 
-make: toyota
-model: yaris cross
-price-per-day: £29.99 | ฿1,290
-img-name: toyota-yaris-cross.png
-seats: 5
-engine: 1.5L Hybrid
-gears: automatic
-type: suv
-capacity: 2 Large Bags
-
 make: honda
-model: BR-V
-price-per-day: £29.99 | ฿1,290
-img-name: honda-brv.png
-seats: 7
+model: city hatchback
+price-per-day: £22.95
+img-name: honda-city-hatchback.png
+seats: 5
 engine: 1.5L
 gears: automatic
-type: suv
-capacity: 2 Small Bags
+type: sedan
+capacity: 2
 
-make: toyota
-model: fortuner
-price-per-day: £39.99 | ฿1,710
-img-name: toyota-fortuner.png
-seats: 7
-engine: 2.4L Diesel
+make: mazda
+model: 2
+price-per-day: £22.95
+img-name: mazda-2.png
+seats: 5
+engine: 1.3L
 gears: automatic
-type: suv
-capacity: 4 Large Bags
+type: sedan
+capacity: 2
 
 make: toyota
 model: revo smart cab
-price-per-day: £22.95 | ฿1,000
+price-per-day: £22.95
 img-name: toyota-revo-smart-cab.png
 seats: 5
 engine: 2.4L Diesel
 gears: manual
 type: pickup
-capacity: 5 Large Bags (in bed)
+capacity: 5
+
+make: honda
+model: CR-V
+price-per-day: £45.99
+img-name: honda-crv.png
+seats: 7
+engine: 1.5L
+gears: automatic
+type: suv
+capacity: 4
+luxury: y
+
+make: toyota
+model: veloz
+price-per-day: £29.99
+img-name: toyota-veloz.png
+seats: 7
+engine: 1.5L
+gears: automatic
+type: suv
+capacity: 2-3
+
+make: toyota
+model: sienta
+price-per-day: £29.99
+img-name: toyota-sienta.png
+seats: 7
+engine: 1.5L
+gears: automatic
+type: suv
+capacity: 2
+
+make: honda
+model: civic
+price-per-day: £29.99
+img-name: honda-civic.png
+seats: 5
+engine: 1.8L
+gears: automatic
+type: sedan
+capacity: 4
+luxury: y
+
+make: toyota
+model: yaris cross
+price-per-day: £29.99
+img-name: toyota-yaris-cross.png
+seats: 5
+engine: 1.5L Hybrid
+gears: automatic
+type: suv
+capacity: 2
+
+make: honda
+model: BR-V
+price-per-day: £29.99
+img-name: honda-brv.png
+seats: 7
+engine: 1.5L
+gears: automatic
+type: suv
+capacity: 2
 
 make: toyota
 model: revo double cab
-price-per-day: £29.99 | ฿1,290
+price-per-day: £29.99
 img-name: toyota-revo-double-cab.png
 seats: 5
 engine: 2.5L Diesel
 gears: automatic
 type: pickup
-capacity: 5 Large Bags (in bed)
+capacity: 5
+
+make: toyota
+model: cross
+price-per-day: £32.99
+img-name: toyota-cross.png
+seats: 5
+engine: 1.8L Hybrid
+gears: automatic
+type: suv
+capacity: 3
+popular: y
+
+make: toyota
+model: fortuner
+price-per-day: £39.99
+img-name: toyota-fortuner.png
+seats: 7
+engine: 2.4L Diesel
+gears: automatic
+type: suv
+capacity: 4
+
+make: toyota
+model: hiace
+price-per-day: £69.99
+img-name: toyota-hiace.png
+seats: 12
+engine: 2.8L
+gears: automatic
+type: van
+capacity: 5

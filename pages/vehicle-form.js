@@ -97,7 +97,7 @@ function displaySelectedCar() {
             </div>
             <div class="spec-value">
               <img src="svgs/bags.svg" alt="Capacity: ${selectedCar.capacity}">
-              <p class="english-txt">${selectedCar.capacity}</p>
+              <p class="english-txt">${selectedCar.capacity} Large Bags</p>
             </div>
           `;
         }

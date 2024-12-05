@@ -151,10 +151,10 @@
           </svg>
         </div>
         <div class="sort-dropdown">
-          <div class="sort-option">Recommended</div>
-          <div class="sort-option">Price (Lowest First)</div>
-          <div class="sort-option">Price (Highest First)</div>
-          <div class="sort-option">Newest</div>
+          <div class="sort-option" data-sort="recommended">Recommended</div>
+          <div class="sort-option" data-sort="price-asc">Price (Lowest First)</div>
+          <div class="sort-option" data-sort="price-desc">Price (Highest First)</div>
+          <!-- <div class="sort-option" data-sort="newest">Newest</div> -->
         </div>
       </div>
       
@@ -162,25 +162,26 @@
       <div class="car-button-container unselectable">
         <p class="view-txt english-txt">View Only:</p>
         <p class="view-txt thai-txt">ดูเฉพาะ:</p>
-        <input type="checkbox" name="car" id="show-sedans">
-        <label for="show-sedans" class="car-button extrude">
+        <input type="checkbox" name="car" id="show-sedan">
+        <label for="show-sedan" class="car-button extrude">
           <span class="english-txt">Sedans</span>
           <span class="thai-txt">รถเก๋ง</span>
           <img src="svgs/sedan-icon.svg" alt="Sedans">
         </label>
-        <input type="checkbox" name="car" id="show-suvs">
-        <label for="show-suvs" class="car-button extrude">
+        <input type="checkbox" name="car" id="show-suv">
+        <label for="show-suv" class="car-button extrude">
           <span class="english-txt">SUVs</span>
           <span class="thai-txt">SUV</span>
           <img src="svgs/suv-icon.svg" alt="SUVs">
         </label>
-        <input type="checkbox" name="car" id="show-pickups">
-        <label for="show-pickups" class="car-button extrude">
+        <input type="checkbox" name="car" id="show-pickup">
+        <label for="show-pickup" class="car-button extrude">
           <span class="english-txt">Pick-Ups</span>
           <span class="thai-txt">รถกระบะ</span>
           <img src="svgs/pickup-icon.svg" alt="Pick-Ups">
         </label>
-        <label for="show-vans" class="car-button extrude">
+        <input type="checkbox" name="car" id="show-van">
+        <label for="show-van" class="car-button extrude">
           <span class="english-txt">Vans</span>
           <span class="thai-txt">รถตู้</span>
           <img src="svgs/van-icon.svg" alt="Vans">
@@ -191,19 +192,8 @@
     </div>
 
     <!-- <div class="separator-horiz"></div> -->
-
-
-    <!-- Sedans, loaded by JS -->
-    <h4 id="sedans-title">Sedans ></h4>
-    <div class="cars-grid" id="sedans"></div>
-
-    <!-- SUVs, loaded by JS -->
-    <h4 id="suvs-title">SUVs ></h4>
-    <div class="cars-grid" id="suvs"></div>
-
-    <!-- Pickups, loaded by JS -->
-    <h4 id="pickups-title">Pick-Ups ></h4>
-    <div class="cars-grid" id="pickups"></div>
+     
+    <div class="cars-grid" id="cars-grid"></div>
 
   </div>
 
