@@ -66,11 +66,13 @@ html {
   --shine-speed: 1s;
   --shadow-color-rgb: 30,32,36;
   --all-cars-padding: 24px 40px;
-  --subheader-font-size: clamp(16px,3vmin,20px);
   --cta-transform: 0.4s;
 
   /* font sizes */
-  --car-title-fs: clamp(12px,7vmin,36px);
+  --button: clamp(22px, 3.3vmin, 25px);
+  --p-text: clamp(18px,2.4vmin,24px);
+  --s-text: clamp(14px,1.9vmin,18px);
+  --car-title: clamp(12px,3.5vmin,36px);
 }
 
 
@@ -250,7 +252,7 @@ body {
 }
 .main-cta {
   background-color: var(--primary-color);
-  font-size: clamp(20px, 5vmin, 26px);
+  font-size: var(--button);
 }
 /* line CTA */
 .line-cta {
@@ -315,7 +317,7 @@ body {
   position: absolute;
   background: var(--black);
   color: var(--white);
-  font-size: var(--subheader-font-size);
+  font-size: clamp(16px,3vmin,20px);
   right: 0;
   gap: 6vmin;
 }
@@ -446,7 +448,6 @@ h2:hover {
 }
 .car-details {
   gap: 32px;
-  width: 100%;
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -459,11 +460,8 @@ h2:hover {
 
   transition: transform 0.3s ease-in-out;
   padding: 24px 36px;
-  box-shadow: 6px 6px 14px rgba(12, 12, 12, 0.8), /* Bottom Right Shadow */
-  -4px -4px 14px rgba(53, 53, 53, 0.8); /* Top Left Highlight */
-}
-.car-details > :nth-child(5) {
-  align-self: center;
+  box-shadow: 9px 9px 16px rgba(12, 12, 12, 0.8), /* Bottom Right Shadow */
+  -3px -3px 12px rgba(53, 53, 53, 0.6); /* Top Left Highlight */
 }
 .car-details:hover {
   transform: translateY(-4px);
@@ -479,18 +477,18 @@ h2:hover {
 }
 /* car title */
 .car-name {
-  font-size: var(--car-title-fs);
-  font-weight: 600;
+  font-size: var(--button);
   text-transform: capitalize;
+  font-weight: 600;
 }
 .car-make {
   text-transform: capitalize;
   color: var(--primary-color);
 }
 .car-price {
+  font-size: var(--p-text);
   white-space: nowrap;
-  font-weight: 500;
-  font-size: 24px;
+  font-weight: 600;
 }
 .car-img {
   aspect-ratio: 18 / 11;
@@ -499,11 +497,15 @@ h2:hover {
   object-fit: cover;
 }
 .specs {
+  margin-top: -8px;
+  margin-bottom: 8px;
+
+
+  font-size: var(--p-text);
   width: 100%;
   gap: 16px;
   display: flex;
-  font-size: clamp(16px,2.2vmin,20px);
-  font-weight: 700;
+  font-weight: 600;
   flex-direction: column;
   align-self: end;
   justify-self: end;
@@ -521,7 +523,7 @@ h2:hover {
   color: var(--black) !important;
 }
 .spec-value img {
-  width: 26px;
+  width: var(--p-text);
 }
 .car-book-btn {
   font-weight: 600;
@@ -559,6 +561,7 @@ h2:hover {
 .about-us-content {
   width: 100%;
   display: flex;
+  align-items: stretch;
   justify-content: space-between;
 }
 .why-us-img {
@@ -578,9 +581,10 @@ h2:hover {
   text-decoration: none;
 }
 .features-list {
+  flex: 1;
   max-width: 50%;
   list-style: none;
-  font-size: clamp(17px,2.66vmin,22px);
+  font-size: var(--p-text);
 }
 .features-list li {
   display: flex;
@@ -934,7 +938,7 @@ h4 {
 }
 .sort-button,
 .sort-option {
-  font-size: 16px;
+  font-size: var(--p-text);
   cursor: pointer;
 }
 .sort-option {
@@ -973,13 +977,13 @@ h4 {
   --car-btn-dm: 96px;
 }
 .view-txt {
-  font-size: 18px;
+  font-size: var(--p-text);
   font-weight: 400;
 }
 .car-button,
 .view-txt {
   width: 16vmin;
-  font-size: 15px;
+  font-size: clamp(14px,2.2vmin,16px);
   font-weight: 600;
 }
 .car-button {
@@ -995,7 +999,7 @@ h4 {
 }
 /* car icons */
 .car-button img {
-  height: 42px;
+  height: clamp(32px,6vmin,42px);
 }
 .car-button:hover,
 input[type="checkbox"]:checked + .car-button {
@@ -1082,18 +1086,6 @@ input[type="checkbox"]:checked + .car-button {
     box-shadow: inset 1vmin 0px currentColor;
   }
 
-
-  .cover-img-container {
-    right: unset;
-  }
-  .cover-img {
-    opacity: 0.4;
-    width: 200%;
-    object-fit: cover;
-    transform: scaleX(-100%);
-    object-position: right; /* Starts the image from the left edge */
-    margin-left: -48vmin;
-  }
   .btn-wrapper {
     flex-direction: column;
     align-items: flex-start;
@@ -1174,6 +1166,19 @@ input[type="checkbox"]:checked + .car-button {
   }
 }
 
+@media (max-width: 800px) {
+  .cover-img-container {
+    right: unset;
+  }
+  .cover-img {
+    opacity: 0.4;
+    width: 200%;
+    object-fit: cover;
+    transform: scaleX(-100%);
+    object-position: right; /* Starts the image from the left edge */
+    margin-left: -48vmin;
+  }
+}
 
 
 .sub-and-buttons {
@@ -1254,7 +1259,17 @@ input[type="checkbox"]:checked + .car-button {
   visibility: visible;
 }
 
-
-.smaller-font {
-  font-size: 23px;
+.pd {
+  font-size: var(--s-text);
+  font-weight: 400;
+  opacity: 0.5;
+}
+.insurance-cover {
+  align-self: flex-end;
+  font-size: var(--s-text);
+  font-weight: 500;
+}
+.ic-tick {
+  color: var(--primary-color);
+  margin-right: 4px;
 }

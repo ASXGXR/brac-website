@@ -50,11 +50,6 @@ fetch('cars.txt')
         <span class="car-make">${capitalizeFirstLetter(car.make)}</span>
         <span class="car-model">${capitalizeFirstLetter(car.model)}</span>
       </h3>
-      <p class="car-price english-txt">${car['price-per-day']}<br>per day</p>
-      <p class="car-price thai-txt">${car['price-per-day']}<br>ต่อวัน</p>
-      <div class="car-img-container ${car.isPopular ? 'popular' : ''} ${car.isLuxury ? 'luxury' : ''}">
-        <img class="car-img" src="images/cars/${car['img-name']}" alt="${car.make} ${car.model}">
-      </div>
       <!-- Specs -->
       <div class="specs">
         <div class="spec-value">
@@ -74,6 +69,12 @@ fetch('cars.txt')
           <img src="svgs/gears.svg" alt="${gears} Gears"> ${capitalizeFirstLetter(gears)}
         </div>
       </div>
+      <div class="car-img-container ${car.isPopular ? 'popular' : ''} ${car.isLuxury ? 'luxury' : ''}">
+        <img class="car-img" src="images/cars/${car['img-name']}" alt="${car.make} ${car.model}">
+      </div>
+      <p class="car-price english-txt">${car['price-per-day']} <span class="pd">per day</span></p>
+      <p class="car-price thai-txt">${car['price-per-day']} <span class="pd">ต่อวัน</span></p>
+      <p class="insurance-cover"><span class="ic-tick">✔</span> Full Insurance Cover</p>
       <!-- <button class="car-book-btn btn-shine english-txt" style="--shine-speed: 0.9s;">&gt; BOOK</button> -->
       <!-- <button class="car-book-btn btn-shine thai-txt" style="--shine-speed: 0.9s;">&gt; จอง</button> -->
       `;
