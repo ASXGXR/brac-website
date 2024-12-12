@@ -105,57 +105,59 @@
 
 
       <!-- PICKUP -->
-      <div class="questions pickup-qs">
-        <h2 class="book-page-header">Vehicle Pick-Up</h2>
+      <div class="drop-pick">
+        <div class="questions pickup-qs">
+          <h2 class="book-page-header">Pick-Up</h2>
 
-        <div class="q">
-          <label for="pickup-location">Pick-Up Location:</label>
-          <select id="pickup-location" name="pickup-location" required>
-            <option value="" disabled selected>Please select</option>
-            <option value="location2">Suvannabhumi International Airport</option>
-            <option value="location3">Don Muang International Airport</option>
-            <option value="location1">Vista Garden Sukhumvit 71</option>
-          </select>
-          <input type="text" id="pickup-location-other" name="pickup-location-other" placeholder="Or enter Pick-Up Location">
+          <div class="q">
+            <label for="pickup-location">Pick-Up Location:</label>
+            <select id="pickup-location" name="pickup-location" required>
+              <option value="" disabled selected>Please select</option>
+              <option value="location2">Suvannabhumi International Airport</option>
+              <option value="location3">Don Muang International Airport</option>
+              <option value="location1">Vista Garden Sukhumvit 71</option>
+            </select>
+            <input type="text" id="pickup-location-other" name="pickup-location-other" placeholder="Or enter Pick-Up Location">
+          </div>
+
+          <div class="datetime">
+            <div class="q">
+              <label for="pickup-date">Pick-Up Date:</label>
+              <input type="date" id="pickup-date" name="pickup-date" required>
+            </div>
+            <div class="q">
+              <label for="pickup-time">Pick-Up Time:</label>
+              <input type="time" id="pickup-time" name="pickup-time" value="10:00" required>
+            </div>
+          </div>
         </div>
 
-        <div class="datetime">
+
+        <!-- DROPOFF -->
+        <div class="questions pickup-qs">
+
+          <h2 class="book-page-header">Drop-Off</h2>
+
           <div class="q">
-            <label for="pickup-date">Pick-Up Date:</label>
-            <input type="date" id="pickup-date" name="pickup-date" required>
+            <label for="dropoff-location">Drop-Off Location:</label>
+            <select id="dropoff-location" name="dropoff-location" required>
+              <option value="" disabled selected>Please select</option>
+              <option value="location2">Suvannabhumi International Airport</option>
+              <option value="location3">Don Muang International Airport</option>
+              <option value="location1">Vista Garden Sukhumvit 71</option>
+            </select>
+            <input type="text" id="dropoff-location-other" name="dropoff-location-other" placeholder="Or enter Drop-Off Location">
           </div>
-          <div class="q">
-            <label for="pickup-time">Pick-Up Time:</label>
-            <input type="time" id="pickup-time" name="pickup-time" value="10:00" required>
-          </div>
-        </div>
-      </div>
 
-
-      <!-- DROPOFF -->
-      <div class="questions pickup-qs">
-
-        <h2 class="book-page-header">Vehicle Drop-Off</h2>
-
-        <div class="q">
-          <label for="dropoff-location">Drop-Off Location:</label>
-          <select id="dropoff-location" name="dropoff-location" required>
-            <option value="" disabled selected>Please select</option>
-            <option value="location2">Suvannabhumi International Airport</option>
-            <option value="location3">Don Muang International Airport</option>
-            <option value="location1">Vista Garden Sukhumvit 71</option>
-          </select>
-          <input type="text" id="dropoff-location-other" name="dropoff-location-other" placeholder="Or enter Drop-Off Location">
-        </div>
-
-        <div class="datetime">
-          <div class="q">
-            <label for="dropoff-date">Drop-Off Date:</label>
-            <input type="date" id="dropoff-date" name="dropoff-date" required>
-          </div>
-          <div class="q">
-            <label for="dropoff-time">Drop-Off Time:</label>
-            <input type="time" id="dropoff-time" name="dropoff-time" value="18:00" required>
+          <div class="datetime">
+            <div class="q">
+              <label for="dropoff-date">Drop-Off Date:</label>
+              <input type="date" id="dropoff-date" name="dropoff-date" required>
+            </div>
+            <div class="q">
+              <label for="dropoff-time">Drop-Off Time:</label>
+              <input type="time" id="dropoff-time" name="dropoff-time" value="18:00" required>
+            </div>
           </div>
         </div>
       </div>

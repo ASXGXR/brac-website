@@ -534,7 +534,7 @@ h2:hover {
   flex: 1;
   max-width: 50%;
   list-style: none;
-  font-size: var(--p-text);
+  font-size: clamp(var(--p-text),2.65vmin,32px);
 }
 .features-list li {
   display: flex;

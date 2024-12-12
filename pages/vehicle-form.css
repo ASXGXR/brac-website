@@ -98,13 +98,6 @@ textarea:focus {
   background-color: darken(var(--primary-color), 10%);
 }
 
-/* Media Queries for responsiveness */
-@media (max-width: 600px) {
-  .vehicle-form {
-    grid-template-columns: 1fr;
-  }
-}
-
 
 .includes {
   cursor: default !important;
@@ -290,4 +283,24 @@ input:autofill {
 }
 button.disabled {
   opacity: 0.5;
+}
+
+.drop-pick {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+
+
+
+/* Media Queries for responsiveness */
+@media (max-width: 600px) {
+  .vehicle-form {
+    grid-template-columns: 1fr;
+  }
+  .drop-pick {
+    flex-direction: column;
+    gap: 80px;
+  }
 }

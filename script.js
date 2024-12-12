@@ -208,7 +208,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
 // FILTER CARS BASED ON CHECKBOXES
 const carTypes = ['sedan', 'suv', 'pickup', 'van'];
 const filterCars = () => {
