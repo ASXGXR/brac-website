@@ -310,12 +310,12 @@ body {
   pointer-events: none;
 }
 .skyline-wrapper img {
+  filter: invert(88%) sepia(24%) saturate(160%) hue-rotate(190deg);
   position: absolute;
   object-fit: cover;
-  width: 90%;
+  width: 75%;
   bottom: 0;
 }
-
 
 
 /* CARS SECTION */
@@ -502,6 +502,8 @@ h2:hover {
 /* ABOUT US */
 
 .about-us-section {
+  max-height: 100vh;
+  overflow: hidden;
   padding: 108px var(--side-padding);
   width: 100%;
   display: flex;
@@ -994,6 +996,16 @@ input[type="checkbox"]:checked + .car-button {
     --button-padding: 14px 20px;
   }
 
+  .car-details {
+    outline: 1.8px solid #CDCECE; /* Creates the "further out" effect */
+    box-shadow: 9px 9px 16px rgba(12, 12, 12, 0.8), /* Bottom Right Shadow */
+                -3px -3px 12px rgba(53, 53, 53, 0.6); /* Top Left Highlight */
+  }
+  
+  .about-us-section {
+    max-height: unset;
+  }
+
   .main-cta svg {
     display: block;
   }
@@ -1219,6 +1231,7 @@ input[type="checkbox"]:checked + .car-button {
 .insurance-cover {
   font-size: var(--s-text);
   font-weight: 500;
+  margin-top: -4px;
   opacity: 0.8;
 }
 .ic-tick {
@@ -1264,10 +1277,6 @@ input[type="checkbox"]:checked + .car-button {
 .view-all-cars {
   color: var(--black);
 }
-.skyline-wrapper img {
-  /* filter: invert(88%) grayscale(100%); */
-  filter: invert(88%) grayscale(100%);
-}
 .separator-vert {
   background-color: var(--black);
 }
@@ -1294,7 +1303,7 @@ input[type="checkbox"]:checked + .car-button {
 
 .car-details.placeholder {
   width: 100%;
-  height: 484px; /* Adjust height as needed */
+  height: 498px; /* Adjust height as needed */
   background: var(--white);
   position: relative;
   overflow: hidden;

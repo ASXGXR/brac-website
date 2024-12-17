@@ -5,116 +5,90 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+// Cache for fetched data
+let carsDataCache = null;
+
 // Get query parameters from the URL
 function getQueryParams() {
-  const params = {};
-  window.location.search.substring(1).split('&').forEach(param => {
-    const [key, value] = param.split('=');
-    params[decodeURIComponent(key)] = decodeURIComponent(value);
-  });
-  return params;
+  return Object.fromEntries(new URLSearchParams(window.location.search));
 }
 
-// Fetch car data and display the selected car
-function displaySelectedCar() {
+// Fetch and cache car data
+async function fetchCarData() {
+  if (carsDataCache) return carsDataCache;
+  const response = await fetch('cars.txt');
+  const data = await response.text();
+  carsDataCache = data.trim().split('\n\n').map(carData => {
+    const car = {};
+    carData.split('\n').forEach(line => {
+      const [key, value] = line.split(': ');
+      const trimmedKey = key.trim();
+      car[trimmedKey] = value.trim();
+      if (trimmedKey.toLowerCase() === 'popular') car.isPopular = true;
+      if (trimmedKey.toLowerCase() === 'luxury') car.isLuxury = true;
+    });
+    return car;
+  });
+  return carsDataCache;
+}
+
+// Display the selected car
+async function displaySelectedCar() {
   const params = getQueryParams();
-  const selectedMake = params.make;
-  const selectedModel = params.model;
+  const selectedMake = params.make?.toLowerCase();
+  const selectedModel = params.model?.toLowerCase();
 
-  // Fetch cars.txt
-  fetch('cars.txt')
-    .then(response => response.text())
-    .then(data => {
-      // Parse the cars data
-      const cars = data.trim().split('\n\n').map(carData => {
-        const car = {};
-        carData.split('\n').forEach(line => {
-          const [key, value] = line.split(': ');
-          const trimmedKey = key.trim();
-          car[trimmedKey] = value.trim();
-          // Check if the car is popular or luxury
-          if (trimmedKey.toLowerCase() === 'popular') car.isPopular = true;
-          if (trimmedKey.toLowerCase() === 'luxury') car.isLuxury = true;
-        });
-        return car;
-      });
+  if (!selectedMake || !selectedModel) return;
 
-      // Find the car matching the make and model
-      const selectedCar = cars.find(car => {
-        return car.make.toLowerCase() === selectedMake.toLowerCase() &&
-               car.model.toLowerCase() === selectedModel.toLowerCase();
-      });
+  try {
+    const cars = await fetchCarData();
+    const selectedCar = cars.find(car =>
+      car.make.toLowerCase() === selectedMake &&
+      car.model.toLowerCase() === selectedModel
+    );
 
-      if (selectedCar) {
-        // Display the car details
-        const carDetailsContainer = document.getElementById('car-details-container');
+    const carDetailsContainer = document.getElementById('car-details-container');
+    if (!selectedCar || !carDetailsContainer) {
+      carDetailsContainer.innerHTML = '<p>Sorry, the selected vehicle could not be found.</p>';
+      return;
+    }
 
-        // Extract specs
-        const seats = selectedCar.seats;
-        const capacity = selectedCar.capacity;
-        const engine = selectedCar.engine;
-        const gears = selectedCar.gears;
-        const pricePerDay = selectedCar['price-per-day'];
-        const imgName = selectedCar['img-name'];
+    // Update car details
+    const carName = `<span class="car-make">${capitalizeFirstLetter(selectedCar.make)}</span>
+                     <span class="car-model">${capitalizeFirstLetter(selectedCar.model)}</span>`;
+    const carPrice = `${selectedCar['price-per-day']} per day`;
+    const carImage = `<img class="car-img" src="images/cars/${selectedCar['img-name']}" alt="${selectedCar.make} ${selectedCar.model}">`;
+    const specs = `
+      <div class="spec-value">
+        <img src="svgs/seats.svg" alt="${selectedCar.seats} Seats">
+        <p class="english-txt">${selectedCar.seats} Seats</p>
+      </div>
+      <div class="spec-value">
+        <img src="svgs/engine.svg" alt="${selectedCar.engine} Engine">
+        <p class="english-txt">${selectedCar.engine} Engine</p>
+      </div>
+      <div class="spec-value">
+        <img src="svgs/gears.svg" alt="${selectedCar.gears} Gears">
+        <p class="english-txt">${capitalizeFirstLetter(selectedCar.gears)}</p>
+      </div>
+      <div class="spec-value">
+        <img src="svgs/bags.svg" alt="Capacity: ${selectedCar.capacity}">
+        <p class="english-txt">${selectedCar.capacity} Large Bags</p>
+      </div>`;
 
-        // Get the elements inside the car-details-container
-        const carNameElement = carDetailsContainer.querySelector('.car-name');
-        const carPriceElement = carDetailsContainer.querySelector('.car-price');
-        const carImgContainer = carDetailsContainer.querySelector('.car-img-container');
-        const specsElement = carDetailsContainer.querySelector('.specs');
+    carDetailsContainer.querySelector('.car-name').innerHTML = carName;
+    carDetailsContainer.querySelector('.car-price').textContent = carPrice;
+    carDetailsContainer.querySelector('.car-img-container').innerHTML = carImage;
+    carDetailsContainer.querySelector('.specs').innerHTML = specs;
 
-        // Set the content for each element if it exists
-        if (carNameElement) {
-          carNameElement.innerHTML = `
-            <span class="car-make">${capitalizeFirstLetter(selectedCar.make)}</span>
-            <span class="car-model">${capitalizeFirstLetter(selectedCar.model)}</span>
-          `;
-        }
-
-        if (carPriceElement) {
-          carPriceElement.textContent = `${selectedCar['price-per-day']} per day`;
-        }
-
-        if (carImgContainer) {
-          carImgContainer.innerHTML = `
-            <img class="car-img" src="images/cars/${selectedCar['img-name']}" alt="${selectedCar.make} ${selectedCar.model}">
-          `;
-        }
-
-        if (specsElement) {
-          specsElement.innerHTML = `
-            <div class="spec-value">
-              <img src="svgs/seats.svg" alt="${selectedCar.seats} Seats">
-              <p class="english-txt">${selectedCar.seats} Seats</p>
-            </div>
-            <div class="spec-value">
-              <img src="svgs/engine.svg" alt="${selectedCar.engine} Engine">
-              <p class="english-txt">${selectedCar.engine} Engine</p>
-            </div>
-            <div class="spec-value">
-              <img src="svgs/gears.svg" alt="${selectedCar.gears} Gears">
-              <p class="english-txt">${capitalizeFirstLetter(selectedCar.gears)}</p>
-            </div>
-            <div class="spec-value">
-              <img src="svgs/bags.svg" alt="Capacity: ${selectedCar.capacity}">
-              <p class="english-txt">${selectedCar.capacity} Large Bags</p>
-            </div>
-          `;
-        }
-
-
-      } else {
-        console.error('Selected car not found');
-        // Optionally display a message to the user
-        const carDetailsContainer = document.getElementById('car-details-container');
-        carDetailsContainer.innerHTML = '<p>Sorry, the selected vehicle could not be found.</p>';
-      }
-    })
-    .catch(error => console.error('Error fetching cars.txt:', error));
+  } catch (error) {
+    console.error('Error displaying selected car:', error);
+  }
 }
 
 // Call the function to display the selected car
 displaySelectedCar();
+
 
 
 
