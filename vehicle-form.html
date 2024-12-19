@@ -73,36 +73,7 @@
 
     <!-- VEHICLE FORM -->
 
-    <form action="#" method="post" class="vehicle-form">
-
-      <!-- CONTACT -->
-
-      <div class="questions contact-qs">
-          <h2 class="book-page-header">Contact Information</h2>
-      
-          <label for="full-name">Full Name:</label>
-          <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
-      
-          <label for="email">Email Address:</label>
-          <input type="email" id="email" name="email" placeholder="Enter your email address" required>
-
-          <label for="phone">Phone Number:</label>
-          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
-
-          <!-- imports telephone codes -->
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css">
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
-          <script>
-            const phoneInput = document.querySelector("#phone");
-            const iti = intlTelInput(phoneInput, {
-                initialCountry: "gb", // Default to UK
-                preferredCountries: ["gb", "th", "us"], // UK first, Thailand second, US third
-                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
-            });
-          </script>
-      </div>
-    
-
+    <form action="#" method="post" class="vehicle-form">    
 
       <!-- PICKUP -->
       <div class="drop-pick">
@@ -162,13 +133,39 @@
         </div>
       </div>
 
-
-      <div class="questions contact-qs">
-        <label for="comments">Additional Comments:</label>
-        <textarea id="comments" name="comments" rows="4" placeholder="Please enter any additional details or preferences you may have."></textarea>
-      </div>
+      <!-- CONTACT -->
+      <!-- <div class="drop-pick"> -->
+        <div class="questions contact-qs">
+          <h2 class="book-page-header">Contact Details</h2>
       
+          <label for="full-name">Full Name:</label>
+          <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
+      
+          <label for="email">Email Address:</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email address" required>
 
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+          <!-- imports telephone codes -->
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css">
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+          <script>
+            const phoneInput = document.querySelector("#phone");
+            const iti = intlTelInput(phoneInput, {
+                initialCountry: "gb", // Default to UK
+                preferredCountries: ["gb", "th", "us"], // UK first, Thailand second, US third
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
+            });
+          </script>
+        </div>
+
+        <div class="questions contact-qs">
+          <label for="comments">Additional Comments:</label>
+          <textarea id="comments" name="comments" rows="4" placeholder="Please enter any additional details or preferences you may have."></textarea>
+        </div>
+      <!-- </div> -->
+      
       <!-- Submit Button -->
       <button type="submit" class="main-cta cta-btn btn-shine submit">
         <p class="english-txt">CONFIRM</p>
