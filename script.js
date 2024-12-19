@@ -31,20 +31,16 @@ async function fetchExchangeRate() {
 
 let originalCarOrder = [];
 
-// Fetch cars and once all have loaded, remove placeholders
 fetch('cars.txt')
   .then(response => response.text())
   .then(async data => {
     const carsGrid = document.getElementById('cars-grid');
-
-    // Get GBP -> BHT Current Rate
     const exchangeRate = await fetchExchangeRate();
     if (!exchangeRate) {
-      console.error('Failed to fetch exchange rate. Prices in Baht will not be displayed.');
+      console.error('Failed to fetch exchange rate.');
       return;
     }
 
-    // Split the cars.txt data into individual car entries
     const cars = data.trim().split('\n\n').map(carData => {
       const car = {};
       carData.split('\n').forEach(line => {
@@ -54,22 +50,17 @@ fetch('cars.txt')
       return car;
     });
 
-    let loadedCars = 0;
-    const totalCars = cars.length;
+    const fragment = document.createDocumentFragment();
+    const loadPromises = [];
 
-    // Append each car
     cars.forEach(car => {
-      // Add car-details class + get car type
       const carType = car.type ? car.type.toLowerCase() : 'unknown';
       const carContainer = document.createElement('div');
       carContainer.classList.add('car-details', carType);
 
-      // Adds 'data-price' attribute with GBP value
       const priceText = car['price-per-day'] || '£0.00';
       const numericPrice = parseFloat(priceText.replace('£', '').trim());
       carContainer.setAttribute('data-price', numericPrice);
-
-      // Convert GBP price to THB (to nearest 9)
       const priceInBaht = Math.round(numericPrice * exchangeRate / 10) * 10 - 1;
 
       carContainer.innerHTML = `
@@ -111,30 +102,30 @@ fetch('cars.txt')
         </div>
       `;
 
-      // Check if image is available
       const img = carContainer.querySelector('.car-img');
-      img.onload = () => {
-        originalCarOrder.push(car);
-        carsGrid.appendChild(carContainer);
-        loadedCars++;
-        if (loadedCars === totalCars) {
-          const placeholders = document.querySelectorAll('.car-details.placeholder');
-          placeholders.forEach(placeholder => placeholder.remove());
-        }
-        carContainer.addEventListener('click', () => {
-          window.location.href = `vehicle-form.html?make=${encodeURIComponent(car.make)}&model=${encodeURIComponent(car.model)}`;
-        });
-      };
+      const loadPromise = new Promise(resolve => {
+        img.onload = () => {
+          originalCarOrder.push(car);
+          carContainer.addEventListener('click', () => {
+            window.location.href = `vehicle-form.html?make=${encodeURIComponent(car.make)}&model=${encodeURIComponent(car.model)}`;
+          });
+          resolve();
+        };
+        img.onerror = () => {
+          console.error(`Image not found: ${car['img-name']}`);
+          carContainer.remove();
+          resolve();
+        };
+      });
 
-      img.onerror = () => {
-        console.error(`Image not found for car: ${car.make} ${car.model} (img: ${car['img-name']})`);
-        carContainer.remove(); 
-        loadedCars++;
-        if (loadedCars === totalCars) {
-          const placeholders = document.querySelectorAll('.car-details.placeholder');
-          placeholders.forEach(placeholder => placeholder.remove());
-        }
-      };
+      loadPromises.push(loadPromise);
+      fragment.appendChild(carContainer);
+    });
+
+    Promise.all(loadPromises).then(() => {
+      carsGrid.appendChild(fragment);
+      const placeholders = document.querySelectorAll('.car-details.placeholder');
+      placeholders.forEach(placeholder => placeholder.remove());
     });
   })
   .catch(error => console.error('Error fetching cars.txt:', error));
