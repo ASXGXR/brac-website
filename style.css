@@ -412,7 +412,7 @@ h2:hover {
   transition: 
   transform 0.3s ease-in-out, 
   box-shadow 0.3s ease-in-out, 
-  outline-offset 0.3s ease-out,
+  outline-offset 0.3s ease,
   outline-width 0.2s ease !important;
 }
 .car-details:hover,
