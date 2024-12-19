@@ -50,6 +50,10 @@ fetch('cars.txt')
       return car;
     });
 
+    let loadedCars = 0;
+    const totalCars = cars.length;
+    let placeholdersRemoved = false;
+
     const fragment = document.createDocumentFragment();
     const loadPromises = [];
 
@@ -104,16 +108,29 @@ fetch('cars.txt')
 
       const img = carContainer.querySelector('.car-img');
       const loadPromise = new Promise(resolve => {
+        const checkPlaceholders = () => {
+          if (!placeholdersRemoved && loadedCars >= Math.min(9, totalCars)) {
+            const placeholders = document.querySelectorAll('.car-details.placeholder');
+            placeholders.forEach(placeholder => placeholder.remove());
+            placeholdersRemoved = true;
+          }
+        };
+
         img.onload = () => {
           originalCarOrder.push(car);
           carContainer.addEventListener('click', () => {
             window.location.href = `vehicle-form.html?make=${encodeURIComponent(car.make)}&model=${encodeURIComponent(car.model)}`;
           });
+          loadedCars++;
+          checkPlaceholders();
           resolve();
         };
+
         img.onerror = () => {
           console.error(`Image not found: ${car['img-name']}`);
           carContainer.remove();
+          loadedCars++;
+          checkPlaceholders();
           resolve();
         };
       });
@@ -124,8 +141,6 @@ fetch('cars.txt')
 
     Promise.all(loadPromises).then(() => {
       carsGrid.appendChild(fragment);
-      const placeholders = document.querySelectorAll('.car-details.placeholder');
-      placeholders.forEach(placeholder => placeholder.remove());
     });
   })
   .catch(error => console.error('Error fetching cars.txt:', error));
