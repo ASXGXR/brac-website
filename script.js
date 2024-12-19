@@ -31,6 +31,7 @@ async function fetchExchangeRate() {
 
 let originalCarOrder = [];
 
+// Fetch cars and once all have loaded, remove placeholders
 fetch('cars.txt')
   .then(response => response.text())
   .then(async data => {
@@ -52,6 +53,9 @@ fetch('cars.txt')
       });
       return car;
     });
+
+    let loadedCars = 0;
+    const totalCars = cars.length;
 
     // Append each car
     cars.forEach(car => {
@@ -105,19 +109,18 @@ fetch('cars.txt')
                 : `<span class="english-txt">${capitalize(car.gears)}</span>`}
           </div>
         </div>
-        <!-- <button class="car-book-btn btn-shine english-txt" style="--shine-speed: 0.9s;">&gt; BOOK</button> -->
-        <!-- <button class="car-book-btn btn-shine thai-txt" style="--shine-speed: 0.9s;">&gt; จอง</button> -->
       `;
 
       // Check if image is available
       const img = carContainer.querySelector('.car-img');
-      // Image Valid:
       img.onload = () => {
-        // Add car to originalCarOrder
         originalCarOrder.push(car);
-        // Append car container
         carsGrid.appendChild(carContainer);
-        // Add click event to redirect to the booking form
+        loadedCars++;
+        if (loadedCars === totalCars) {
+          const placeholders = document.querySelectorAll('.car-details.placeholder');
+          placeholders.forEach(placeholder => placeholder.remove());
+        }
         carContainer.addEventListener('click', () => {
           window.location.href = `vehicle-form.html?make=${encodeURIComponent(car.make)}&model=${encodeURIComponent(car.model)}`;
         });
@@ -125,18 +128,18 @@ fetch('cars.txt')
 
       img.onerror = () => {
         console.error(`Image not found for car: ${car.make} ${car.model} (img: ${car['img-name']})`);
-        carContainer.remove(); // Remove the car container if image not found
+        carContainer.remove(); 
+        loadedCars++;
+        if (loadedCars === totalCars) {
+          const placeholders = document.querySelectorAll('.car-details.placeholder');
+          placeholders.forEach(placeholder => placeholder.remove());
+        }
       };
     });
-
-    // Remove placeholder cards
-    const placeholders = document.querySelectorAll('.car-details.placeholder');
-    placeholders.forEach(placeholder => placeholder.remove());
   })
   .catch(error => console.error('Error fetching cars.txt:', error));
 
 const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
-
 
 
 // CHANGING LANGUAGE
