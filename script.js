@@ -54,9 +54,6 @@ fetch('cars.txt')
     const totalCars = cars.length;
     let placeholdersRemoved = false;
 
-    const fragment = document.createDocumentFragment();
-    const loadPromises = [];
-
     cars.forEach(car => {
       const carType = car.type ? car.type.toLowerCase() : 'unknown';
       const carContainer = document.createElement('div');
@@ -107,40 +104,31 @@ fetch('cars.txt')
       `;
 
       const img = carContainer.querySelector('.car-img');
-      const loadPromise = new Promise(resolve => {
-        const checkPlaceholders = () => {
-          if (!placeholdersRemoved && loadedCars >= Math.min(9, totalCars)) {
-            const placeholders = document.querySelectorAll('.car-details.placeholder');
-            placeholders.forEach(placeholder => placeholder.remove());
-            placeholdersRemoved = true;
-          }
-        };
 
-        img.onload = () => {
-          originalCarOrder.push(car);
-          carContainer.addEventListener('click', () => {
-            window.location.href = `vehicle-form.html?make=${encodeURIComponent(car.make)}&model=${encodeURIComponent(car.model)}`;
-          });
-          loadedCars++;
-          checkPlaceholders();
-          resolve();
-        };
+      const checkPlaceholders = () => {
+        if (!placeholdersRemoved && (loadedCars >= Math.min(9, totalCars))) {
+          const placeholders = document.querySelectorAll('.car-details.placeholder');
+          placeholders.forEach(placeholder => placeholder.remove());
+          placeholdersRemoved = true;
+        }
+      };
 
-        img.onerror = () => {
-          console.error(`Image not found: ${car['img-name']}`);
-          carContainer.remove();
-          loadedCars++;
-          checkPlaceholders();
-          resolve();
-        };
-      });
+      img.onload = () => {
+        originalCarOrder.push(car);
+        carsGrid.appendChild(carContainer);
+        carContainer.addEventListener('click', () => {
+          window.location.href = `vehicle-form.html?make=${encodeURIComponent(car.make)}&model=${encodeURIComponent(car.model)}`;
+        });
+        loadedCars++;
+        checkPlaceholders();
+      };
 
-      loadPromises.push(loadPromise);
-      fragment.appendChild(carContainer);
-    });
-
-    Promise.all(loadPromises).then(() => {
-      carsGrid.appendChild(fragment);
+      img.onerror = () => {
+        console.error(`Image not found: ${car['img-name']}`);
+        carContainer.remove();
+        loadedCars++;
+        checkPlaceholders();
+      };
     });
   })
   .catch(error => console.error('Error fetching cars.txt:', error));
