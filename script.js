@@ -29,7 +29,6 @@ async function fetchExchangeRate() {
 // if (car.popular === 'y') carContainer.classList.add('popular');
 // if (car.luxury === 'y') carContainer.classList.add('luxury');
 
-
 let originalCarOrder = [];
 
 fetch('cars.txt')
@@ -131,6 +130,7 @@ fetch('cars.txt')
   .catch(error => console.error('Error fetching cars.txt:', error));
 
 const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+
 
 
 // CHANGING LANGUAGE
