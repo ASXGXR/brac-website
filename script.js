@@ -29,6 +29,7 @@ async function fetchExchangeRate() {
 // if (car.popular === 'y') carContainer.classList.add('popular');
 // if (car.luxury === 'y') carContainer.classList.add('luxury');
 
+
 let originalCarOrder = [];
 
 fetch('cars.txt')
@@ -51,7 +52,6 @@ fetch('cars.txt')
     });
 
     let loadedCars = 0;
-    const totalCars = cars.length;
     let placeholdersRemoved = false;
 
     cars.forEach(car => {
@@ -104,30 +104,27 @@ fetch('cars.txt')
       `;
 
       const img = carContainer.querySelector('.car-img');
+      carsGrid.appendChild(carContainer);
 
-      const checkPlaceholders = () => {
-        if (!placeholdersRemoved && (loadedCars >= Math.min(9, totalCars))) {
-          const placeholders = document.querySelectorAll('.car-details.placeholder');
-          placeholders.forEach(placeholder => placeholder.remove());
-          placeholdersRemoved = true;
-        }
-      };
+      if (!placeholdersRemoved && carsGrid.children.length >= 9) {
+        const placeholders = document.querySelectorAll('.car-details.placeholder');
+        placeholders.forEach(placeholder => placeholder.remove());
+        placeholdersRemoved = true;
+      }
+
+      carContainer.addEventListener('click', () => {
+        window.location.href = `vehicle-form.html?make=${encodeURIComponent(car.make)}&model=${encodeURIComponent(car.model)}`;
+      });
 
       img.onload = () => {
         originalCarOrder.push(car);
-        carsGrid.appendChild(carContainer);
-        carContainer.addEventListener('click', () => {
-          window.location.href = `vehicle-form.html?make=${encodeURIComponent(car.make)}&model=${encodeURIComponent(car.model)}`;
-        });
         loadedCars++;
-        checkPlaceholders();
       };
 
       img.onerror = () => {
         console.error(`Image not found: ${car['img-name']}`);
         carContainer.remove();
         loadedCars++;
-        checkPlaceholders();
       };
     });
   })
