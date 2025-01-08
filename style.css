@@ -605,7 +605,9 @@ h3 {
   display: flex;
   gap: 8px;
 }
-.trusted-by
+.trusted-by:hover {
+  text-decoration: underline;
+}
 .trusted-txt {
   display: flex;
   align-items: center;
