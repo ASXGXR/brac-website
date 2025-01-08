@@ -32,7 +32,7 @@ h2 {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
+  font-size: var(--s-text);
   padding: 8px 12px;
   background: var(--grey-bg);
   color: var(--white);
@@ -295,12 +295,22 @@ button.disabled {
 
 
 /* Media Queries for responsiveness */
-@media (max-width: 600px) {
-  .vehicle-form {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 800px) {
   .drop-pick {
     flex-direction: column;
     gap: 80px;
+  }
+  .book-vehicle-section {
+    padding: var(--side-padding);
+  }
+  .car-wrapper {
+    flex-direction: column;
+  }
+  .car-img-container {
+    width: 100%;
+  }
+  .note {
+    width: 100%;
+    white-space: normal;
   }
 }

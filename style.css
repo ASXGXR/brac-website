@@ -598,6 +598,39 @@ h3 {
 }
 
 
+.trusted-by {
+  margin: 4px 0;
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+.trusted-txt {
+  display: flex;
+  align-items: center;
+  font-size: var(--p-text);
+  gap: 4px;
+}
+/* star */
+.trusted-txt svg {
+  margin-bottom: 3px;
+  width: 24px; height: 24px;
+}
+.review-imgs {
+  display: flex;
+}
+.review-img {
+  width: 32px; height: 32px;
+  margin-right: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--black);
+}
+.external-link {
+  filter: invert();
+  margin: 4px;
+  width: 23px; height: 23px;
+}
+
+
 
 
 
@@ -647,7 +680,11 @@ h3 {
   display: flex;
   align-items: center;
 }
-
+.footer-link img {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
 .footer .skyline-wrapper {
   position: absolute;
   height: 110px;
