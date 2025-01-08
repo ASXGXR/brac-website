@@ -605,8 +605,8 @@ h3 {
   display: flex;
   gap: 8px;
 }
-.trusted-by:hover {
-  text-decoration: underline;
+.opac-med {
+  opacity: 0.9;
 }
 .trusted-txt {
   display: flex;
@@ -616,7 +616,7 @@ h3 {
 /* star */
 .trusted-txt svg {
   margin-bottom: 3px;
-  width: 24px; height: 24px;
+  width: 22px; height: 22px;
 }
 .review-imgs {
   display: flex;
