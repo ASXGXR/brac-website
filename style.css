@@ -107,6 +107,7 @@ body {
   flex-direction: column;
   height: calc(100vh - var(--nav-height));
   padding: 36px var(--side-padding);
+  padding-top: 16px;
 }
 .hero-section > *,
 .hero-text > * {
@@ -604,10 +605,10 @@ h3 {
   display: flex;
   gap: 8px;
 }
+.trusted-by
 .trusted-txt {
   display: flex;
   align-items: center;
-  font-size: var(--p-text);
   gap: 4px;
 }
 /* star */
@@ -618,8 +619,9 @@ h3 {
 .review-imgs {
   display: flex;
 }
+/* images */
 .review-img {
-  width: 32px; height: 32px;
+  width: 30px; height: 30px;
   margin-right: -4px;
   border-radius: 50%;
   border: 1px solid var(--black);
