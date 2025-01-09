@@ -622,9 +622,6 @@ h3 {
   display: flex;
 }
 /* images */
-.review-imgs-wrapper:hover .trusted-by {
-  text-decoration: underline;
-}
 .review-img {
   width: 28px; height: 28px;
   margin-right: -4px;
