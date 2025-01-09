@@ -25,10 +25,6 @@ async function fetchExchangeRate() {
 
 // LOAD VEHICLES INTO GRID
 
-// Add .popular or .luxury class if present
-// if (car.popular === 'y') carContainer.classList.add('popular');
-// if (car.luxury === 'y') carContainer.classList.add('luxury');
-
 let originalCarOrder = [];
 
 fetch('cars.txt')
@@ -62,6 +58,10 @@ fetch('cars.txt')
       const numericPrice = parseFloat(priceText.replace('£', '').trim());
       carContainer.setAttribute('data-price', numericPrice);
       const priceInBaht = Math.round(numericPrice * exchangeRate / 10) * 10 - 1;
+
+      // Add .popular or .luxury class if present
+      if (car.popular === 'y') carContainer.classList.add('popular');
+      if (car.luxury === 'y') carContainer.classList.add('luxury');
 
       carContainer.innerHTML = `
         <h3 class="car-name">

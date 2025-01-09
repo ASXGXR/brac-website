@@ -17,6 +17,7 @@ engine: 1.5L
 gears: automatic
 type: suv
 capacity: 2-3
+popular: y
 
 make: honda
 model: city hatchback
@@ -48,7 +49,6 @@ engine: 1.8L Hybrid
 gears: automatic
 type: suv
 capacity: 3
-popular: y
 
 make: toyota
 model: revo smart cab
@@ -79,7 +79,6 @@ engine: 1.5L
 gears: automatic
 type: sedan
 capacity: 3
-popular: y
 
 make: toyota
 model: sienta
@@ -130,7 +129,7 @@ engine: 1.8L
 gears: automatic
 type: sedan
 capacity: 4
-luxury: y
+popular: y
 
 make: toyota
 model: ativ
