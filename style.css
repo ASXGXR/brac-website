@@ -416,6 +416,9 @@ h2:hover {
   outline-offset 0.3s ease,
   outline-width 0.2s ease !important;
 }
+.sort-button:hover {
+  transform: translateX(5px) !important;
+}
 .car-details:hover,
 .sort-button:hover {
   outline: 1.8px solid #CDCECE; /* Creates the "further out" effect */
@@ -599,7 +602,8 @@ h3 {
 }
 
 
-.trusted-by {
+.trusted-by,
+.review-imgs-wrapper {
   margin: 4px 0;
   align-items: center;
   display: flex;
@@ -608,6 +612,10 @@ h3 {
 .opac-med {
   opacity: 0.9;
 }
+.trusted-txt:has(+ a:hover) {
+  text-decoration: underline !important;
+}
+
 .trusted-txt {
   display: flex;
   align-items: center;
@@ -799,7 +807,7 @@ h3 {
   position: relative;
 }
 .popular::after {
-  content: "BEST SELLER";
+  content: "BEST SELLER ✯";
   background-color: var(--black);
   color: var(--white);
   border: 2px solid var(--primary-color);
@@ -833,7 +841,7 @@ h3 {
 /* Luxury */
 :root {
   --luxury-gradient: linear-gradient(45deg, #ffd90091, #ffa600b9, #ffd900aa);
-  --lux-text: "LUXURY PICK";
+  --lux-text: "LUXURY CHOICE";
   --lux-font-size: 14px;
 }
 .luxury {
@@ -858,9 +866,6 @@ h3 {
   background: var(--white);
   content: var(--lux-text);
   font-size: var(--lux-font-size);
-}
-.luxury:hover {
-
 }
 
 
@@ -949,9 +954,6 @@ h4 {
   height: fit-content;
   border: 2px solid #ccc;
   transition: transform 0.25s ease;
-}
-.sort-button:active {
-  transform: scale(0.97);
 }
 .sort-button,
 .sort-option {
