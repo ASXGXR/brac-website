@@ -137,6 +137,11 @@ const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 function applyLanguage(isThai) {
   const changeLangSpeed = 400;
 
+  // Set CSS variable for popular text based on language
+  const rootStyle = document.documentElement.style;
+  rootStyle.setProperty('--popular-text', isThai ? 'var(--popular-text-th)' : 'var(--popular-text-en)');
+  rootStyle.setProperty('--lux-text', isThai ? 'var(--lux-text-th)' : 'var(--lux-text-en)');
+
   // Re-select elements dynamically in case new elements have been added
   const thaiTexts = document.querySelectorAll('.thai-txt');
   const englishTexts = document.querySelectorAll('.english-txt');

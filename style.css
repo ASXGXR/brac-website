@@ -801,17 +801,22 @@ h3 {
 
 
 /* Popular */
+:root {
+  --popular-text-en: "BEST SELLER ✯";
+  --popular-text-th: "สินค้าขายดี ✯";
+  --popular-text: var(--popular-text-en); /* Default to English */
+}
 .popular {
   border: none !important;
   outline: 1.8px solid var(--black); /* Creates the "further out" effect */
   position: relative;
 }
 .popular::after {
-  content: "BEST SELLER ✯";
+  content: var(--popular-text);
   background-color: var(--black);
   color: var(--white);
   border: 2px solid var(--primary-color);
-  box-shadow: rgba(0,0,0, 0.7) 2px 2px 4px 3px;
+  box-shadow: rgba(0, 0, 0, 0.7) 2px 2px 4px 3px;
 }
 .popular::after,
 .luxury::after,
@@ -824,6 +829,23 @@ h3 {
   padding: 8px 12px;
   rotate: 16deg;
 }
+.popular:hover {
+  border: 2px solid transparent;
+}
+
+/* Luxury */
+:root {
+  --luxury-gradient: linear-gradient(45deg, #ffd90091, #ffa600b9, #ffd900aa);
+  --lux-text-en: "LUXURY CHOICE";
+  --lux-text-th: "ตัวเลือกหรูหรา";
+  --lux-text: var(--lux-text-en); /* Default to English */
+  --lux-font-size: 14px;
+}
+.luxury {
+  border: 2px solid transparent;
+  border-image: var(--luxury-gradient) 1;
+  border-image-slice: 1;
+}
 .luxury::after,
 .luxury::before {
   right: unset;
@@ -832,22 +854,6 @@ h3 {
 }
 .luxury:hover {
   outline: 1.8px solid var(--luxury-gradient); /* Creates the "further out" effect */
-}
-
-.popular:hover {
-  border: 2px solid transparent;
-}
-
-/* Luxury */
-:root {
-  --luxury-gradient: linear-gradient(45deg, #ffd90091, #ffa600b9, #ffd900aa);
-  --lux-text: "LUXURY CHOICE";
-  --lux-font-size: 14px;
-}
-.luxury {
-  border: 2px solid transparent;
-  border-image: var(--luxury-gradient) 1;
-  border-image-slice: 1;
 }
 /* Text */
 .luxury::after {
