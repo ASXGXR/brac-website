@@ -8,6 +8,17 @@ gears: automatic
 type: sedan
 capacity: 2
 
+make: honda
+model: CR-V
+price-per-week: 14,000
+img-name: honda-crv.png
+seats: 7
+engine: 1.5L
+gears: automatic
+type: suv
+capacity: 4
+luxury: y
+
 make: toyota
 model: veloz
 price-per-week: 9,000
@@ -28,17 +39,6 @@ engine: 1.5L
 gears: automatic
 type: sedan
 capacity: 2
-
-make: honda
-model: CR-V
-price-per-week: 14,000
-img-name: honda-crv.png
-seats: 7
-engine: 1.5L
-gears: automatic
-type: suv
-capacity: 4
-luxury: y
 
 make: toyota
 model: cross
@@ -142,16 +142,6 @@ type: sedan
 capacity: 3
 
 make: toyota
-model: fortuner
-price-per-week: 12,000
-img-name: toyota-fortuner.png
-seats: 7
-engine: 2.4L Diesel
-gears: automatic
-type: suv
-capacity: 4
-
-make: toyota
 model: hiace
 price-per-week: 21,000
 img-name: toyota-hiace.png
@@ -160,3 +150,13 @@ engine: 2.8L
 gears: automatic
 type: van
 capacity: 5
+
+make: toyota
+model: fortuner
+price-per-week: 12,000
+img-name: toyota-fortuner.png
+seats: 7
+engine: 2.4L Diesel
+gears: automatic
+type: suv
+capacity: 4
