@@ -54,6 +54,7 @@ fetch('cars.txt')
       const carContainer = document.createElement('div');
       carContainer.classList.add('car-details', carType);
 
+      // Work out pricing
       const priceText = car['price-per-day'] || '£0.00';
       const numericPrice = parseFloat(priceText.replace('£', '').trim());
       carContainer.setAttribute('data-price', numericPrice);
@@ -111,6 +112,7 @@ fetch('cars.txt')
         placeholdersRemoved = true;
       }
 
+      // Listener to take to vehicle booking
       carContainer.addEventListener('click', () => {
         window.location.href = `vehicle-form.html?make=${encodeURIComponent(car.make)}&model=${encodeURIComponent(car.model)}`;
       });
