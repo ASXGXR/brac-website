@@ -1,6 +1,6 @@
 make: mazda
 model: 2
-price-per-day: £22.95
+price-per-week: 7,000
 img-name: mazda-2.png
 seats: 5
 engine: 1.3L
@@ -10,7 +10,7 @@ capacity: 2
 
 make: toyota
 model: veloz
-price-per-day: £29.99
+price-per-week: 9,000
 img-name: toyota-veloz.png
 seats: 7
 engine: 1.5L
@@ -21,7 +21,7 @@ popular: y
 
 make: honda
 model: city hatchback
-price-per-day: £22.95
+price-per-week: 7,000
 img-name: honda-city-hatchback.png
 seats: 5
 engine: 1.5L
@@ -31,7 +31,7 @@ capacity: 2
 
 make: honda
 model: CR-V
-price-per-day: £45.99
+price-per-week: 14,000
 img-name: honda-crv.png
 seats: 7
 engine: 1.5L
@@ -42,7 +42,7 @@ luxury: y
 
 make: toyota
 model: cross
-price-per-day: £32.99
+price-per-week: 10,000
 img-name: toyota-cross.png
 seats: 5
 engine: 1.8L Hybrid
@@ -52,7 +52,7 @@ capacity: 3
 
 make: toyota
 model: revo smart cab
-price-per-day: £22.95
+price-per-week: 7,000
 img-name: toyota-revo-smart-cab.png
 seats: 5
 engine: 2.4L Diesel
@@ -62,7 +62,7 @@ capacity: 5
 
 make: toyota
 model: revo double cab
-price-per-day: £29.99
+price-per-week: 9,000
 img-name: toyota-revo-double-cab.png
 seats: 5
 engine: 2.5L Diesel
@@ -72,7 +72,7 @@ capacity: 5
 
 make: honda
 model: city
-price-per-day: £22.95
+price-per-week: 7,000
 img-name: honda-city.png
 seats: 5
 engine: 1.5L
@@ -82,7 +82,7 @@ capacity: 3
 
 make: toyota
 model: sienta
-price-per-day: £29.99
+price-per-week: 9,000
 img-name: toyota-sienta.png
 seats: 7
 engine: 1.5L
@@ -92,7 +92,7 @@ capacity: 2
 
 make: toyota
 model: yaris cross
-price-per-day: £29.99
+price-per-week: 9,000
 img-name: toyota-yaris-cross.png
 seats: 5
 engine: 1.5L Hybrid
@@ -102,7 +102,7 @@ capacity: 2
 
 make: honda
 model: BR-V
-price-per-day: £29.99
+price-per-week: 9,000
 img-name: honda-brv.png
 seats: 7
 engine: 1.5L
@@ -112,7 +112,7 @@ capacity: 2
 
 make: toyota
 model: yaris
-price-per-day: £19.99
+price-per-week: 6,000
 img-name: toyota-yaris.png
 seats: 5
 engine: 1.2L
@@ -122,7 +122,7 @@ capacity: 2
 
 make: honda
 model: civic
-price-per-day: £29.99
+price-per-week: 9,000
 img-name: honda-civic.png
 seats: 5
 engine: 1.8L
@@ -133,7 +133,7 @@ popular: y
 
 make: toyota
 model: ativ
-price-per-day: £21.95
+price-per-week: 6,500
 img-name: toyota-ativ.png
 seats: 5
 engine: 1.2L
@@ -143,7 +143,7 @@ capacity: 3
 
 make: toyota
 model: fortuner
-price-per-day: £39.99
+price-per-week: 12,000
 img-name: toyota-fortuner.png
 seats: 7
 engine: 2.4L Diesel
@@ -153,7 +153,7 @@ capacity: 4
 
 make: toyota
 model: hiace
-price-per-day: £69.99
+price-per-week: 21,000
 img-name: toyota-hiace.png
 seats: 12
 engine: 2.8L

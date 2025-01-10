@@ -53,17 +53,31 @@ fetch('cars.txt')
       const carType = car.type ? car.type.toLowerCase() : 'unknown';
       const carContainer = document.createElement('div');
       carContainer.classList.add('car-details', carType);
+    
+      // Parse the weekly price and calculate daily pricing
+      const pricePerWeek = parseFloat(car['price-per-week'].replace(',', ''));
+      const dailyPriceInBaht = Math.round(pricePerWeek / 7); // Calculate daily price in Baht
+      const adjustedPriceInBaht = dailyPriceInBaht % 10 <= 4
+        ? dailyPriceInBaht - (dailyPriceInBaht % 10) + 9 // Round down to nearest 9
+        : dailyPriceInBaht - (dailyPriceInBaht % 10) + 10; // Round up to nearest 0
+  
+      // to GBP
+      let dailyPriceInPounds = adjustedPriceInBaht / exchangeRate; // Convert to GBP    
+      if (dailyPriceInPounds % 1 <= 0.25) {
+        dailyPriceInPounds = Math.floor(dailyPriceInPounds) + 0.95; // Default to .95
+      } else if (dailyPriceInPounds % 1 <= 0.75) {
+        dailyPriceInPounds = Math.floor(dailyPriceInPounds) + 0.99; // Default to .99
+      } else {
+        dailyPriceInPounds = Math.floor(dailyPriceInPounds) + 0.55; // Fallback to .55
+      }
+      dailyPriceInPounds = dailyPriceInPounds.toFixed(2); // Ensure 2 decimal places
+      carContainer.setAttribute('data-price', (adjustedPriceInBaht / exchangeRate).toFixed(2));
 
-      // Work out pricing
-      const priceText = car['price-per-day'] || '£0.00';
-      const numericPrice = parseFloat(priceText.replace('£', '').trim());
-      carContainer.setAttribute('data-price', numericPrice);
-      const priceInBaht = Math.round(numericPrice * exchangeRate / 10) * 10 - 1;
-
+  
       // Add .popular or .luxury class if present
       if (car.popular === 'y') carContainer.classList.add('popular');
       if (car.luxury === 'y') carContainer.classList.add('luxury');
-
+    
       carContainer.innerHTML = `
         <h3 class="car-name">
           <span class="car-make">${capitalize(car.make)}</span>
@@ -77,8 +91,8 @@ fetch('cars.txt')
         <div class="car-img-container">
           <img class="car-img" src="images/cars/${car['img-name']}" alt="${capitalize(car.make)} ${capitalize(car.model)}">
         </div>
-        <p class="car-price english-txt">£${numericPrice.toFixed(2)} | ฿${priceInBaht} <span class="pd">per day</span></p>
-        <p class="car-price thai-txt">£${numericPrice.toFixed(2)} | ฿${priceInBaht} <span class="pd">ต่อวัน</span></p>
+        <p class="car-price english-txt">£${dailyPriceInPounds} | ฿${dailyPriceInBaht} <span class="pd">per day</span></p>
+        <p class="car-price thai-txt">£${dailyPriceInPounds} | ฿${dailyPriceInBaht} <span class="pd">ต่อวัน</span></p>
         <div class="specs">
           <div class="spec-value">
             <img src="svgs/seats.svg" alt="${car.seats} Seats">
@@ -102,32 +116,32 @@ fetch('cars.txt')
           </div>
         </div>
       `;
-
+    
       const img = carContainer.querySelector('.car-img');
       carsGrid.appendChild(carContainer);
-
+    
       if (!placeholdersRemoved && carsGrid.children.length >= 9) {
         const placeholders = document.querySelectorAll('.car-details.placeholder');
         placeholders.forEach(placeholder => placeholder.remove());
         placeholdersRemoved = true;
       }
-
+    
       // Listener to take to vehicle booking
       carContainer.addEventListener('click', () => {
         window.location.href = `vehicle-form.html?make=${encodeURIComponent(car.make)}&model=${encodeURIComponent(car.model)}`;
       });
-
+    
       img.onload = () => {
         originalCarOrder.push(car);
         loadedCars++;
       };
-
+    
       img.onerror = () => {
         console.error(`Image not found: ${car['img-name']}`);
         carContainer.remove();
         loadedCars++;
       };
-    });
+    });        
   })
   .catch(error => console.error('Error fetching cars.txt:', error));
 
