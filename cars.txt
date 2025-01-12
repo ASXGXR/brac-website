@@ -70,12 +70,12 @@ gears: automatic
 type: pickup
 capacity: 5
 
-make: honda
-model: city
-price-per-week: 7,000
-img-name: honda-city.png
+make: toyota
+model: ativ
+price-per-week: 6,500
+img-name: toyota-ativ.png
 seats: 5
-engine: 1.5L
+engine: 1.2L
 gears: automatic
 type: sedan
 capacity: 3
@@ -132,14 +132,14 @@ capacity: 4
 popular: y
 
 make: toyota
-model: ativ
-price-per-week: 6,500
-img-name: toyota-ativ.png
-seats: 5
-engine: 1.2L
+model: fortuner
+price-per-week: 12,000
+img-name: toyota-fortuner.png
+seats: 7
+engine: 2.4L Diesel
 gears: automatic
-type: sedan
-capacity: 3
+type: suv
+capacity: 4
 
 make: toyota
 model: hiace
@@ -151,12 +151,12 @@ gears: automatic
 type: van
 capacity: 5
 
-make: toyota
-model: fortuner
-price-per-week: 12,000
-img-name: toyota-fortuner.png
-seats: 7
-engine: 2.4L Diesel
+make: honda
+model: city
+price-per-week: 7,000
+img-name: honda-city.png
+seats: 5
+engine: 1.5L
 gears: automatic
-type: suv
-capacity: 4
+type: sedan
+capacity: 3
