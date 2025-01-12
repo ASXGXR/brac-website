@@ -11,7 +11,7 @@ fetch('nav/nav.html')
   const navButtons = navbarElement.querySelector('.nav-buttons');
 
   // Check if not on the main page
-  if (window.location.pathname !== '/') {
+  if (!window.location.href.endsWith('/brac-website/') && window.location.pathname !== '/') {
     navButtons.insertAdjacentHTML('afterbegin', `
       <a href="https://asxgxr.github.io/brac-website" class="nav-btn english-txt">HOME</a>
       <a href="https://asxgxr.github.io/brac-website" class="nav-btn thai-txt">หน้าหลัก</a>
