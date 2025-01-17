@@ -75,8 +75,8 @@ fetch('cars.txt')
 
   
       // Add .popular or .luxury class if present
-      if (car.popular === 'y') carContainer.classList.add('popular');
-      if (car.luxury === 'y') carContainer.classList.add('luxury');
+      // if (car.popular === 'y') carContainer.classList.add('popular');
+      // if (car.luxury === 'y') carContainer.classList.add('luxury');
     
       carContainer.innerHTML = `
         <h3 class="car-name">

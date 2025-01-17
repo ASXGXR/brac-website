@@ -67,7 +67,7 @@ html {
   --white: #f9f9f9;
   --black: #1d1e21;
   --top-padding: 10vmin;
-  --side-padding: 14vmin;
+  --side-padding: 18vmin;
   --button-padding: 15px 30px;
   --shine-speed: 1s;
   --shadow-color-rgb: 30,32,36;
@@ -393,21 +393,17 @@ h2:hover {
   gap: 12vmin;
 }
 .car-details {
+  color: var(--black);
   position: relative;
   gap: 28px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  color: var(--white);
   padding: 24px 36px;
   transition: 
-  transform 0.3s ease-in-out, 
-  box-shadow 0.3s ease-in-out, 
-  outline-offset 0.3s ease-out,
-  outline-width 0.2s ease;
+  all 0.3s ease-in-out;
   background: var(--white);
-  box-shadow: 9px 9px 16px rgba(12, 12, 12, 0.4), /* Bottom Right Shadow */
-  -3px -3px 12px rgba(53, 53, 53, 0.3); /* Top Left Highlight */
+  
 }
 .sort-button {
   transition: 
@@ -805,9 +801,6 @@ h3 {
   --popular-text-en: "BEST SELLER ✯";
   --popular-text-th: "สินค้าขายดี ✯";
   --popular-text: var(--popular-text-en); /* Default to English */
-}
-.car-details {
-  outline: 1px solid #777777 /* Creates the "further out" effect */
 }
 .popular {
   border: none !important;
@@ -1338,8 +1331,7 @@ input[type="checkbox"]:checked + .car-button {
   border-color: var(--black);
   color: var(--black);
 }
-.cars-section,
-.car-details {
+.cars-section {
   color: var(--black);
 }
 .cars-section h2 {
