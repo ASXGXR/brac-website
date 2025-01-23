@@ -403,8 +403,8 @@ h2:hover {
   transition: 
   all 0.3s ease-in-out;
   background: var(--white);
-  /* box-shadow: 9px 9px 16px rgba(12, 12, 12, 0.4), Bottom Right Shadow */
-  /* -3px -3px 12px rgba(53, 53, 53, 0.3); Top Left Highlight */
+  box-shadow: 9px 9px 16px rgba(12, 12, 12, 0.4), /* Bottom Right Shadow */
+  -3px -3px 12px rgba(53, 53, 53, 0.3); /* Top Left Highlight */
   /* outline: 2px solid #777777; */
 }
 .sort-button {
