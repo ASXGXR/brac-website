@@ -1,0 +1,15 @@
+# robots.txt for https://www.bangkokrentacar.com
+
+User-agent: *
+Disallow: /nav/
+Disallow: /scripts/
+Disallow: /styles/
+Disallow: /images/internal/
+Disallow: /temp/
+Disallow: /private/
+
+# Allow all public content
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.bangkokrentacar.com/sitemap.xml
